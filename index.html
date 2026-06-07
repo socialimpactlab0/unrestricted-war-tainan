@@ -914,8 +914,8 @@
     <section class="hero">
       <div class="hero-fallback" aria-hidden="true"></div>
 
-      <!-- 請把影片檔 hero-video.mp4 放在 index.html 同一層 -->
-      <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <!-- 請把 hero-video.mp4 與 hero-poster.jpg 放在 index.html 同一層 -->
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg">
         <source src="hero-video.mp4" type="video/mp4" />
       </video>
 
@@ -1203,7 +1203,7 @@
   </footer>
 
   <script>
-    const GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyfYpIGoijpz92IGPoZHXSrqplfahm8iYJq673lrBoQp8wycXaST6nzc_JgtGhxVvfd/exec";
+    const GAS_WEBAPP_URL = "請貼上您的 GAS Web App URL";
 
     const ticketQty = document.getElementById("ticketQty");
     const ticketCountText = document.getElementById("ticketCountText");
