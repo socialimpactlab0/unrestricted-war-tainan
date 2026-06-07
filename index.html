@@ -1442,6 +1442,69 @@
       }
     }
 
+  
+    .event-info-box {
+      margin: 0 0 28px;
+      border: 1px solid rgba(192,151,91,.30);
+      background:
+        linear-gradient(180deg, rgba(192,151,91,.10), rgba(0,0,0,0)),
+        rgba(5,4,3,.55);
+      padding: 22px 24px;
+    }
+
+    .event-info-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(192,151,91,.18);
+    }
+
+    .event-info-row:first-child {
+      padding-top: 0;
+    }
+
+    .event-info-row:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .event-info-label {
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+
+    .event-info-value {
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+
+    @media (max-width: 620px) {
+      .event-info-box {
+        padding: 18px;
+        margin-bottom: 24px;
+      }
+
+      .event-info-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 12px 0;
+      }
+
+      .event-info-label {
+        font-size: 15px;
+      }
+
+      .event-info-value {
+        font-size: 17px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1685,6 +1748,21 @@
                 <strong>NT$<span id="totalAmount">150</span></strong>
               </div>
             </div>
+          
+          <!-- 活動資訊：以後更換活動時，主要修改下面三行即可 -->
+          <div class="event-info-box" aria-label="活動資訊">
+            <div class="event-info-row">
+              <div class="event-info-label">🎬 活動名稱</div>
+              <div class="event-info-value">《超限戰》公益放映活動</div>
+            </div>
+            <div class="event-info-row">
+              <div class="event-info-label">🏢 主辦單位</div>
+              <div class="event-info-value">乾淨世界</div>
+            </div>
+            <div class="event-info-row">
+              <div class="event-info-label">🤝 協辦單位</div>
+              <div class="event-info-value">永翔愛心會</div>
+            </div>
           </div>
 
           <form id="bookingForm" class="booking-form">
@@ -1795,7 +1873,7 @@
   </footer>
 
   <script>
-    const GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyfYpIGoijpz92IGPoZHXSrqplfahm8iYJq673lrBoQp8wycXaST6nzc_JgtGhxVvfd/exec";
+    const GAS_WEBAPP_URL = "請貼上您的 GAS Web App URL";
 
     const ticketQty = document.getElementById("ticketQty");
     const ticketCountText = document.getElementById("ticketCountText");
