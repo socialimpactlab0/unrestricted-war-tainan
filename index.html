@@ -729,6 +729,72 @@
       font-size: 18px;
     }
 
+    .trailer-button {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      text-align: center;
+      font-family: inherit;
+      padding: 0;
+    }
+
+    .trailer-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .trailer-modal.active {
+      display: flex;
+    }
+
+    .trailer-modal-bg {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.86);
+      backdrop-filter: blur(8px);
+    }
+
+    .trailer-modal-box {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 980px);
+      background: #000;
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 90px rgba(0,0,0,.72);
+    }
+
+    .trailer-modal-box video {
+      width: 100%;
+      display: block;
+      background: #000;
+    }
+
+    .trailer-close {
+      position: absolute;
+      top: -48px;
+      right: 0;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--gold);
+      background: rgba(0,0,0,.75);
+      color: var(--white);
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .trailer-close:hover {
+      background: var(--gold);
+      color: #050403;
+    }
+
+
     .connected { background: #050403; }
 
     .connected-grid {
@@ -914,8 +980,8 @@
     <section class="hero">
       <div class="hero-fallback" aria-hidden="true"></div>
 
-      <!-- 請把 hero-video.mp4 與 hero-poster.jpg 放在 index.html 同一層 -->
-      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg">
+      <!-- 請把 hero-video.mp4、trailer-video.mp4 與 hero-poster.jpg 放在 index.html 同一層 -->
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg">
         <source src="hero-video.mp4" type="video/mp4" />
       </video>
 
@@ -1155,12 +1221,25 @@
     </section>
 
     <section id="trailer" class="trailer">
-      <a href="https://www.ganjingworld.com/@TheUnrestrictedWar" target="_blank" rel="noopener" aria-label="觀看官方中文頻道">
+      <button class="trailer-button" type="button" onclick="openTrailer()" aria-label="播放《超限戰》中文預告片">
         <div class="play">▶</div>
         <h2>Trailer</h2>
-        <p>前往《超限戰》電影官方中文頻道，觀看中文預告、短片、訪談與最新放映消息。</p>
-      </a>
+        <p>點擊觀看《超限戰》中文預告片</p>
+      </button>
     </section>
+
+    <div id="trailerModal" class="trailer-modal" aria-hidden="true">
+      <div class="trailer-modal-bg" onclick="closeTrailer()"></div>
+
+      <div class="trailer-modal-box" role="dialog" aria-modal="true" aria-label="《超限戰》中文預告片">
+        <button class="trailer-close" type="button" onclick="closeTrailer()" aria-label="關閉預告片">×</button>
+
+        <video id="trailerVideo" controls playsinline preload="none" poster="hero-poster.jpg">
+          <source src="trailer-video.mp4" type="video/mp4" />
+          您的瀏覽器不支援影片播放。
+        </video>
+      </div>
+    </div>
 
     <section id="connected" class="connected">
       <div class="container connected-grid">
@@ -1291,6 +1370,39 @@
         submitBtn.textContent = "確認預約座位 →";
       }
     });
+  
+    function openTrailer() {
+      const modal = document.getElementById("trailerModal");
+      const video = document.getElementById("trailerVideo");
+
+      if (!modal || !video) return;
+
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+
+      video.currentTime = 0;
+      video.play().catch(function() {
+        // 有些瀏覽器會阻擋自動播放，使用者再按一次播放即可。
+      });
+    }
+
+    function closeTrailer() {
+      const modal = document.getElementById("trailerModal");
+      const video = document.getElementById("trailerVideo");
+
+      if (!modal || !video) return;
+
+      video.pause();
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeTrailer();
+      }
+    });
+
   </script>
 </body>
 </html>
