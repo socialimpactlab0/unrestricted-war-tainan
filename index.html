@@ -966,6 +966,286 @@
       .socials { grid-template-columns: 1fr; }
       .socials a:nth-child(odd) { border-right: 0; }
     }
+  
+    /* 手機版首頁優化：只影響 620px 以下，不影響桌機版 */
+    @media (max-width: 620px) {
+      body {
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .top,
+      .nav {
+        height: 64px;
+      }
+
+      .nav {
+        padding: 0;
+      }
+
+      .nav-logo {
+        font-size: 14px;
+        letter-spacing: .08em;
+        max-width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .nav-logo span {
+        font-size: 10px;
+        letter-spacing: .16em;
+      }
+
+      .menu {
+        font-size: 12px;
+        letter-spacing: .14em;
+      }
+
+      .hero {
+        min-height: 100svh;
+        padding: 84px 16px 54px;
+        align-items: center;
+      }
+
+      .hero-video {
+        object-position: center center;
+        opacity: .52;
+      }
+
+      .hero-fallback {
+        background-position: center center;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(0,0,0,.50) 0%, rgba(0,0,0,.55) 42%, rgba(0,0,0,.94) 100%),
+          linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.30), rgba(0,0,0,.78));
+      }
+
+      .hero-box {
+        width: 100%;
+        max-width: 360px;
+      }
+
+      .hero-logo-text {
+        font-size: clamp(32px, 11vw, 46px);
+        line-height: 1.04;
+        letter-spacing: .025em;
+        margin-bottom: 18px;
+        max-width: 100%;
+        overflow-wrap: normal;
+        word-break: normal;
+        text-align: center;
+      }
+
+      .hero-logo-text span {
+        font-size: clamp(26px, 8vw, 34px);
+        line-height: 1.25;
+        letter-spacing: .14em;
+        margin-top: 12px;
+      }
+
+      .hero-title-cn {
+        font-size: clamp(28px, 8.2vw, 36px);
+        line-height: 1.35;
+        letter-spacing: .08em;
+        margin-bottom: 16px;
+      }
+
+      .hero-sub {
+        font-size: 17px;
+        line-height: 1.85;
+        letter-spacing: .01em;
+        max-width: 330px;
+      }
+
+      .watch-line {
+        font-size: 14px;
+        line-height: 1.75;
+        letter-spacing: .06em;
+        margin-top: 20px;
+      }
+
+      .hero .btn {
+        margin-top: 22px;
+        width: 100%;
+        max-width: 300px;
+        min-height: 48px;
+        padding: 12px 18px;
+        font-size: 13px;
+        letter-spacing: .1em;
+      }
+
+      .scroll {
+        display: none;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      .title {
+        font-size: clamp(34px, 11vw, 48px);
+        line-height: 1.08;
+      }
+
+      .reviews {
+        padding: 34px 0;
+      }
+
+      .review {
+        width: 285px;
+        min-height: 255px;
+        padding: 24px;
+      }
+
+      .review p {
+        font-size: 17px;
+        line-height: 1.65;
+      }
+
+      .highlight {
+        padding: 28px 24px;
+        min-height: auto;
+      }
+
+      .highlight h3 {
+        font-size: 25px;
+      }
+
+      .about-grid {
+        gap: 34px;
+      }
+
+      .movie-title-small {
+        font-size: clamp(32px, 10vw, 46px);
+        letter-spacing: .035em;
+      }
+
+      .copy p {
+        font-size: 16px;
+        line-height: 1.9;
+      }
+
+      .theatre {
+        min-height: auto;
+      }
+
+      .theatre-visual {
+        min-height: 320px;
+      }
+
+      .theatre-info {
+        padding: 32px 22px;
+      }
+
+      .theatre h3 {
+        font-size: clamp(32px, 10vw, 44px);
+      }
+
+      .booking-card {
+        padding: 24px 18px;
+      }
+
+      .booking-head {
+        gap: 20px;
+        padding-bottom: 22px;
+      }
+
+      .booking-head h3 {
+        font-size: clamp(34px, 11vw, 48px);
+      }
+
+      .booking-head p,
+      .ticket-note,
+      .connected p {
+        font-size: 16px;
+        line-height: 1.85;
+      }
+
+      .price-box {
+        padding: 18px;
+      }
+
+      .form-grid {
+        gap: 18px;
+      }
+
+      input,
+      select,
+      textarea {
+        min-height: 52px;
+        font-size: 16px;
+      }
+
+      .submit-row .btn {
+        max-width: none;
+      }
+
+      .trailer {
+        min-height: 520px;
+      }
+
+      .trailer h2 {
+        font-size: clamp(42px, 14vw, 64px);
+      }
+
+      .trailer p {
+        font-size: 16px;
+        max-width: 310px;
+      }
+
+      .trailer-modal {
+        padding: 16px;
+      }
+
+      .trailer-close {
+        top: -44px;
+        right: 0;
+      }
+
+      .contact-box {
+        padding: 24px;
+      }
+
+      .footer-visual {
+        min-height: 300px;
+      }
+
+      .footer-visual h2 {
+        font-size: clamp(34px, 12vw, 58px);
+        letter-spacing: .04em;
+      }
+    }
+
+    /* 更窄手機，例如 LINE 內建瀏覽器、舊手機 */
+    @media (max-width: 390px) {
+      .hero-logo-text {
+        font-size: clamp(29px, 10.5vw, 40px);
+        letter-spacing: .015em;
+      }
+
+      .hero-logo-text span {
+        font-size: 25px;
+      }
+
+      .hero-title-cn {
+        font-size: 29px;
+      }
+
+      .hero-sub {
+        font-size: 16px;
+        line-height: 1.8;
+      }
+
+      .watch-line {
+        font-size: 13px;
+      }
+    }
+
   </style>
 </head>
 
