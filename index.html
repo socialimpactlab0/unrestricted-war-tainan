@@ -357,51 +357,108 @@
     }
 
     .feedback-card {
-      min-height: 270px;
-      border: 1px solid var(--line);
-      background:
-        radial-gradient(circle at center, rgba(192,151,91,.16), rgba(0,0,0,0) 52%),
-        linear-gradient(180deg, #120d0a, #070504);
+      min-height: 0;
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(192,151,91,.36);
+      background: #090604;
       color: var(--white);
       cursor: pointer;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      padding: 0;
+      display: block;
+      text-align: left;
       transition: .25s ease;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 22px 60px rgba(0,0,0,.34);
+    }
+
+    .feedback-card video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #000;
+      transform: scale(1.01);
     }
 
     .feedback-card::before {
       content: "";
       position: absolute;
-      inset: 16px;
-      border: 1px solid rgba(192,151,91,.18);
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.68)),
+        linear-gradient(90deg, rgba(0,0,0,.46), rgba(0,0,0,.05));
+      pointer-events: none;
+    }
+
+    .feedback-card::after {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      z-index: 2;
+      border: 1px solid rgba(192,151,91,.30);
       pointer-events: none;
     }
 
     .feedback-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(192,151,91,.65);
-      box-shadow: 0 24px 60px rgba(0,0,0,.42);
+      border-color: rgba(192,151,91,.75);
+      box-shadow: 0 28px 70px rgba(0,0,0,.52);
+    }
+
+    .feedback-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+    }
+
+    .feedback-mini-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 72px;
+      height: 72px;
+      border: 1px solid rgba(244,239,231,.88);
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(0,0,0,.32);
+      color: #fff;
+      font-size: 28px;
+      padding-left: 4px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.38);
+      transition: .25s ease;
+    }
+
+    .feedback-card:hover .feedback-mini-play {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #050403;
+      transform: translate(-50%, -50%) scale(1.06);
     }
 
     .feedback-card h3 {
-      margin: 0 0 10px;
+      margin: 0 0 4px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 28px;
+      font-size: 25px;
       font-weight: 400;
       letter-spacing: .04em;
+      text-shadow: 0 8px 24px rgba(0,0,0,.85);
     }
 
     .feedback-card p {
       margin: 0;
-      color: rgba(244,239,231,.68);
-      font-size: 15px;
-      letter-spacing: .08em;
+      color: rgba(244,239,231,.82);
+      font-size: 13px;
+      letter-spacing: .12em;
+      text-shadow: 0 8px 24px rgba(0,0,0,.85);
     }
 
     .reviews {
@@ -1010,7 +1067,6 @@
       .highlight:last-child { border-bottom: 0; }
       .theatre-info { padding: 40px 28px; }
       section { padding: 74px 0; }
-      .feedback-card { min-height: 230px; }
     }
 
     @media (max-width: 620px) {
@@ -1081,8 +1137,9 @@
       .trailer p { font-size: 16px; max-width: 310px; }
       .feedback-head { margin-bottom: 30px; }
       .feedback-head p { font-size: 16px; }
-      .feedback-card { min-height: 210px; padding: 26px 22px; }
-      .feedback-card h3 { font-size: 25px; }
+      .feedback-overlay { padding: 20px; }
+      .feedback-card h3 { font-size: 24px; }
+      .feedback-mini-play { width: 64px; height: 64px; font-size: 24px; }
       .video-modal { padding: 16px; }
       .video-close { top: -44px; }
       .footer-visual { min-height: 300px; }
@@ -1165,21 +1222,30 @@
 
         <div class="feedback-grid">
           <button class="feedback-card" type="button" onclick="openVideoModal('feedback-1.mp4', '觀眾反饋 1')" aria-label="播放觀眾反饋 1">
-            <div class="play">▶</div>
-            <h3>觀眾反饋 1</h3>
-            <p>CLICK TO WATCH</p>
+            <video muted playsinline preload="metadata" src="feedback-1.mp4#t=0.1"></video>
+            <div class="feedback-mini-play">▶</div>
+            <div class="feedback-overlay">
+              <h3>觀眾反饋 1</h3>
+              <p>CLICK TO WATCH</p>
+            </div>
           </button>
 
           <button class="feedback-card" type="button" onclick="openVideoModal('feedback-2.mp4', '觀眾反饋 2')" aria-label="播放觀眾反饋 2">
-            <div class="play">▶</div>
-            <h3>觀眾反饋 2</h3>
-            <p>CLICK TO WATCH</p>
+            <video muted playsinline preload="metadata" src="feedback-2.mp4#t=0.1"></video>
+            <div class="feedback-mini-play">▶</div>
+            <div class="feedback-overlay">
+              <h3>觀眾反饋 2</h3>
+              <p>CLICK TO WATCH</p>
+            </div>
           </button>
 
           <button class="feedback-card" type="button" onclick="openVideoModal('feedback-3.mp4', '觀眾反饋 3')" aria-label="播放觀眾反饋 3">
-            <div class="play">▶</div>
-            <h3>觀眾反饋 3</h3>
-            <p>CLICK TO WATCH</p>
+            <video muted playsinline preload="metadata" src="feedback-3.mp4#t=0.1"></video>
+            <div class="feedback-mini-play">▶</div>
+            <div class="feedback-overlay">
+              <h3>觀眾反饋 3</h3>
+              <p>CLICK TO WATCH</p>
+            </div>
           </button>
         </div>
       </div>
@@ -1187,46 +1253,16 @@
 
     <section class="reviews" aria-label="影評推薦">
       <div class="review-track">
-        <article class="review">
-          <p>「這是一部讓人想起疫情初期的史詩型劇情片，畫面令人不安，故事也異常熟悉。」</p>
-          <footer>- Global News</footer>
-        </article>
-        <article class="review">
-          <p>「電影帶給觀眾善良、正義、勇氣、覺醒與希望。」</p>
-          <footer>- Vision Times</footer>
-        </article>
-        <article class="review">
-          <p>「它沒有給出簡單答案，卻迫使觀眾面對艱難的問題。」</p>
-          <footer>- IMDb User Review</footer>
-        </article>
-        <article class="review">
-          <p>「在無力的時代，這樣的故事提醒我們，一個聲音仍然能帶來改變。」</p>
-          <footer>- Audience Review</footer>
-        </article>
-        <article class="review">
-          <p>「表面上是醫療驚悚片，底層卻有史詩般的深度與情感重量。」</p>
-          <footer>- Audience Review</footer>
-        </article>
-        <article class="review">
-          <p>「這是一部讓人想起疫情初期的史詩型劇情片，畫面令人不安，故事也異常熟悉。」</p>
-          <footer>- Global News</footer>
-        </article>
-        <article class="review">
-          <p>「電影帶給觀眾善良、正義、勇氣、覺醒與希望。」</p>
-          <footer>- Vision Times</footer>
-        </article>
-        <article class="review">
-          <p>「它沒有給出簡單答案，卻迫使觀眾面對艱難的問題。」</p>
-          <footer>- IMDb User Review</footer>
-        </article>
-        <article class="review">
-          <p>「在無力的時代，這樣的故事提醒我們，一個聲音仍然能帶來改變。」</p>
-          <footer>- Audience Review</footer>
-        </article>
-        <article class="review">
-          <p>「表面上是醫療驚悚片，底層卻有史詩般的深度與情感重量。」</p>
-          <footer>- Audience Review</footer>
-        </article>
+        <article class="review"><p>「這是一部讓人想起疫情初期的史詩型劇情片，畫面令人不安，故事也異常熟悉。」</p><footer>- Global News</footer></article>
+        <article class="review"><p>「電影帶給觀眾善良、正義、勇氣、覺醒與希望。」</p><footer>- Vision Times</footer></article>
+        <article class="review"><p>「它沒有給出簡單答案，卻迫使觀眾面對艱難的問題。」</p><footer>- IMDb User Review</footer></article>
+        <article class="review"><p>「在無力的時代，這樣的故事提醒我們，一個聲音仍然能帶來改變。」</p><footer>- Audience Review</footer></article>
+        <article class="review"><p>「表面上是醫療驚悚片，底層卻有史詩般的深度與情感重量。」</p><footer>- Audience Review</footer></article>
+        <article class="review"><p>「這是一部讓人想起疫情初期的史詩型劇情片，畫面令人不安，故事也異常熟悉。」</p><footer>- Global News</footer></article>
+        <article class="review"><p>「電影帶給觀眾善良、正義、勇氣、覺醒與希望。」</p><footer>- Vision Times</footer></article>
+        <article class="review"><p>「它沒有給出簡單答案，卻迫使觀眾面對艱難的問題。」</p><footer>- IMDb User Review</footer></article>
+        <article class="review"><p>「在無力的時代，這樣的故事提醒我們，一個聲音仍然能帶來改變。」</p><footer>- Audience Review</footer></article>
+        <article class="review"><p>「表面上是醫療驚悚片，底層卻有史詩般的深度與情感重量。」</p><footer>- Audience Review</footer></article>
       </div>
     </section>
 
@@ -1234,195 +1270,67 @@
       <div class="container">
         <div class="kicker">Why Watch</div>
         <h2 class="title">電影亮點</h2>
-
         <div class="highlight-grid">
-          <article class="highlight">
-            <div class="num">01</div>
-            <h3>改編自真實事件</h3>
-            <p>故事靈感源自中共軍方同名戰略文件，將近代全球疫情陰影轉化為紀實劇情片的張力。</p>
-          </article>
-
-          <article class="highlight">
-            <div class="num">02</div>
-            <h3>疫情背景的紀實劇情片</h3>
-            <p>從實驗室、政治壓力、資訊封鎖到家庭選擇，呈現一場無聲卻致命的全球危機。</p>
-          </article>
-
-          <article class="highlight">
-            <div class="num">03</div>
-            <h3>諜報片般的製作質感</h3>
-            <p>結合驚悚、動作與人性抉擇，讓觀眾在電影感中看見真相、勇氣與代價。</p>
-          </article>
+          <article class="highlight"><div class="num">01</div><h3>改編自真實事件</h3><p>故事靈感源自中共軍方同名戰略文件，將近代全球疫情陰影轉化為紀實劇情片的張力。</p></article>
+          <article class="highlight"><div class="num">02</div><h3>疫情背景的紀實劇情片</h3><p>從實驗室、政治壓力、資訊封鎖到家庭選擇，呈現一場無聲卻致命的全球危機。</p></article>
+          <article class="highlight"><div class="num">03</div><h3>諜報片般的製作質感</h3><p>結合驚悚、動作與人性抉擇，讓觀眾在電影感中看見真相、勇氣與代價。</p></article>
         </div>
       </div>
     </section>
 
     <section id="about" class="about">
       <div class="container about-grid">
-        <div class="poster-wrap">
-          <img src="https://static.wixstatic.com/media/dbc7da_3a58bdd398634f5482edbcd61deea487~mv2.jpg/v1/fill/w_980%2Ch_1466%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/Vertical_Poster_V3.jpg" alt="《超限戰》官方直式海報" />
-        </div>
-
+        <div class="poster-wrap"><img src="https://static.wixstatic.com/media/dbc7da_3a58bdd398634f5482edbcd61deea487~mv2.jpg/v1/fill/w_980%2Ch_1466%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/Vertical_Poster_V3.jpg" alt="《超限戰》官方直式海報" /></div>
         <div class="copy">
           <div class="kicker">About</div>
           <h2 class="movie-title-small">The Unrestricted War</h2>
           <p class="meta">Thriller-Drama &nbsp; | &nbsp; 2h 20 min &nbsp; | &nbsp; 2025 &nbsp; | &nbsp; HD</p>
-
-          <p>
-            《超限戰》靈感源自中共軍方同名戰略文件，根據真實事件改編。
-            知名病毒學家吉姆・康拉德和他的妻子，原本在中國經營一家生物科技公司，
-            卻在北京突然被軍方特工逮捕。
-          </p>
-
-          <p>
-            吉姆被脅迫潛入曾就職的國家實驗室，竊取機密病毒樣本。
-            然而，隨著局勢失控，他發現自己捲入一場無聲卻致命的全球戰爭。
-            這不只是科學危機，而是一場早已佈局的「超限戰」。
-          </p>
-
-          <div class="credits">
-            Directed by Yan Ma<br />
-            Written by Rob W. King &amp; Yan Ma<br />
-            Starring Dylan Bruce・Nadia Hatta・Uni Park<br />
-            Proudly Filmed and Produced in Canada
-          </div>
+          <p>《超限戰》靈感源自中共軍方同名戰略文件，根據真實事件改編。知名病毒學家吉姆・康拉德和他的妻子，原本在中國經營一家生物科技公司，卻在北京突然被軍方特工逮捕。</p>
+          <p>吉姆被脅迫潛入曾就職的國家實驗室，竊取機密病毒樣本。然而，隨著局勢失控，他發現自己捲入一場無聲卻致命的全球戰爭。這不只是科學危機，而是一場早已佈局的「超限戰」。</p>
+          <div class="credits">Directed by Yan Ma<br />Written by Rob W. King &amp; Yan Ma<br />Starring Dylan Bruce・Nadia Hatta・Uni Park<br />Proudly Filmed and Produced in Canada</div>
         </div>
       </div>
     </section>
 
     <section id="watch" class="watch">
       <div class="container">
-        <div class="watch-head">
-          <div class="kicker">Select Your Theatre</div>
-          <h2 class="title">TAINAN｜勞工育樂中心</h2>
-          <p>台南放映資訊，請點擊報名或洽陳小姐 0930-885-835。</p>
-        </div>
-
+        <div class="watch-head"><div class="kicker">Select Your Theatre</div><h2 class="title">TAINAN｜勞工育樂中心</h2><p>台南放映資訊，請點擊報名或洽陳小姐 0930-885-835。</p></div>
         <article class="theatre">
           <div class="theatre-visual" aria-hidden="true"></div>
-
           <div class="theatre-info">
-            <div class="city">TAINAN</div>
-            <h3>勞工育樂中心</h3>
-            <div class="theatre-address">台南市南區南門路261號</div>
-
-            <div class="info-list">
-              <div><b>地點</b><span>勞工育樂中心</span></div>
-              <div><b>地址</b><span>台南市南區南門路261號</span></div>
-              <div><b>票價</b><span>每張 NT$150，每人最多 2 張</span></div>
-              <div><b>聯絡</b><span>陳小姐　0930-885-835</span></div>
-            </div>
-
+            <div class="city">TAINAN</div><h3>勞工育樂中心</h3><div class="theatre-address">台南市南區南門路261號</div>
+            <div class="info-list"><div><b>地點</b><span>勞工育樂中心</span></div><div><b>地址</b><span>台南市南區南門路261號</span></div><div><b>票價</b><span>每張 NT$150，每人最多 2 張</span></div><div><b>聯絡</b><span>陳小姐　0930-885-835</span></div></div>
             <p class="ticket-note">台南放映資訊，請點擊報名或洽陳小姐 0930-885-835。</p>
-
-            <div class="actions">
-              <a class="btn white" href="#booking">GET TICKETS</a>
-              <a class="btn" href="tel:0930885835">CALL NOW</a>
-            </div>
+            <div class="actions"><a class="btn white" href="#booking">GET TICKETS</a><a class="btn" href="tel:0930885835">CALL NOW</a></div>
           </div>
         </article>
 
         <section id="booking" class="booking-card" aria-label="訂票表單">
           <div class="booking-head">
             <div>
-              <div class="kicker">Reserve Your Seat</div>
-              <h3>預約座位</h3>
-              <p>票價每張 NT$150。請填寫以下資料完成訂票，我們將於活動前與您確認。</p>
-
+              <div class="kicker">Reserve Your Seat</div><h3>預約座位</h3><p>票價每張 NT$150。請填寫以下資料完成訂票，我們將於活動前與您確認。</p>
               <div class="event-info-box" aria-label="活動資訊">
-                <div class="event-info-row">
-                  <div class="event-info-label">🎬 活動名稱</div>
-                  <div class="event-info-value">《超限戰》公益放映活動</div>
-                </div>
-                <div class="event-info-row">
-                  <div class="event-info-label">🏢 主辦單位</div>
-                  <div class="event-info-value">乾淨世界</div>
-                </div>
-                <div class="event-info-row">
-                  <div class="event-info-label">🤝 協辦單位</div>
-                  <div class="event-info-value">永翔愛心會</div>
-                </div>
+                <div class="event-info-row"><div class="event-info-label">🎬 活動名稱</div><div class="event-info-value">《超限戰》公益放映活動</div></div>
+                <div class="event-info-row"><div class="event-info-label">🏢 主辦單位</div><div class="event-info-value">乾淨世界</div></div>
+                <div class="event-info-row"><div class="event-info-label">🤝 協辦單位</div><div class="event-info-value">永翔愛心會</div></div>
               </div>
             </div>
-
-            <div class="price-box">
-              <div class="price-row">
-                <span>單張票價</span>
-                <strong>NT$150</strong>
-              </div>
-              <div class="price-row">
-                <span>票數</span>
-                <strong><span id="ticketCountText">1</span> 張</strong>
-              </div>
-              <div class="price-row">
-                <span>總金額</span>
-                <strong>NT$<span id="totalAmount">150</span></strong>
-              </div>
-            </div>
+            <div class="price-box"><div class="price-row"><span>單張票價</span><strong>NT$150</strong></div><div class="price-row"><span>票數</span><strong><span id="ticketCountText">1</span> 張</strong></div><div class="price-row"><span>總金額</span><strong>NT$<span id="totalAmount">150</span></strong></div></div>
           </div>
 
           <form id="bookingForm" class="booking-form">
             <div class="form-grid">
-              <div class="form-field">
-                <label for="name">訂票人姓名 <span class="required">*</span></label>
-                <input id="name" name="name" type="text" autocomplete="name" required />
-              </div>
-
-              <div class="form-field">
-                <label for="phone">聯絡電話 <span class="required">*</span></label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" required />
-                <div class="field-help">活動前會電話確認，確認後才算完成保留。</div>
-              </div>
-
-              <div class="form-field">
-                <label for="ticketQty">票數（每人最多 2 張）<span class="required">*</span></label>
-                <select id="ticketQty" name="ticketQty" required>
-                  <option value="1">1 張</option>
-                  <option value="2">2 張</option>
-                </select>
-              </div>
-
-              <div class="form-field">
-                <label for="contact">LINE 或 Email <span class="required">*</span></label>
-                <input id="contact" name="contact" type="text" required />
-              </div>
-
-              <div class="form-field">
-                <label for="source">訊息來源 <span class="required">*</span></label>
-                <select id="source" name="source" required>
-                  <option value="">請選擇</option>
-                  <option value="朋友邀請">朋友邀請</option>
-                  <option value="LINE">LINE</option>
-                  <option value="Facebook">Facebook</option>
-                  <option value="Instagram">Instagram</option>
-                  <option value="Threads">Threads</option>
-                  <option value="網站">網站</option>
-                  <option value="其他">其他</option>
-                </select>
-              </div>
-
-              <div class="form-field">
-                <label for="note">備註</label>
-                <input id="note" name="note" type="text" placeholder="可填寫方便聯絡時間或其他需求" />
-              </div>
-
-              <div class="form-field full">
-                <label class="agree-row">
-                  <input id="agree" name="agree" type="checkbox" required />
-                  <span>我同意主辦單位為訂票與活動聯絡目的使用上述資料。</span>
-                </label>
-              </div>
+              <div class="form-field"><label for="name">訂票人姓名 <span class="required">*</span></label><input id="name" name="name" type="text" autocomplete="name" required /></div>
+              <div class="form-field"><label for="phone">聯絡電話 <span class="required">*</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" required /><div class="field-help">活動前會電話確認，確認後才算完成保留。</div></div>
+              <div class="form-field"><label for="ticketQty">票數（每人最多 2 張）<span class="required">*</span></label><select id="ticketQty" name="ticketQty" required><option value="1">1 張</option><option value="2">2 張</option></select></div>
+              <div class="form-field"><label for="contact">LINE 或 Email <span class="required">*</span></label><input id="contact" name="contact" type="text" required /></div>
+              <div class="form-field"><label for="source">訊息來源 <span class="required">*</span></label><select id="source" name="source" required><option value="">請選擇</option><option value="朋友邀請">朋友邀請</option><option value="LINE">LINE</option><option value="Facebook">Facebook</option><option value="Instagram">Instagram</option><option value="Threads">Threads</option><option value="網站">網站</option><option value="其他">其他</option></select></div>
+              <div class="form-field"><label for="note">備註</label><input id="note" name="note" type="text" placeholder="可填寫方便聯絡時間或其他需求" /></div>
+              <div class="form-field full"><label class="agree-row"><input id="agree" name="agree" type="checkbox" required /><span>我同意主辦單位為訂票與活動聯絡目的使用上述資料。</span></label></div>
             </div>
-
-            <input type="hidden" name="unitPrice" value="150" />
-            <input type="hidden" id="totalAmountInput" name="totalAmount" value="150" />
-
+            <input type="hidden" name="unitPrice" value="150" /><input type="hidden" id="totalAmountInput" name="totalAmount" value="150" />
             <div id="bookingMessage" class="booking-message"></div>
-
-            <div class="submit-row">
-              <button id="submitBtn" class="btn white" type="submit">確認預約座位 →</button>
-              <span class="field-help">送出後若需修改，請洽陳小姐 0930-885-835。</span>
-            </div>
+            <div class="submit-row"><button id="submitBtn" class="btn white" type="submit">確認預約座位 →</button><span class="field-help">送出後若需修改，請洽陳小姐 0930-885-835。</span></div>
           </form>
         </section>
       </div>
@@ -1430,57 +1338,26 @@
 
     <section id="connected" class="connected">
       <div class="container connected-grid">
-        <div>
-          <div class="kicker">Stay Connected</div>
-          <h2 class="title">持續關注</h2>
-          <p>
-            追蹤《超限戰》電影官方中文頻道，取得中文預告、短片、訪談與最新放映消息。
-            戰火無聲，真相有價；這不只是一部電影，而是一段值得被記住的歷史。
-          </p>
-        </div>
-
-        <div>
-          <div class="contact-box">
-            <label>Tainan Screening</label>
-            <div class="contact-line">台南放映資訊｜陳小姐 0930-885-835</div>
-            <a class="btn" href="#booking">GET TICKETS / 立即訂票</a>
-          </div>
-
-          <div class="socials">
-            <a href="https://www.facebook.com/TheUnrestrictedWar/" target="_blank" rel="noopener">Facebook <span>↗</span></a>
-            <a href="https://www.instagram.com/theunrestricted.war/" target="_blank" rel="noopener">Instagram <span>↗</span></a>
-            <a href="https://www.threads.com/@theunrestricted.war" target="_blank" rel="noopener">Threads <span>↗</span></a>
-            <a href="https://www.ganjingworld.com/@TheUnrestrictedWar" target="_blank" rel="noopener">官方中文頻道 <span>↗</span></a>
-          </div>
-        </div>
+        <div><div class="kicker">Stay Connected</div><h2 class="title">持續關注</h2><p>追蹤《超限戰》電影官方中文頻道，取得中文預告、短片、訪談與最新放映消息。戰火無聲，真相有價；這不只是一部電影，而是一段值得被記住的歷史。</p></div>
+        <div><div class="contact-box"><label>Tainan Screening</label><div class="contact-line">台南放映資訊｜陳小姐 0930-885-835</div><a class="btn" href="#booking">GET TICKETS / 立即訂票</a></div><div class="socials"><a href="https://www.facebook.com/TheUnrestrictedWar/" target="_blank" rel="noopener">Facebook <span>↗</span></a><a href="https://www.instagram.com/theunrestricted.war/" target="_blank" rel="noopener">Instagram <span>↗</span></a><a href="https://www.threads.com/@theunrestricted.war" target="_blank" rel="noopener">Threads <span>↗</span></a><a href="https://www.ganjingworld.com/@TheUnrestrictedWar" target="_blank" rel="noopener">官方中文頻道 <span>↗</span></a></div></div>
       </div>
     </section>
 
-    <section class="footer-visual">
-      <h2>The Unrestricted War</h2>
-    </section>
+    <section class="footer-visual"><h2>The Unrestricted War</h2></section>
   </main>
 
-  <footer>
-    <div class="container footer-line">
-      <div>© 2026 《超限戰》台南放映資訊頁</div>
-      <div>Home　Watch Now　Booking　Trailer　Feedback　About</div>
-    </div>
-  </footer>
+  <footer><div class="container footer-line"><div>© 2026 《超限戰》台南放映資訊頁</div><div>Home　Watch Now　Booking　Trailer　Feedback　About</div></div></footer>
 
   <div id="videoModal" class="video-modal" aria-hidden="true">
     <div class="video-modal-bg" onclick="closeVideoModal()"></div>
     <div class="video-modal-box" role="dialog" aria-modal="true" aria-label="影片播放">
       <button class="video-close" type="button" onclick="closeVideoModal()" aria-label="關閉影片">×</button>
-      <video id="modalVideo" controls playsinline preload="none">
-        您的瀏覽器不支援影片播放。
-      </video>
+      <video id="modalVideo" controls playsinline preload="none">您的瀏覽器不支援影片播放。</video>
     </div>
   </div>
 
   <script>
     const GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyfYpIGoijpz92IGPoZHXSrqplfahm8iYJq673lrBoQp8wycXaST6nzc_JgtGhxVvfd/exec";
-
     const ticketQty = document.getElementById("ticketQty");
     const ticketCountText = document.getElementById("ticketCountText");
     const totalAmount = document.getElementById("totalAmount");
@@ -1507,12 +1384,10 @@
 
     bookingForm.addEventListener("submit", async function(event) {
       event.preventDefault();
-
       if (!GAS_WEBAPP_URL || GAS_WEBAPP_URL.includes("請貼上")) {
         showMessage("error", "尚未設定 GAS Web App URL，請先將程式中的 GAS_WEBAPP_URL 換成您的 Apps Script 網址。");
         return;
       }
-
       const formData = new FormData(bookingForm);
       const payload = {
         name: formData.get("name").trim(),
@@ -1526,37 +1401,26 @@
         pageUrl: window.location.href,
         userAgent: navigator.userAgent
       };
-
       if (!payload.name || !payload.phone || !payload.contact || !payload.source) {
         showMessage("error", "請確認姓名、電話、LINE 或 Email、訊息來源都已填寫。");
         return;
       }
-
       if (payload.ticketQty < 1 || payload.ticketQty > 2) {
         showMessage("error", "票數最多 2 張，請重新選擇。");
         return;
       }
-
       submitBtn.disabled = true;
       submitBtn.textContent = "送出中...";
       showMessage("", "");
-
       try {
         const response = await fetch(GAS_WEBAPP_URL, {
           method: "POST",
           mode: "cors",
-          headers: {
-            "Content-Type": "text/plain;charset=utf-8"
-          },
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(payload)
         });
-
         const result = await response.json();
-
-        if (!result.ok) {
-          throw new Error(result.message || "送出失敗");
-        }
-
+        if (!result.ok) throw new Error(result.message || "送出失敗");
         showMessage("success", "已收到您的訂票資料，訂票編號：" + result.bookingId + "。我們將於活動前與您確認。");
         bookingForm.reset();
         updateTotal();
@@ -1572,47 +1436,35 @@
       const modal = document.getElementById("videoModal");
       const video = document.getElementById("modalVideo");
       const box = modal ? modal.querySelector(".video-modal-box") : null;
-
       if (!modal || !video || !videoSrc) return;
-
       video.pause();
       video.removeAttribute("src");
       video.removeAttribute("poster");
       video.load();
-
       video.src = videoSrc;
       if (posterSrc) video.setAttribute("poster", posterSrc);
       if (box && label) box.setAttribute("aria-label", label);
-
       modal.classList.add("active");
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
-
-      video.play().catch(function() {
-        // 有些手機瀏覽器會阻擋自動播放，使用者再按一次播放即可。
-      });
+      video.play().catch(function() {});
     }
 
     function closeVideoModal() {
       const modal = document.getElementById("videoModal");
       const video = document.getElementById("modalVideo");
-
       if (!modal || !video) return;
-
       video.pause();
       video.removeAttribute("src");
       video.removeAttribute("poster");
       video.load();
-
       modal.classList.remove("active");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
     }
 
     document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") {
-        closeVideoModal();
-      }
+      if (event.key === "Escape") closeVideoModal();
     });
   </script>
 </body>
