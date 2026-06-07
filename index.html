@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>《超限戰》中文版｜台南放映資訊</title>
   <meta name="description" content="《超限戰》中文版台南放映資訊。地點：勞工育樂中心，地址：台南市南區南門路261號，票價每張 150 元，請點擊報名或洽陳小姐 0930-885-835。" />
 
@@ -23,7 +22,6 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       background: #050403;
@@ -35,6 +33,7 @@
 
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
+    button { font-family: inherit; }
 
     .container {
       width: min(calc(100% - 44px), var(--max));
@@ -266,6 +265,145 @@
       letter-spacing: .03em;
     }
 
+    .trailer {
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trailer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.92)),
+        url("https://static.wixstatic.com/media/dbc7da_4600755a42614d5daef3cc7b02094ff3~mv2.png/v1/fill/w_980%2Ch_980%2Cal_c%2Cq_90%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/Untitled%20%281920%20x%201080%20px%29%20%282048%20x%20858%20px%29%20%281280%20x%201280%20px%29%20%281%29.png") center / cover no-repeat;
+      z-index: -2;
+      transform: scale(1.04);
+    }
+
+    .video-button {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      text-align: center;
+      font-family: inherit;
+      padding: 0;
+    }
+
+    .play {
+      width: 96px;
+      height: 96px;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 24px;
+      font-size: 32px;
+      padding-left: 4px;
+      transition: .25s ease;
+    }
+
+    .video-button:hover .play {
+      background: var(--gold);
+      color: #050403;
+      transform: scale(1.05);
+    }
+
+    .trailer h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(46px, 7vw, 92px);
+      font-weight: 400;
+      letter-spacing: .07em;
+    }
+
+    .trailer p {
+      max-width: 700px;
+      margin: 20px auto 0;
+      color: rgba(244,239,231,.78);
+      font-size: 18px;
+    }
+
+    .audience-feedback {
+      background: linear-gradient(180deg, #050403, #0b0706);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .feedback-head {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 42px;
+    }
+
+    .feedback-head p {
+      margin: 0;
+      color: rgba(244,239,231,.76);
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    .feedback-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .feedback-card {
+      min-height: 270px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at center, rgba(192,151,91,.16), rgba(0,0,0,0) 52%),
+        linear-gradient(180deg, #120d0a, #070504);
+      color: var(--white);
+      cursor: pointer;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feedback-card::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(192,151,91,.18);
+      pointer-events: none;
+    }
+
+    .feedback-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(192,151,91,.65);
+      box-shadow: 0 24px 60px rgba(0,0,0,.42);
+    }
+
+    .feedback-card h3 {
+      margin: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: .04em;
+    }
+
+    .feedback-card p {
+      margin: 0;
+      color: rgba(244,239,231,.68);
+      font-size: 15px;
+      letter-spacing: .08em;
+    }
+
     .reviews {
       padding: 52px 0;
       border-block: 1px solid var(--line);
@@ -280,17 +418,11 @@
       animation: reviewMarquee 42s linear infinite;
     }
 
-    .reviews:hover .review-track {
-      animation-play-state: paused;
-    }
+    .reviews:hover .review-track { animation-play-state: paused; }
 
     @keyframes reviewMarquee {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
 
     .review {
@@ -554,6 +686,42 @@
       line-height: 1.9;
     }
 
+    .event-info-box {
+      margin: 26px 0 30px;
+      border: 1px solid rgba(192,151,91,.34);
+      background:
+        linear-gradient(180deg, rgba(192,151,91,.12), rgba(0,0,0,0)),
+        rgba(5,4,3,.60);
+      padding: 22px 26px;
+      box-shadow: 0 20px 46px rgba(0,0,0,.26);
+    }
+
+    .event-info-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(192,151,91,.18);
+    }
+
+    .event-info-row:first-child { padding-top: 0; }
+    .event-info-row:last-child { padding-bottom: 0; border-bottom: 0; }
+
+    .event-info-label {
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+
+    .event-info-value {
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+
     .price-box {
       border: 1px solid rgba(192,151,91,.32);
       background: rgba(5,4,3,.55);
@@ -576,10 +744,7 @@
       font-weight: 700;
     }
 
-    .booking-form {
-      display: grid;
-      gap: 20px;
-    }
+    .booking-form { display: grid; gap: 20px; }
 
     .form-grid {
       display: grid;
@@ -587,14 +752,8 @@
       gap: 20px 22px;
     }
 
-    .form-field {
-      display: grid;
-      gap: 8px;
-    }
-
-    .form-field.full {
-      grid-column: 1 / -1;
-    }
+    .form-field { display: grid; gap: 8px; }
+    .form-field.full { grid-column: 1 / -1; }
 
     label {
       color: rgba(244,239,231,.92);
@@ -607,9 +766,7 @@
       margin-left: 4px;
     }
 
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       min-height: 54px;
       border: 1px solid rgba(192,151,91,.28);
@@ -622,14 +779,9 @@
       outline: none;
     }
 
-    textarea {
-      min-height: 108px;
-      resize: vertical;
-    }
+    textarea { min-height: 108px; resize: vertical; }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
+    input:focus, select:focus, textarea:focus {
       border-color: var(--gold);
       box-shadow: 0 0 0 3px rgba(192,151,91,.12);
     }
@@ -684,130 +836,7 @@
       flex-wrap: wrap;
     }
 
-    .submit-row .btn {
-      min-width: 260px;
-    }
-
-    .trailer {
-      min-height: 690px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-    }
-
-    .trailer::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.92)),
-        url("https://static.wixstatic.com/media/dbc7da_4600755a42614d5daef3cc7b02094ff3~mv2.png/v1/fill/w_980%2Ch_980%2Cal_c%2Cq_90%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/Untitled%20%281920%20x%201080%20px%29%20%282048%20x%20858%20px%29%20%281280%20x%201280%20px%29%20%281%29.png") center / cover no-repeat;
-      z-index: -2;
-      transform: scale(1.04);
-    }
-
-    .play {
-      width: 96px;
-      height: 96px;
-      border: 1px solid var(--gold);
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      margin: 0 auto 24px;
-      font-size: 32px;
-      padding-left: 4px;
-      transition: .25s ease;
-    }
-
-    .trailer a:hover .play {
-      background: var(--gold);
-      color: #050403;
-      transform: scale(1.05);
-    }
-
-    .trailer h2 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(46px, 7vw, 92px);
-      font-weight: 400;
-      letter-spacing: .07em;
-    }
-
-    .trailer p {
-      max-width: 700px;
-      margin: 20px auto 0;
-      color: rgba(244,239,231,.78);
-      font-size: 18px;
-    }
-
-    .trailer-button {
-      border: 0;
-      background: transparent;
-      color: inherit;
-      cursor: pointer;
-      text-align: center;
-      font-family: inherit;
-      padding: 0;
-    }
-
-    .trailer-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-
-    .trailer-modal.active {
-      display: flex;
-    }
-
-    .trailer-modal-bg {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,.86);
-      backdrop-filter: blur(8px);
-    }
-
-    .trailer-modal-box {
-      position: relative;
-      z-index: 2;
-      width: min(100%, 980px);
-      background: #000;
-      border: 1px solid var(--line);
-      box-shadow: 0 30px 90px rgba(0,0,0,.72);
-    }
-
-    .trailer-modal-box video {
-      width: 100%;
-      display: block;
-      background: #000;
-    }
-
-    .trailer-close {
-      position: absolute;
-      top: -48px;
-      right: 0;
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--gold);
-      background: rgba(0,0,0,.75);
-      color: var(--white);
-      font-size: 30px;
-      line-height: 1;
-      cursor: pointer;
-    }
-
-    .trailer-close:hover {
-      background: var(--gold);
-      color: #050403;
-    }
-
+    .submit-row .btn { min-width: 260px; }
 
     .connected { background: #050403; }
 
@@ -910,469 +939,7 @@
       gap: 16px;
     }
 
-    @media (max-width: 980px) {
-      .nav-links { display: none; }
-      .menu { display: block; }
-
-      .about-grid,
-      .theatre,
-      .connected-grid,
-      .highlight-grid,
-      .booking-head,
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .highlight-grid { border-right: 1px solid var(--line); }
-
-      .highlight {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .highlight:last-child { border-bottom: 0; }
-
-      .theatre-info { padding: 40px 28px; }
-      section { padding: 74px 0; }
-    }
-
-    @media (max-width: 620px) {
-      .top,
-      .nav { height: 68px; }
-
-      .nav-logo {
-        font-size: 15px;
-        letter-spacing: .12em;
-      }
-
-      .nav-logo span { font-size: 10px; }
-
-      .hero {
-        min-height: 92vh;
-        padding-top: 92px;
-      }
-
-      .hero-title-cn { letter-spacing: .08em; }
-
-      .info-list div {
-        grid-template-columns: 1fr;
-        gap: 2px;
-      }
-
-      .actions,
-      .btn,
-      .submit-row .btn { width: 100%; }
-
-      .socials { grid-template-columns: 1fr; }
-      .socials a:nth-child(odd) { border-right: 0; }
-    }
-  
-    /* 手機版首頁優化：只影響 620px 以下，不影響桌機版 */
-    @media (max-width: 620px) {
-      body {
-        overflow-x: hidden;
-      }
-
-      .container {
-        width: min(calc(100% - 28px), var(--max));
-      }
-
-      .top,
-      .nav {
-        height: 64px;
-      }
-
-      .nav {
-        padding: 0;
-      }
-
-      .nav-logo {
-        font-size: 14px;
-        letter-spacing: .08em;
-        max-width: 230px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .nav-logo span {
-        font-size: 10px;
-        letter-spacing: .16em;
-      }
-
-      .menu {
-        font-size: 12px;
-        letter-spacing: .14em;
-      }
-
-      .hero {
-        min-height: 100svh;
-        padding: 84px 16px 54px;
-        align-items: center;
-      }
-
-      .hero-video {
-        object-position: center center;
-        opacity: .68;
-      }
-
-      .hero-fallback {
-        background-position: center center;
-      }
-
-      .hero::before {
-        background:
-          linear-gradient(180deg, rgba(0,0,0,.38) 0%, rgba(0,0,0,.46) 42%, rgba(0,0,0,.88) 100%),
-          linear-gradient(90deg, rgba(0,0,0,.62), rgba(0,0,0,.20), rgba(0,0,0,.62));
-      }
-
-      .hero-box {
-        width: 100%;
-        max-width: 360px;
-      }
-
-      .hero-logo-text {
-        font-size: clamp(32px, 11vw, 46px);
-        line-height: 1.04;
-        letter-spacing: .025em;
-        margin-bottom: 18px;
-        max-width: 100%;
-        overflow-wrap: normal;
-        word-break: normal;
-        text-align: center;
-      }
-
-      .hero-logo-text span {
-        font-size: clamp(26px, 8vw, 34px);
-        line-height: 1.25;
-        letter-spacing: .14em;
-        margin-top: 12px;
-      }
-
-      .hero-title-cn {
-        font-size: clamp(28px, 8.2vw, 36px);
-        line-height: 1.35;
-        letter-spacing: .08em;
-        margin-bottom: 16px;
-      }
-
-      .hero-sub {
-        font-size: 17px;
-        line-height: 1.85;
-        letter-spacing: .01em;
-        max-width: 330px;
-      }
-
-      .watch-line {
-        font-size: 14px;
-        line-height: 1.75;
-        letter-spacing: .06em;
-        margin-top: 20px;
-      }
-
-      .hero .btn {
-        margin-top: 22px;
-        width: 100%;
-        max-width: 300px;
-        min-height: 48px;
-        padding: 12px 18px;
-        font-size: 13px;
-        letter-spacing: .1em;
-      }
-
-      .scroll {
-        display: none;
-      }
-
-      section {
-        padding: 58px 0;
-      }
-
-      .title {
-        font-size: clamp(34px, 11vw, 48px);
-        line-height: 1.08;
-      }
-
-      .reviews {
-        padding: 34px 0;
-      }
-
-      .review {
-        width: 285px;
-        min-height: 255px;
-        padding: 24px;
-      }
-
-      .review p {
-        font-size: 17px;
-        line-height: 1.65;
-      }
-
-      .highlight {
-        padding: 28px 24px;
-        min-height: auto;
-      }
-
-      .highlight h3 {
-        font-size: 25px;
-      }
-
-      .about-grid {
-        gap: 34px;
-      }
-
-      .movie-title-small {
-        font-size: clamp(32px, 10vw, 46px);
-        letter-spacing: .035em;
-      }
-
-      .copy p {
-        font-size: 16px;
-        line-height: 1.9;
-      }
-
-      .theatre {
-        min-height: auto;
-      }
-
-      .theatre-visual {
-        min-height: 320px;
-      }
-
-      .theatre-info {
-        padding: 32px 22px;
-      }
-
-      .theatre h3 {
-        font-size: clamp(32px, 10vw, 44px);
-      }
-
-      .booking-card {
-        padding: 24px 18px;
-      }
-
-      .booking-head {
-        gap: 20px;
-        padding-bottom: 22px;
-      }
-
-      .booking-head h3 {
-        font-size: clamp(34px, 11vw, 48px);
-      }
-
-      .booking-head p,
-      .ticket-note,
-      .connected p {
-        font-size: 16px;
-        line-height: 1.85;
-      }
-
-      .price-box {
-        padding: 18px;
-      }
-
-      .form-grid {
-        gap: 18px;
-      }
-
-      input,
-      select,
-      textarea {
-        min-height: 52px;
-        font-size: 16px;
-      }
-
-      .submit-row .btn {
-        max-width: none;
-      }
-
-      .trailer {
-        min-height: 520px;
-      }
-
-      .trailer h2 {
-        font-size: clamp(42px, 14vw, 64px);
-      }
-
-      .trailer p {
-        font-size: 16px;
-        max-width: 310px;
-      }
-
-      .trailer-modal {
-        padding: 16px;
-      }
-
-      .trailer-close {
-        top: -44px;
-        right: 0;
-      }
-
-      .contact-box {
-        padding: 24px;
-      }
-
-      .footer-visual {
-        min-height: 300px;
-      }
-
-      .footer-visual h2 {
-        font-size: clamp(34px, 12vw, 58px);
-        letter-spacing: .04em;
-      }
-    }
-
-    /* 更窄手機，例如 LINE 內建瀏覽器、舊手機 */
-    @media (max-width: 390px) {
-      .hero-logo-text {
-        font-size: clamp(29px, 10.5vw, 40px);
-        letter-spacing: .015em;
-      }
-
-      .hero-logo-text span {
-        font-size: 25px;
-      }
-
-      .hero-title-cn {
-        font-size: 29px;
-      }
-
-      .hero-sub {
-        font-size: 16px;
-        line-height: 1.8;
-      }
-
-      .watch-line {
-        font-size: 13px;
-      }
-    }
-
-  
-    /* 手機版：接近英文官網的明亮影片感，只影響手機，不影響桌機 */
-    @media (max-width: 620px) {
-      .hero {
-        min-height: 88svh;
-        padding: 86px 16px 48px;
-        align-items: center;
-        background: #000;
-      }
-
-      .hero-video {
-        object-position: center center;
-        opacity: .92;
-        filter: brightness(1.08) contrast(1.02) saturate(1.04);
-      }
-
-      .hero-fallback {
-        background-position: center center;
-        opacity: .95;
-      }
-
-      .hero::before {
-        background:
-          linear-gradient(180deg, rgba(0,0,0,.14) 0%, rgba(0,0,0,.20) 46%, rgba(0,0,0,.72) 100%),
-          linear-gradient(90deg, rgba(0,0,0,.28), rgba(0,0,0,.05), rgba(0,0,0,.28));
-      }
-
-      .hero::after {
-        height: 20vh;
-        background: linear-gradient(180deg, rgba(0,0,0,0), #050403);
-      }
-
-      .hero-box {
-        width: 100%;
-        max-width: 360px;
-        transform: translateY(6px);
-      }
-
-      .hero-logo-text {
-        font-size: clamp(34px, 11vw, 48px);
-        line-height: 1.02;
-        letter-spacing: .025em;
-        margin-bottom: 16px;
-        text-shadow: 0 8px 22px rgba(0,0,0,.76);
-      }
-
-      .hero-logo-text span {
-        font-size: clamp(24px, 7.5vw, 34px);
-        line-height: 1.25;
-        letter-spacing: .14em;
-        margin-top: 12px;
-        text-shadow: 0 8px 22px rgba(0,0,0,.78);
-      }
-
-      .hero-title-cn {
-        font-size: clamp(26px, 7.5vw, 34px);
-        line-height: 1.35;
-        letter-spacing: .08em;
-        margin-bottom: 14px;
-        text-shadow: 0 6px 18px rgba(0,0,0,.8);
-      }
-
-      .hero-sub {
-        display: none;
-      }
-
-      .watch-line {
-        font-size: 14px;
-        line-height: 1.75;
-        letter-spacing: .08em;
-        margin-top: 18px;
-        color: rgba(244,239,231,.88);
-        text-shadow: 0 6px 18px rgba(0,0,0,.75);
-      }
-
-      .hero .btn {
-        margin-top: 22px;
-        width: 100%;
-        max-width: 300px;
-        min-height: 48px;
-        padding: 12px 18px;
-        font-size: 13px;
-        letter-spacing: .11em;
-        box-shadow: 0 14px 34px rgba(0,0,0,.36);
-      }
-
-      .scroll {
-        display: none;
-      }
-    }
-
-    @media (max-width: 390px) {
-      .hero-logo-text {
-        font-size: clamp(30px, 10.5vw, 40px);
-        letter-spacing: .015em;
-      }
-
-      .hero-logo-text span {
-        font-size: 24px;
-      }
-
-      .hero-title-cn {
-        font-size: 28px;
-      }
-
-      .watch-line {
-        font-size: 13px;
-      }
-    }
-
-  
-    .trailer-near-hero {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .trailer-button {
-      border: 0;
-      background: transparent;
-      color: inherit;
-      cursor: pointer;
-      text-align: center;
-      font-family: inherit;
-      padding: 0;
-    }
-
-    .trailer-modal {
+    .video-modal {
       position: fixed;
       inset: 0;
       z-index: 999;
@@ -1382,18 +949,16 @@
       padding: 24px;
     }
 
-    .trailer-modal.active {
-      display: flex;
-    }
+    .video-modal.active { display: flex; }
 
-    .trailer-modal-bg {
+    .video-modal-bg {
       position: absolute;
       inset: 0;
       background: rgba(0,0,0,.86);
       backdrop-filter: blur(8px);
     }
 
-    .trailer-modal-box {
+    .video-modal-box {
       position: relative;
       z-index: 2;
       width: min(100%, 980px);
@@ -1402,13 +967,13 @@
       box-shadow: 0 30px 90px rgba(0,0,0,.72);
     }
 
-    .trailer-modal-box video {
+    .video-modal-box video {
       width: 100%;
       display: block;
       background: #000;
     }
 
-    .trailer-close {
+    .video-close {
       position: absolute;
       top: -48px;
       right: 0;
@@ -1422,89 +987,114 @@
       cursor: pointer;
     }
 
-    .trailer-close:hover {
+    .video-close:hover {
       background: var(--gold);
       color: #050403;
     }
 
-    @media (max-width: 620px) {
-      .trailer-near-hero {
-        min-height: 420px;
-      }
-
-      .trailer-near-hero h2 {
-        font-size: clamp(42px, 13vw, 62px);
-      }
-
-      .trailer-near-hero p {
-        font-size: 16px;
-        max-width: 310px;
-      }
-    }
-
-    .event-info-box {
-      margin: 26px 0 30px;
-      border: 1px solid rgba(192,151,91,.34);
-      background:
-        linear-gradient(180deg, rgba(192,151,91,.12), rgba(0,0,0,0)),
-        rgba(5,4,3,.60);
-      padding: 22px 26px;
-      box-shadow: 0 20px 46px rgba(0,0,0,.26);
-    }
-
-    .event-info-row {
-      display: grid;
-      grid-template-columns: 150px 1fr;
-      gap: 18px;
-      align-items: center;
-      padding: 13px 0;
-      border-bottom: 1px solid rgba(192,151,91,.18);
-    }
-
-    .event-info-row:first-child {
-      padding-top: 0;
-    }
-
-    .event-info-row:last-child {
-      padding-bottom: 0;
-      border-bottom: 0;
-    }
-
-    .event-info-label {
-      color: var(--gold);
-      font-weight: 700;
-      letter-spacing: .06em;
-      white-space: nowrap;
-    }
-
-    .event-info-value {
-      color: var(--white);
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: .03em;
-    }
-
-    @media (max-width: 620px) {
-      .event-info-box {
-        padding: 18px;
-        margin: 22px 0 24px;
-      }
-
-      .event-info-row {
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .menu { display: block; }
+      .about-grid,
+      .theatre,
+      .connected-grid,
+      .highlight-grid,
+      .booking-head,
+      .form-grid,
+      .feedback-grid {
         grid-template-columns: 1fr;
-        gap: 4px;
-        padding: 12px 0;
       }
 
-      .event-info-label {
-        font-size: 15px;
-      }
-
-      .event-info-value {
-        font-size: 17px;
-      }
+      .highlight-grid { border-right: 1px solid var(--line); }
+      .highlight { border-right: 0; border-bottom: 1px solid var(--line); }
+      .highlight:last-child { border-bottom: 0; }
+      .theatre-info { padding: 40px 28px; }
+      section { padding: 74px 0; }
+      .feedback-card { min-height: 230px; }
     }
 
+    @media (max-width: 620px) {
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      .top, .nav { height: 64px; }
+      .nav-logo { font-size: 14px; letter-spacing: .08em; max-width: 230px; overflow: hidden; text-overflow: ellipsis; }
+      .nav-logo span { font-size: 10px; letter-spacing: .16em; }
+      .menu { font-size: 12px; letter-spacing: .14em; }
+
+      .hero {
+        min-height: 88svh;
+        padding: 86px 16px 48px;
+        align-items: center;
+        background: #000;
+      }
+
+      .hero-video {
+        object-position: center center;
+        opacity: .92;
+        filter: brightness(1.08) contrast(1.02) saturate(1.04);
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(0,0,0,.14) 0%, rgba(0,0,0,.20) 46%, rgba(0,0,0,.72) 100%),
+          linear-gradient(90deg, rgba(0,0,0,.28), rgba(0,0,0,.05), rgba(0,0,0,.28));
+      }
+
+      .hero::after { height: 20vh; }
+      .hero-box { width: 100%; max-width: 360px; transform: translateY(6px); }
+      .hero-logo-text { font-size: clamp(34px, 11vw, 48px); line-height: 1.02; letter-spacing: .025em; margin-bottom: 16px; }
+      .hero-logo-text span { font-size: clamp(24px, 7.5vw, 34px); line-height: 1.25; letter-spacing: .14em; margin-top: 12px; }
+      .hero-title-cn { font-size: clamp(26px, 7.5vw, 34px); line-height: 1.35; letter-spacing: .08em; margin-bottom: 14px; }
+      .hero-sub { display: none; }
+      .watch-line { font-size: 14px; line-height: 1.75; letter-spacing: .08em; margin-top: 18px; color: rgba(244,239,231,.88); }
+      .hero .btn { margin-top: 22px; width: 100%; max-width: 300px; min-height: 48px; padding: 12px 18px; font-size: 13px; letter-spacing: .11em; }
+      .scroll { display: none; }
+
+      section { padding: 58px 0; }
+      .title { font-size: clamp(34px, 11vw, 48px); line-height: 1.08; }
+      .reviews { padding: 34px 0; }
+      .review { width: 285px; min-height: 255px; padding: 24px; }
+      .review p { font-size: 17px; line-height: 1.65; }
+      .highlight { padding: 28px 24px; min-height: auto; }
+      .highlight h3 { font-size: 25px; }
+      .about-grid { gap: 34px; }
+      .movie-title-small { font-size: clamp(32px, 10vw, 46px); letter-spacing: .035em; }
+      .copy p { font-size: 16px; line-height: 1.9; }
+      .theatre { min-height: auto; }
+      .theatre-visual { min-height: 320px; }
+      .theatre-info { padding: 32px 22px; }
+      .theatre h3 { font-size: clamp(32px, 10vw, 44px); }
+      .booking-card { padding: 24px 18px; }
+      .booking-head { gap: 20px; padding-bottom: 22px; }
+      .booking-head h3 { font-size: clamp(34px, 11vw, 48px); }
+      .booking-head p, .ticket-note, .connected p { font-size: 16px; line-height: 1.85; }
+      .event-info-box { padding: 18px; margin: 22px 0 24px; }
+      .event-info-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 0; }
+      .event-info-label { font-size: 15px; }
+      .event-info-value { font-size: 17px; }
+      .price-box { padding: 18px; }
+      input, select, textarea { min-height: 52px; font-size: 16px; }
+      .actions, .btn, .submit-row .btn { width: 100%; }
+      .socials { grid-template-columns: 1fr; }
+      .socials a:nth-child(odd) { border-right: 0; }
+      .trailer { min-height: 420px; }
+      .trailer h2 { font-size: clamp(42px, 13vw, 62px); }
+      .trailer p { font-size: 16px; max-width: 310px; }
+      .feedback-head { margin-bottom: 30px; }
+      .feedback-head p { font-size: 16px; }
+      .feedback-card { min-height: 210px; padding: 26px 22px; }
+      .feedback-card h3 { font-size: 25px; }
+      .video-modal { padding: 16px; }
+      .video-close { top: -44px; }
+      .footer-visual { min-height: 300px; }
+      .footer-visual h2 { font-size: clamp(34px, 12vw, 58px); letter-spacing: .04em; }
+    }
+
+    @media (max-width: 390px) {
+      .hero-logo-text { font-size: clamp(30px, 10.5vw, 40px); letter-spacing: .015em; }
+      .hero-logo-text span { font-size: 24px; }
+      .hero-title-cn { font-size: 28px; }
+      .watch-line { font-size: 13px; }
+    }
   </style>
 </head>
 
@@ -1519,6 +1109,7 @@
       <nav class="nav-links" aria-label="主選單">
         <a href="#home">Home</a>
         <a href="#trailer">Trailer</a>
+        <a href="#audience-feedback">Feedback</a>
         <a href="#booking">Booking</a>
         <a href="#about">About</a>
         <a href="#watch">Watch Now</a>
@@ -1532,7 +1123,6 @@
     <section class="hero">
       <div class="hero-fallback" aria-hidden="true"></div>
 
-      <!-- 請把 hero-video.mp4、trailer-video.mp4 與 hero-poster.jpg 放在 index.html 同一層 -->
       <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg">
         <source src="hero-video.mp4" type="video/mp4" />
       </video>
@@ -1551,32 +1141,49 @@
         </p>
 
         <div class="watch-line">中文版｜台南放映資訊｜票價每張 NT$150</div>
-
         <a class="btn white" href="#booking">立即訂票</a>
       </div>
 
       <div class="scroll">Explore</div>
     </section>
 
-<section id="trailer" class="trailer trailer-near-hero">
-      <button class="trailer-button" type="button" onclick="openTrailer()" aria-label="播放《超限戰》中文預告片">
+    <section id="trailer" class="trailer">
+      <button class="video-button" type="button" onclick="openVideoModal('trailer-video.mp4', '《超限戰》中文預告片', 'hero-poster.jpg')" aria-label="播放《超限戰》中文預告片">
         <div class="play">▶</div>
         <h2>Trailer</h2>
         <p>點擊觀看《超限戰》中文預告片</p>
       </button>
     </section>
 
-    <div id="trailerModal" class="trailer-modal" aria-hidden="true">
-      <div class="trailer-modal-bg" onclick="closeTrailer()"></div>
-      <div class="trailer-modal-box" role="dialog" aria-modal="true" aria-label="《超限戰》中文預告片">
-        <button class="trailer-close" type="button" onclick="closeTrailer()" aria-label="關閉預告片">×</button>
-        <video id="trailerVideo" controls playsinline preload="none" poster="hero-poster.jpg">
-          <source src="trailer-video.mp4" type="video/mp4" />
-          您的瀏覽器不支援影片播放。
-        </video>
-      </div>
-    </div>
+    <section id="audience-feedback" class="audience-feedback" aria-label="觀眾反饋影片">
+      <div class="container">
+        <div class="feedback-head">
+          <div class="kicker">WHAT AUDIENCES ARE SAYING</div>
+          <h2 class="title">觀眾怎麼說</h2>
+          <p>點擊觀看觀眾反饋影片，聽聽大家看完《超限戰》後的真實感受。</p>
+        </div>
 
+        <div class="feedback-grid">
+          <button class="feedback-card" type="button" onclick="openVideoModal('feedback-1.mp4', '觀眾反饋 1')" aria-label="播放觀眾反饋 1">
+            <div class="play">▶</div>
+            <h3>觀眾反饋 1</h3>
+            <p>CLICK TO WATCH</p>
+          </button>
+
+          <button class="feedback-card" type="button" onclick="openVideoModal('feedback-2.mp4', '觀眾反饋 2')" aria-label="播放觀眾反饋 2">
+            <div class="play">▶</div>
+            <h3>觀眾反饋 2</h3>
+            <p>CLICK TO WATCH</p>
+          </button>
+
+          <button class="feedback-card" type="button" onclick="openVideoModal('feedback-3.mp4', '觀眾反饋 3')" aria-label="播放觀眾反饋 3">
+            <div class="play">▶</div>
+            <h3>觀眾反饋 3</h3>
+            <p>CLICK TO WATCH</p>
+          </button>
+        </div>
+      </div>
+    </section>
 
     <section class="reviews" aria-label="影評推薦">
       <div class="review-track">
@@ -1584,47 +1191,38 @@
           <p>「這是一部讓人想起疫情初期的史詩型劇情片，畫面令人不安，故事也異常熟悉。」</p>
           <footer>- Global News</footer>
         </article>
-
         <article class="review">
           <p>「電影帶給觀眾善良、正義、勇氣、覺醒與希望。」</p>
           <footer>- Vision Times</footer>
         </article>
-
         <article class="review">
           <p>「它沒有給出簡單答案，卻迫使觀眾面對艱難的問題。」</p>
           <footer>- IMDb User Review</footer>
         </article>
-
         <article class="review">
           <p>「在無力的時代，這樣的故事提醒我們，一個聲音仍然能帶來改變。」</p>
           <footer>- Audience Review</footer>
         </article>
-
         <article class="review">
           <p>「表面上是醫療驚悚片，底層卻有史詩般的深度與情感重量。」</p>
           <footer>- Audience Review</footer>
         </article>
-
         <article class="review">
           <p>「這是一部讓人想起疫情初期的史詩型劇情片，畫面令人不安，故事也異常熟悉。」</p>
           <footer>- Global News</footer>
         </article>
-
         <article class="review">
           <p>「電影帶給觀眾善良、正義、勇氣、覺醒與希望。」</p>
           <footer>- Vision Times</footer>
         </article>
-
         <article class="review">
           <p>「它沒有給出簡單答案，卻迫使觀眾面對艱難的問題。」</p>
           <footer>- IMDb User Review</footer>
         </article>
-
         <article class="review">
           <p>「在無力的時代，這樣的故事提醒我們，一個聲音仍然能帶來改變。」</p>
           <footer>- Audience Review</footer>
         </article>
-
         <article class="review">
           <p>「表面上是醫療驚悚片，底層卻有史詩般的深度與情感重量。」</p>
           <footer>- Audience Review</footer>
@@ -1729,25 +1327,22 @@
             <div>
               <div class="kicker">Reserve Your Seat</div>
               <h3>預約座位</h3>
-              <p>
-                票價每張 NT$150。請填寫以下資料完成訂票，我們將於活動前與您確認。
-              </p>
-            <!-- 活動資訊：以後更換活動時，主要修改下面三行即可 -->
-            <div class="event-info-box" aria-label="活動資訊">
-              <div class="event-info-row">
-                <div class="event-info-label">🎬 活動名稱</div>
-                <div class="event-info-value">《超限戰》公益放映活動</div>
-              </div>
-              <div class="event-info-row">
-                <div class="event-info-label">🏢 主辦單位</div>
-                <div class="event-info-value">乾淨世界</div>
-              </div>
-              <div class="event-info-row">
-                <div class="event-info-label">🤝 協辦單位</div>
-                <div class="event-info-value">永翔愛心會</div>
-              </div>
-            </div>
+              <p>票價每張 NT$150。請填寫以下資料完成訂票，我們將於活動前與您確認。</p>
 
+              <div class="event-info-box" aria-label="活動資訊">
+                <div class="event-info-row">
+                  <div class="event-info-label">🎬 活動名稱</div>
+                  <div class="event-info-value">《超限戰》公益放映活動</div>
+                </div>
+                <div class="event-info-row">
+                  <div class="event-info-label">🏢 主辦單位</div>
+                  <div class="event-info-value">乾淨世界</div>
+                </div>
+                <div class="event-info-row">
+                  <div class="event-info-label">🤝 協辦單位</div>
+                  <div class="event-info-value">永翔愛心會</div>
+                </div>
+              </div>
             </div>
 
             <div class="price-box">
@@ -1764,6 +1359,7 @@
                 <strong>NT$<span id="totalAmount">150</span></strong>
               </div>
             </div>
+          </div>
 
           <form id="bookingForm" class="booking-form">
             <div class="form-grid">
@@ -1868,9 +1464,19 @@
   <footer>
     <div class="container footer-line">
       <div>© 2026 《超限戰》台南放映資訊頁</div>
-      <div>Home　Watch Now　Booking　Trailer　About</div>
+      <div>Home　Watch Now　Booking　Trailer　Feedback　About</div>
     </div>
   </footer>
+
+  <div id="videoModal" class="video-modal" aria-hidden="true">
+    <div class="video-modal-bg" onclick="closeVideoModal()"></div>
+    <div class="video-modal-box" role="dialog" aria-modal="true" aria-label="影片播放">
+      <button class="video-close" type="button" onclick="closeVideoModal()" aria-label="關閉影片">×</button>
+      <video id="modalVideo" controls playsinline preload="none">
+        您的瀏覽器不支援影片播放。
+      </video>
+    </div>
+  </div>
 
   <script>
     const GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyfYpIGoijpz92IGPoZHXSrqplfahm8iYJq673lrBoQp8wycXaST6nzc_JgtGhxVvfd/exec";
@@ -1961,39 +1567,53 @@
         submitBtn.textContent = "確認預約座位 →";
       }
     });
-  
-    function openTrailer() {
-      const modal = document.getElementById("trailerModal");
-      const video = document.getElementById("trailerVideo");
 
-      if (!modal || !video) return;
+    function openVideoModal(videoSrc, label, posterSrc) {
+      const modal = document.getElementById("videoModal");
+      const video = document.getElementById("modalVideo");
+      const box = modal ? modal.querySelector(".video-modal-box") : null;
+
+      if (!modal || !video || !videoSrc) return;
+
+      video.pause();
+      video.removeAttribute("src");
+      video.removeAttribute("poster");
+      video.load();
+
+      video.src = videoSrc;
+      if (posterSrc) video.setAttribute("poster", posterSrc);
+      if (box && label) box.setAttribute("aria-label", label);
 
       modal.classList.add("active");
       modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
 
-      video.currentTime = 0;
       video.play().catch(function() {
-        // 有些瀏覽器會阻擋自動播放，使用者再按一次播放即可。
+        // 有些手機瀏覽器會阻擋自動播放，使用者再按一次播放即可。
       });
     }
 
-    function closeTrailer() {
-      const modal = document.getElementById("trailerModal");
-      const video = document.getElementById("trailerVideo");
+    function closeVideoModal() {
+      const modal = document.getElementById("videoModal");
+      const video = document.getElementById("modalVideo");
 
       if (!modal || !video) return;
 
       video.pause();
+      video.removeAttribute("src");
+      video.removeAttribute("poster");
+      video.load();
+
       modal.classList.remove("active");
       modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
     }
 
     document.addEventListener("keydown", function(event) {
       if (event.key === "Escape") {
-        closeTrailer();
+        closeVideoModal();
       }
     });
-
   </script>
 </body>
 </html>
