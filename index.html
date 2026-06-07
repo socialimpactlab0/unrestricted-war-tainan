@@ -1356,6 +1356,92 @@
       }
     }
 
+  
+    .trailer-near-hero {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trailer-button {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      text-align: center;
+      font-family: inherit;
+      padding: 0;
+    }
+
+    .trailer-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .trailer-modal.active {
+      display: flex;
+    }
+
+    .trailer-modal-bg {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.86);
+      backdrop-filter: blur(8px);
+    }
+
+    .trailer-modal-box {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 980px);
+      background: #000;
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 90px rgba(0,0,0,.72);
+    }
+
+    .trailer-modal-box video {
+      width: 100%;
+      display: block;
+      background: #000;
+    }
+
+    .trailer-close {
+      position: absolute;
+      top: -48px;
+      right: 0;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--gold);
+      background: rgba(0,0,0,.75);
+      color: var(--white);
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .trailer-close:hover {
+      background: var(--gold);
+      color: #050403;
+    }
+
+    @media (max-width: 620px) {
+      .trailer-near-hero {
+        min-height: 420px;
+      }
+
+      .trailer-near-hero h2 {
+        font-size: clamp(42px, 13vw, 62px);
+      }
+
+      .trailer-near-hero p {
+        font-size: 16px;
+        max-width: 310px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1369,10 +1455,10 @@
 
       <nav class="nav-links" aria-label="主選單">
         <a href="#home">Home</a>
-        <a href="#watch">Watch Now</a>
-        <a href="#booking">Booking</a>
         <a href="#trailer">Trailer</a>
+        <a href="#booking">Booking</a>
         <a href="#about">About</a>
+        <a href="#watch">Watch Now</a>
       </nav>
 
       <div class="menu">Menu</div>
@@ -1408,6 +1494,26 @@
 
       <div class="scroll">Explore</div>
     </section>
+
+<section id="trailer" class="trailer trailer-near-hero">
+      <button class="trailer-button" type="button" onclick="openTrailer()" aria-label="播放《超限戰》中文預告片">
+        <div class="play">▶</div>
+        <h2>Trailer</h2>
+        <p>點擊觀看《超限戰》中文預告片</p>
+      </button>
+    </section>
+
+    <div id="trailerModal" class="trailer-modal" aria-hidden="true">
+      <div class="trailer-modal-bg" onclick="closeTrailer()"></div>
+      <div class="trailer-modal-box" role="dialog" aria-modal="true" aria-label="《超限戰》中文預告片">
+        <button class="trailer-close" type="button" onclick="closeTrailer()" aria-label="關閉預告片">×</button>
+        <video id="trailerVideo" controls playsinline preload="none" poster="hero-poster.jpg">
+          <source src="trailer-video.mp4" type="video/mp4" />
+          您的瀏覽器不支援影片播放。
+        </video>
+      </div>
+    </div>
+
 
     <section class="reviews" aria-label="影評推薦">
       <div class="review-track">
@@ -1647,27 +1753,6 @@
         </section>
       </div>
     </section>
-
-    <section id="trailer" class="trailer">
-      <button class="trailer-button" type="button" onclick="openTrailer()" aria-label="播放《超限戰》中文預告片">
-        <div class="play">▶</div>
-        <h2>Trailer</h2>
-        <p>點擊觀看《超限戰》中文預告片</p>
-      </button>
-    </section>
-
-    <div id="trailerModal" class="trailer-modal" aria-hidden="true">
-      <div class="trailer-modal-bg" onclick="closeTrailer()"></div>
-
-      <div class="trailer-modal-box" role="dialog" aria-modal="true" aria-label="《超限戰》中文預告片">
-        <button class="trailer-close" type="button" onclick="closeTrailer()" aria-label="關閉預告片">×</button>
-
-        <video id="trailerVideo" controls playsinline preload="none" poster="hero-poster.jpg">
-          <source src="trailer-video.mp4" type="video/mp4" />
-          您的瀏覽器不支援影片播放。
-        </video>
-      </div>
-    </div>
 
     <section id="connected" class="connected">
       <div class="container connected-grid">
