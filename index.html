@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>《超限戰》中文版｜台南放映資訊</title>
-  <meta name="description" content="《超限戰》中文版台南放映資訊。地點：勞工育樂中心，地址：台南市南區南門路261號，請點擊報名或洽陳小姐 0930-885-835。" />
+  <meta name="description" content="《超限戰》中文版台南放映資訊。地點：勞工育樂中心，地址：台南市南區南門路261號，票價每張 150 元，請點擊報名或洽陳小姐 0930-885-835。" />
 
   <style>
     :root {
@@ -16,6 +16,8 @@
       --gold: #c0975b;
       --gold-deep: #8d642f;
       --panel: #0b0907;
+      --danger: #c65b4d;
+      --success: #96c486;
       --max: 1180px;
     }
 
@@ -79,7 +81,7 @@
       font-size: 13px;
       letter-spacing: .08em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.86);
+      color: rgba(244,239,231,.86);
     }
 
     .nav-links a {
@@ -87,7 +89,7 @@
       padding-bottom: 7px;
     }
 
-    .nav-links a:hover { border-bottom-color: var(--white); }
+    .nav-links a:hover { border-bottom-color: var(--gold); }
 
     .menu {
       display: none;
@@ -177,7 +179,7 @@
       position: absolute;
       inset: auto 0 0;
       height: 30vh;
-      background: linear-gradient(180deg, rgba(0,0,0,0), #000);
+      background: linear-gradient(180deg, rgba(0,0,0,0), #050403);
       z-index: -1;
     }
 
@@ -218,7 +220,7 @@
     .hero-sub {
       max-width: 820px;
       margin: 0 auto;
-      color: rgba(255,255,255,.9);
+      color: rgba(244,239,231,.9);
       font-size: clamp(16px, 2vw, 20px);
       letter-spacing: .04em;
       text-shadow: 0 8px 24px rgba(0,0,0,.9);
@@ -229,7 +231,7 @@
       font-size: 13px;
       letter-spacing: .18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.78);
+      color: rgba(244,239,231,.78);
     }
 
     .hero .btn { margin-top: 28px; }
@@ -239,7 +241,7 @@
       bottom: 28px;
       left: 50%;
       transform: translateX(-50%);
-      color: rgba(255,255,255,.56);
+      color: rgba(244,239,231,.56);
       letter-spacing: .22em;
       text-transform: uppercase;
       font-size: 11px;
@@ -311,7 +313,7 @@
       font-family: Georgia, "Times New Roman", serif;
       font-size: 19px;
       line-height: 1.62;
-      color: rgba(255,255,255,.92);
+      color: rgba(244,239,231,.92);
     }
 
     .review footer {
@@ -341,7 +343,7 @@
     }
 
     .highlight .num {
-      color: rgba(255,255,255,.42);
+      color: rgba(244,239,231,.42);
       font-size: 13px;
       letter-spacing: .2em;
       margin-bottom: 18px;
@@ -356,7 +358,7 @@
 
     .highlight p {
       margin: 0;
-      color: rgba(255,255,255,.75);
+      color: rgba(244,239,231,.75);
       font-size: 16px;
       line-height: 1.9;
     }
@@ -388,7 +390,7 @@
 
     .meta {
       margin: 0 0 28px;
-      color: rgba(255,255,255,.76);
+      color: rgba(244,239,231,.76);
       letter-spacing: .12em;
       text-transform: uppercase;
       font-size: 14px;
@@ -396,7 +398,7 @@
 
     .copy p {
       max-width: 710px;
-      color: rgba(255,255,255,.78);
+      color: rgba(244,239,231,.78);
       font-size: 18px;
       line-height: 2;
       margin: 0 0 18px;
@@ -404,7 +406,7 @@
 
     .credits {
       margin-top: 32px;
-      color: rgba(255,255,255,.88);
+      color: rgba(244,239,231,.88);
       font-size: 15px;
       line-height: 2;
     }
@@ -432,6 +434,7 @@
       border: 1px solid var(--line);
       background: #050403;
       min-height: 505px;
+      margin-bottom: 34px;
     }
 
     .theatre-visual {
@@ -449,7 +452,7 @@
     }
 
     .city {
-      color: rgba(255,255,255,.58);
+      color: rgba(244,239,231,.58);
       letter-spacing: .34em;
       text-transform: uppercase;
       font-size: 13px;
@@ -465,7 +468,7 @@
     }
 
     .theatre-address {
-      color: rgba(255,255,255,.68);
+      color: rgba(244,239,231,.68);
       font-size: 17px;
       margin-bottom: 26px;
     }
@@ -474,25 +477,25 @@
       display: grid;
       gap: 10px;
       margin-bottom: 32px;
-      color: rgba(255,255,255,.84);
+      color: rgba(244,239,231,.84);
     }
 
     .info-list div {
       display: grid;
       grid-template-columns: 95px 1fr;
       gap: 12px;
-      border-top: 1px solid rgba(255,255,255,.12);
+      border-top: 1px solid rgba(192,151,91,.20);
       padding-top: 10px;
     }
 
     .info-list b {
-      color: rgba(255,255,255,.55);
+      color: rgba(244,239,231,.55);
       font-weight: 400;
     }
 
     .ticket-note {
       margin: 0 0 30px;
-      color: rgba(255,255,255,.78);
+      color: rgba(244,239,231,.78);
       font-size: 17px;
       line-height: 1.85;
     }
@@ -501,6 +504,174 @@
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
+    }
+
+    .booking-card {
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(192,151,91,.12), rgba(0,0,0,0)),
+        linear-gradient(180deg, #120d0a, #080604);
+      padding: clamp(24px, 4vw, 46px);
+      box-shadow: 0 26px 70px rgba(0,0,0,.35);
+    }
+
+    .booking-head {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 26px;
+      align-items: end;
+      margin-bottom: 26px;
+      border-bottom: 1px solid rgba(192,151,91,.22);
+      padding-bottom: 26px;
+    }
+
+    .booking-head h3 {
+      margin: 0 0 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 4.8vw, 64px);
+      font-weight: 400;
+      line-height: 1.08;
+    }
+
+    .booking-head p {
+      margin: 0;
+      color: rgba(244,239,231,.78);
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    .price-box {
+      border: 1px solid rgba(192,151,91,.32);
+      background: rgba(5,4,3,.55);
+      padding: 22px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(192,151,91,.18);
+      color: rgba(244,239,231,.86);
+    }
+
+    .price-row:last-child {
+      border-bottom: 0;
+      font-size: 24px;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .booking-form {
+      display: grid;
+      gap: 20px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 22px;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: rgba(244,239,231,.92);
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    label .required {
+      color: var(--gold);
+      margin-left: 4px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 54px;
+      border: 1px solid rgba(192,151,91,.28);
+      border-radius: 0;
+      background: rgba(5,4,3,.78);
+      color: var(--white);
+      padding: 13px 15px;
+      font-size: 16px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 108px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(192,151,91,.12);
+    }
+
+    .field-help {
+      color: rgba(244,239,231,.52);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .agree-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: rgba(244,239,231,.74);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .agree-row input {
+      width: 18px;
+      min-height: 18px;
+      height: 18px;
+      margin-top: 4px;
+      accent-color: var(--gold);
+    }
+
+    .booking-message {
+      display: none;
+      padding: 15px 18px;
+      border: 1px solid rgba(192,151,91,.28);
+      background: rgba(5,4,3,.72);
+      color: var(--soft);
+    }
+
+    .booking-message.success {
+      display: block;
+      border-color: rgba(150,196,134,.45);
+      color: var(--success);
+    }
+
+    .booking-message.error {
+      display: block;
+      border-color: rgba(198,91,77,.52);
+      color: var(--danger);
+    }
+
+    .submit-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .submit-row .btn {
+      min-width: 260px;
     }
 
     .trailer {
@@ -554,7 +725,7 @@
     .trailer p {
       max-width: 700px;
       margin: 20px auto 0;
-      color: rgba(255,255,255,.78);
+      color: rgba(244,239,231,.78);
       font-size: 18px;
     }
 
@@ -568,7 +739,7 @@
     }
 
     .connected p {
-      color: rgba(255,255,255,.76);
+      color: rgba(244,239,231,.76);
       font-size: 18px;
       line-height: 2;
       max-width: 620px;
@@ -582,7 +753,7 @@
 
     .contact-box label {
       display: block;
-      color: rgba(255,255,255,.6);
+      color: rgba(244,239,231,.6);
       margin-bottom: 8px;
       letter-spacing: .12em;
       font-size: 13px;
@@ -591,8 +762,8 @@
 
     .contact-line {
       min-height: 54px;
-      border: 1px solid rgba(255,255,255,.22);
-      color: rgba(255,255,255,.8);
+      border: 1px solid rgba(192,151,91,.28);
+      color: rgba(244,239,231,.8);
       display: flex;
       align-items: center;
       padding: 12px 16px;
@@ -648,7 +819,7 @@
     footer {
       border-top: 1px solid var(--line);
       padding: 32px 0;
-      color: rgba(255,255,255,.5);
+      color: rgba(244,239,231,.5);
       font-size: 13px;
     }
 
@@ -667,6 +838,8 @@
       .theatre,
       .connected-grid,
       .highlight-grid,
+      .booking-head,
+      .form-grid,
       .review-track {
         grid-template-columns: 1fr;
       }
@@ -708,7 +881,8 @@
       }
 
       .actions,
-      .btn { width: 100%; }
+      .btn,
+      .submit-row .btn { width: 100%; }
 
       .socials { grid-template-columns: 1fr; }
       .socials a:nth-child(odd) { border-right: 0; }
@@ -727,9 +901,9 @@
       <nav class="nav-links" aria-label="主選單">
         <a href="#home">Home</a>
         <a href="#watch">Watch Now</a>
+        <a href="#booking">Booking</a>
         <a href="#trailer">Trailer</a>
         <a href="#about">About</a>
-        <a href="#connected">Stay Connected</a>
       </nav>
 
       <div class="menu">Menu</div>
@@ -758,9 +932,9 @@
           一場早已佈局、沒有硝煙卻足以改變世界的「超限戰」。
         </p>
 
-        <div class="watch-line">中文版｜台南放映資訊</div>
+        <div class="watch-line">中文版｜台南放映資訊｜票價每張 NT$150</div>
 
-        <a class="btn white" href="#watch">Watch Now / 立即報名</a>
+        <a class="btn white" href="#booking">立即訂票</a>
       </div>
 
       <div class="scroll">Explore</div>
@@ -874,18 +1048,109 @@
             <div class="info-list">
               <div><b>地點</b><span>勞工育樂中心</span></div>
               <div><b>地址</b><span>台南市南區南門路261號</span></div>
-              <div><b>報名</b><span>請點擊 GET TICKETS 報名</span></div>
+              <div><b>票價</b><span>每張 NT$150，每人最多 2 張</span></div>
               <div><b>聯絡</b><span>陳小姐　0930-885-835</span></div>
             </div>
 
             <p class="ticket-note">台南放映資訊，請點擊報名或洽陳小姐 0930-885-835。</p>
 
             <div class="actions">
-              <a class="btn white" href="https://script.google.com/macros/s/AKfycbxWRGqapwTZrgpxtFPX-CbQKtOXkX_3JdX_mxDL1B30b2a4nUzs6csiBujljz9E550zxQ/exec" target="_blank" rel="noopener">GET TICKETS</a>
+              <a class="btn white" href="#booking">GET TICKETS</a>
               <a class="btn" href="tel:0930885835">CALL NOW</a>
             </div>
           </div>
         </article>
+
+        <section id="booking" class="booking-card" aria-label="訂票表單">
+          <div class="booking-head">
+            <div>
+              <div class="kicker">Reserve Your Seat</div>
+              <h3>預約座位</h3>
+              <p>
+                票價每張 NT$150。請填寫以下資料完成訂票，我們將於活動前與您確認。
+              </p>
+            </div>
+
+            <div class="price-box">
+              <div class="price-row">
+                <span>單張票價</span>
+                <strong>NT$150</strong>
+              </div>
+              <div class="price-row">
+                <span>票數</span>
+                <strong><span id="ticketCountText">1</span> 張</strong>
+              </div>
+              <div class="price-row">
+                <span>總金額</span>
+                <strong>NT$<span id="totalAmount">150</span></strong>
+              </div>
+            </div>
+          </div>
+
+          <form id="bookingForm" class="booking-form">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="name">訂票人姓名 <span class="required">*</span></label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="form-field">
+                <label for="phone">聯絡電話 <span class="required">*</span></label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+                <div class="field-help">活動前會電話確認，確認後才算完成保留。</div>
+              </div>
+
+              <div class="form-field">
+                <label for="ticketQty">票數（每人最多 2 張）<span class="required">*</span></label>
+                <select id="ticketQty" name="ticketQty" required>
+                  <option value="1">1 張</option>
+                  <option value="2">2 張</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="contact">LINE 或 Email <span class="required">*</span></label>
+                <input id="contact" name="contact" type="text" required />
+              </div>
+
+              <div class="form-field">
+                <label for="source">訊息來源 <span class="required">*</span></label>
+                <select id="source" name="source" required>
+                  <option value="">請選擇</option>
+                  <option value="朋友邀請">朋友邀請</option>
+                  <option value="LINE">LINE</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="Threads">Threads</option>
+                  <option value="網站">網站</option>
+                  <option value="其他">其他</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="note">備註</label>
+                <input id="note" name="note" type="text" placeholder="可填寫方便聯絡時間或其他需求" />
+              </div>
+
+              <div class="form-field full">
+                <label class="agree-row">
+                  <input id="agree" name="agree" type="checkbox" required />
+                  <span>我同意主辦單位為訂票與活動聯絡目的使用上述資料。</span>
+                </label>
+              </div>
+            </div>
+
+            <input type="hidden" name="unitPrice" value="150" />
+            <input type="hidden" id="totalAmountInput" name="totalAmount" value="150" />
+
+            <div id="bookingMessage" class="booking-message"></div>
+
+            <div class="submit-row">
+              <button id="submitBtn" class="btn white" type="submit">確認預約座位 →</button>
+              <span class="field-help">送出後若需修改，請洽陳小姐 0930-885-835。</span>
+            </div>
+          </form>
+        </section>
       </div>
     </section>
 
@@ -912,7 +1177,7 @@
           <div class="contact-box">
             <label>Tainan Screening</label>
             <div class="contact-line">台南放映資訊｜陳小姐 0930-885-835</div>
-            <a class="btn" href="#watch">GET TICKETS / 查看台南場次</a>
+            <a class="btn" href="#booking">GET TICKETS / 立即訂票</a>
           </div>
 
           <div class="socials">
@@ -933,8 +1198,99 @@
   <footer>
     <div class="container footer-line">
       <div>© 2026 《超限戰》台南放映資訊頁</div>
-      <div>Home　Watch Now　Trailer　About　Stay Connected</div>
+      <div>Home　Watch Now　Booking　Trailer　About</div>
     </div>
   </footer>
+
+  <script>
+    const GAS_WEBAPP_URL = "請貼上您的 GAS Web App URL";
+
+    const ticketQty = document.getElementById("ticketQty");
+    const ticketCountText = document.getElementById("ticketCountText");
+    const totalAmount = document.getElementById("totalAmount");
+    const totalAmountInput = document.getElementById("totalAmountInput");
+    const bookingForm = document.getElementById("bookingForm");
+    const bookingMessage = document.getElementById("bookingMessage");
+    const submitBtn = document.getElementById("submitBtn");
+
+    function updateTotal() {
+      const qty = Number(ticketQty.value || 1);
+      const total = qty * 150;
+      ticketCountText.textContent = String(qty);
+      totalAmount.textContent = String(total);
+      totalAmountInput.value = String(total);
+    }
+
+    function showMessage(type, text) {
+      bookingMessage.className = "booking-message " + type;
+      bookingMessage.textContent = text;
+    }
+
+    ticketQty.addEventListener("change", updateTotal);
+    updateTotal();
+
+    bookingForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      if (!GAS_WEBAPP_URL || GAS_WEBAPP_URL.includes("請貼上")) {
+        showMessage("error", "尚未設定 GAS Web App URL，請先將程式中的 GAS_WEBAPP_URL 換成您的 Apps Script 網址。");
+        return;
+      }
+
+      const formData = new FormData(bookingForm);
+      const payload = {
+        name: formData.get("name").trim(),
+        phone: formData.get("phone").trim(),
+        ticketQty: Number(formData.get("ticketQty")),
+        unitPrice: 150,
+        totalAmount: Number(formData.get("totalAmount")),
+        contact: formData.get("contact").trim(),
+        source: formData.get("source"),
+        note: formData.get("note").trim(),
+        pageUrl: window.location.href,
+        userAgent: navigator.userAgent
+      };
+
+      if (!payload.name || !payload.phone || !payload.contact || !payload.source) {
+        showMessage("error", "請確認姓名、電話、LINE 或 Email、訊息來源都已填寫。");
+        return;
+      }
+
+      if (payload.ticketQty < 1 || payload.ticketQty > 2) {
+        showMessage("error", "票數最多 2 張，請重新選擇。");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "送出中...";
+      showMessage("", "");
+
+      try {
+        const response = await fetch(GAS_WEBAPP_URL, {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (!result.ok) {
+          throw new Error(result.message || "送出失敗");
+        }
+
+        showMessage("success", "已收到您的訂票資料，訂票編號：" + result.bookingId + "。我們將於活動前與您確認。");
+        bookingForm.reset();
+        updateTotal();
+      } catch (error) {
+        showMessage("error", "送出失敗，請稍後再試，或洽陳小姐 0930-885-835。");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "確認預約座位 →";
+      }
+    });
+  </script>
 </body>
 </html>
