@@ -3,715 +3,335 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>協辦邀請｜《超限戰》公益放映暨媒體識讀映後交流活動</title>
   <meta name="description" content="邀請企業、協會、社團及公益團體共同協辦《超限戰》公益放映暨媒體識讀映後交流活動，一起推動資訊安全、假訊息辨識與公民思辨能力。" />
 
   <style>
-    :root {
-      --bg: #06111f;
-      --bg2: #0b1829;
-      --bg3: #111f32;
-      --card: rgba(255, 255, 255, 0.075);
-      --card2: rgba(255, 255, 255, 0.115);
-      --text: #f8f1e6;
-      --muted: #d2c5b1;
-      --muted2: #aa9f91;
-      --gold: #f1c36d;
-      --gold2: #ffd98b;
-      --red: #c7372f;
-      --red2: #e24b42;
-      --line: rgba(255, 255, 255, 0.15);
-      --shadow: 0 28px 80px rgba(0, 0, 0, 0.46);
-      --radius: 26px;
-      --max: 1120px;
+    :root{
+      --bg:#f7f4ed;
+      --bg-soft:#fffdf8;
+      --section:#ffffff;
+      --section-soft:#f2efe6;
+      --text:#24344a;
+      --muted:#647286;
+      --gold:#d9a441;
+      --gold-soft:#f6d68f;
+      --blue:#5d86b3;
+      --blue-deep:#355b85;
+      --line:#e7decf;
+      --card:#ffffff;
+      --shadow:0 18px 50px rgba(36,52,74,0.08);
+      --radius:24px;
+      --max:1120px;
     }
 
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+      color:var(--text);
+      line-height:1.75;
       background:
-        radial-gradient(circle at 12% 10%, rgba(241, 195, 109, 0.2), transparent 30%),
-        radial-gradient(circle at 90% 8%, rgba(199, 55, 47, 0.2), transparent 28%),
-        linear-gradient(180deg, #03070d 0%, var(--bg) 42%, #05080e 100%);
-      color: var(--text);
-      line-height: 1.75;
+        radial-gradient(circle at top right, rgba(246,214,143,0.35), transparent 30%),
+        radial-gradient(circle at top left, rgba(93,134,179,0.18), transparent 26%),
+        linear-gradient(180deg, #fffefb 0%, #f7f4ed 55%, #f3efe6 100%);
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 36px)); margin:0 auto}
+
+    .nav{
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,253,248,0.92);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      min-height:72px;
+      display:flex; align-items:center; justify-content:space-between; gap:18px;
+    }
+    .brand{display:flex; flex-direction:column; line-height:1.2}
+    .brand .top{font-weight:900; color:var(--blue-deep); font-size:15px; letter-spacing:.04em}
+    .brand .bottom{font-size:12px; color:var(--muted)}
+    .nav-links{display:flex; align-items:center; gap:18px; font-size:14px; color:var(--muted)}
+    .nav-links a:hover{color:var(--blue-deep)}
+    .nav-cta{
+      padding:9px 16px; border-radius:999px;
+      background:linear-gradient(135deg, var(--gold-soft), var(--gold));
+      color:#5a4312 !important; font-weight:900;
+      box-shadow:0 10px 22px rgba(217,164,65,0.25);
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(180deg, rgba(0,0,0,0.5), transparent 75%);
-      z-index: -1;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(var(--max), calc(100% - 36px));
-      margin: 0 auto;
-    }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(4, 10, 18, 0.82);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav-inner {
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .brand {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.25;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-    }
-
-    .brand .top {
-      color: var(--gold2);
-      font-size: 15px;
-    }
-
-    .brand .bottom {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover { color: var(--gold2); }
-
-    .nav-cta {
-      padding: 9px 16px;
-      border-radius: 999px;
-      background: rgba(199, 55, 47, 0.9);
-      color: #fff !important;
-      font-weight: 800;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 720px;
-      display: flex;
-      align-items: center;
-      padding: 96px 0 84px;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
+    .hero{
+      position:relative;
+      padding:88px 0 68px;
+      overflow:hidden;
       background:
-        linear-gradient(90deg, rgba(3, 7, 13, 0.94) 0%, rgba(6, 17, 31, 0.75) 45%, rgba(3, 7, 13, 0.94) 100%),
+        linear-gradient(135deg, rgba(255,255,255,0.92), rgba(247,244,237,0.88)),
         url("hero-poster.jpg") center/cover no-repeat;
-      opacity: 0.68;
-      z-index: -3;
+      background-blend-mode:screen;
     }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 220px;
-      background: linear-gradient(180deg, transparent, var(--bg));
-      z-index: -2;
-    }
-
-    .hero-light {
-      position: absolute;
-      right: -120px;
-      top: 110px;
-      width: 520px;
-      height: 520px;
-      background: radial-gradient(circle, rgba(241, 195, 109, 0.28), transparent 62%);
-      filter: blur(2px);
-      z-index: -1;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.14fr 0.86fr;
-      gap: 46px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 14px;
-      border: 1px solid rgba(241, 195, 109, 0.45);
-      border-radius: 999px;
-      color: var(--gold2);
-      background: rgba(241, 195, 109, 0.08);
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      margin-bottom: 22px;
-    }
-
-    h1, h2, h3 { margin: 0; line-height: 1.22; }
-
-    h1 {
-      font-size: clamp(40px, 5.5vw, 72px);
-      letter-spacing: 0.02em;
-      margin-bottom: 18px;
-    }
-
-    .highlight {
-      color: var(--gold2);
-      text-shadow: 0 0 34px rgba(241, 195, 109, 0.22);
-    }
-
-    .hero-subtitle {
-      font-size: clamp(18px, 2.2vw, 26px);
-      color: #fff2d4;
-      font-weight: 900;
-      margin-bottom: 18px;
-    }
-
-    .hero-text {
-      max-width: 740px;
-      color: #e8dfd1;
-      font-size: 18px;
-      margin: 0 0 30px;
-    }
-
-    .hero-quote {
-      margin: 28px 0 32px;
-      padding: 18px 20px;
-      border-left: 4px solid var(--gold);
-      background: rgba(255, 255, 255, 0.075);
-      border-radius: 0 18px 18px 0;
-      color: #fff4dc;
-      font-size: 20px;
-      font-weight: 900;
-    }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 13px 21px;
-      border-radius: 999px;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      transition: 0.22s ease;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--red2), var(--red));
-      color: #fff;
-      box-shadow: 0 16px 34px rgba(199, 55, 47, 0.32);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 46px rgba(199, 55, 47, 0.42);
-    }
-
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold2), var(--gold));
-      color: #160f07;
-      box-shadow: 0 16px 34px rgba(241, 195, 109, 0.25);
-    }
-
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 46px rgba(241, 195, 109, 0.34);
-    }
-
-    .btn-outline {
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--gold);
-      color: var(--gold2);
-      transform: translateY(-2px);
-    }
-
-    .impact-card {
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
       background:
-        linear-gradient(145deg, rgba(241, 195, 109, 0.12), rgba(199, 55, 47, 0.09)),
-        rgba(8, 19, 34, 0.82);
-      border: 1px solid rgba(241, 195, 109, 0.24);
-      border-radius: 30px;
-      padding: 28px;
-      box-shadow: var(--shadow);
+        radial-gradient(circle at 12% 20%, rgba(246,214,143,0.38), transparent 24%),
+        radial-gradient(circle at 88% 14%, rgba(93,134,179,0.22), transparent 22%);
+      pointer-events:none;
+    }
+    .hero-grid{
+      position:relative;
+      display:grid; grid-template-columns:1.12fr 0.88fr; gap:40px; align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 14px;
+      border-radius:999px;
+      background:#fff7e8;
+      color:#8f6a1e;
+      border:1px solid #f1dfb5;
+      font-size:14px; font-weight:900; letter-spacing:.08em;
+      margin-bottom:20px;
+    }
+    h1,h2,h3{margin:0; line-height:1.22}
+    h1{font-size:clamp(38px,5vw,68px); margin-bottom:16px; color:var(--blue-deep)}
+    .highlight{color:var(--gold)}
+    .hero-subtitle{
+      font-size:clamp(18px,2.1vw,25px);
+      color:#48698f; font-weight:900; margin-bottom:18px;
+    }
+    .hero-text{
+      color:#4c5d73; font-size:18px; max-width:720px; margin:0 0 26px;
+    }
+    .hero-quote{
+      margin:0 0 28px;
+      padding:18px 20px;
+      border-left:5px solid var(--gold);
+      background:#fff;
+      border-radius:0 18px 18px 0;
+      color:#48607f;
+      font-size:19px; font-weight:900;
+      box-shadow:var(--shadow);
     }
 
-    .impact-card h3 {
-      font-size: 24px;
-      color: var(--gold2);
-      margin-bottom: 18px;
+    .btn-row{display:flex; flex-wrap:wrap; gap:14px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      min-height:48px; padding:13px 21px; border-radius:999px;
+      font-weight:900; letter-spacing:.03em; transition:.2s ease;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg, var(--gold-soft), var(--gold));
+      color:#5a4312; box-shadow:0 14px 30px rgba(217,164,65,0.24);
+    }
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-outline{
+      background:#fff; color:var(--blue-deep);
+      border:1px solid #d8e2ef;
+      box-shadow:0 10px 24px rgba(53,91,133,0.08);
+    }
+    .btn-outline:hover{transform:translateY(-2px); border-color:#b8cde3}
+
+    .impact-card{
+      background:linear-gradient(180deg, #ffffff, #faf7f0);
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+    .impact-card h3{font-size:24px; color:var(--blue-deep); margin-bottom:18px}
+    .impact-list{display:grid; gap:16px}
+    .impact-item{
+      padding:16px;
+      background:#fff;
+      border:1px solid #edf1f5;
+      border-radius:18px;
+    }
+    .impact-item strong{display:block; font-size:18px; color:#425f82; margin-bottom:5px}
+    .impact-item span{color:var(--muted); font-size:15px}
+
+    section{padding:74px 0}
+    .section-head{max-width:800px; margin-bottom:32px}
+    .center-head{text-align:center; margin-left:auto; margin-right:auto}
+    .section-kicker{
+      color:#987127;
+      font-size:13px; font-weight:900; letter-spacing:.14em; text-transform:uppercase;
+      margin-bottom:10px;
+    }
+    h2{font-size:clamp(30px,3.2vw,44px); margin-bottom:12px; color:var(--blue-deep)}
+    .section-desc{font-size:17px; color:var(--muted); margin:0}
+
+    .mission{background:linear-gradient(180deg, #fffdf8, #f6f2e9)}
+    .mission-box{display:grid; grid-template-columns:.94fr 1.06fr; gap:30px}
+    .mission-statement{
+      background:linear-gradient(135deg, #fffaf0, #fff);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:34px;
+      box-shadow:var(--shadow);
+    }
+    .mission-statement h3{font-size:30px; color:var(--blue-deep); margin-bottom:16px}
+    .mission-statement p{margin:0; font-size:18px; color:#4f5f73}
+    .mission-points{display:grid; gap:16px}
+    .point{
+      background:#fff;
+      border:1px solid #ebf0f5;
+      border-radius:22px;
+      padding:23px;
+      box-shadow:0 8px 24px rgba(36,52,74,0.04);
+    }
+    .point h3{font-size:21px; margin-bottom:8px; color:#456486}
+    .point p{margin:0; color:var(--muted); font-size:15.5px}
+
+    .change-cards{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+    .change-card{
+      min-height:290px;
+      background:linear-gradient(180deg, #ffffff, #fbfaf6);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:30px;
+      box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    .change-card::before{
+      content:"";
+      position:absolute; right:-60px; top:-60px;
+      width:170px; height:170px;
+      background:radial-gradient(circle, rgba(246,214,143,0.36), transparent 65%);
+    }
+    .change-number{
+      width:42px; height:42px; display:grid; place-items:center;
+      border-radius:50%;
+      background:#fff4d9; color:#946d21; font-weight:900;
+      border:1px solid #f1dfb5; margin-bottom:22px;
+    }
+    .change-card h3{font-size:24px; margin-bottom:14px; color:#446283}
+    .change-card p{margin:0; color:var(--muted); font-size:16px}
+
+    .info{background:linear-gradient(180deg, #f8f5ee, #fffdf8)}
+    .info-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+    .info-box{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:0 8px 24px rgba(36,52,74,0.04);
+    }
+    .info-label{color:#8c98a8; font-size:14px; margin-bottom:6px}
+    .info-value{color:#3f5f83; font-size:18px; font-weight:900}
+
+    .timeline{display:grid; gap:13px}
+    .time-row{
+      display:grid; grid-template-columns:145px 1fr; gap:18px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:17px 20px;
+      box-shadow:0 8px 24px rgba(36,52,74,0.04);
+    }
+    .time{color:#987127; font-weight:900}
+    .event-title{font-weight:900; font-size:17px; color:#466688; margin-bottom:3px}
+    .event-desc{color:var(--muted); font-size:15px}
+
+    .partner-section{background:linear-gradient(180deg, #fffdf8, #f4efe5)}
+    .partner-grid{display:grid; grid-template-columns:.95fr 1.05fr; gap:28px; align-items:start}
+    .panel{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+    .panel-strong{
+      background:linear-gradient(135deg, #fffaf0, #fff);
+    }
+    .check-list{margin:0; padding:0; list-style:none; display:grid; gap:13px}
+    .check-list li{
+      position:relative; padding-left:30px; color:#526376;
+    }
+    .check-list li::before{
+      content:"✓"; position:absolute; left:0; top:0;
+      color:#987127; font-weight:900;
     }
 
-    .impact-list {
-      display: grid;
-      gap: 16px;
+    .benefits{background:linear-gradient(180deg, #f7f4ed, #fffdf8)}
+    .benefit-table{
+      width:100%; border-collapse:collapse; overflow:hidden;
+      border-radius:22px; background:#fff; border:1px solid var(--line);
+      box-shadow:var(--shadow);
     }
-
-    .impact-item {
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.075);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 18px;
+    .benefit-table th,.benefit-table td{
+      padding:17px 20px;
+      border-bottom:1px solid #eee6d8;
+      text-align:left; vertical-align:top;
     }
-
-    .impact-item strong {
-      display: block;
-      color: #fff8e9;
-      font-size: 18px;
-      margin-bottom: 5px;
+    .benefit-table th{
+      width:180px;
+      color:#456486;
+      background:#fbf7ee;
+      white-space:nowrap;
     }
-
-    .impact-item span {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    section { padding: 78px 0; }
-
-    .section-head {
-      max-width: 790px;
-      margin-bottom: 32px;
-    }
-
-    .center-head {
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .section-kicker {
-      color: var(--gold2);
-      font-weight: 900;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: clamp(30px, 3.5vw, 46px);
-      margin-bottom: 14px;
-    }
-
-    .section-desc {
-      color: var(--muted);
-      font-size: 17px;
-      margin: 0;
-    }
-
-    .mission {
-      background:
-        radial-gradient(circle at 50% 0%, rgba(241, 195, 109, 0.14), transparent 42%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-    }
-
-    .mission-box {
-      display: grid;
-      grid-template-columns: 0.94fr 1.06fr;
-      gap: 30px;
-      align-items: stretch;
-    }
-
-    .mission-statement {
-      background:
-        linear-gradient(135deg, rgba(241, 195, 109, 0.14), rgba(199, 55, 47, 0.12)),
-        rgba(255, 255, 255, 0.065);
-      border: 1px solid rgba(241, 195, 109, 0.22);
-      border-radius: var(--radius);
-      padding: 34px;
-      box-shadow: var(--shadow);
-    }
-
-    .mission-statement h3 {
-      font-size: 30px;
-      color: var(--gold2);
-      margin-bottom: 16px;
-    }
-
-    .mission-statement p {
-      color: #eee2cf;
-      margin: 0;
-      font-size: 18px;
-    }
-
-    .mission-points {
-      display: grid;
-      gap: 16px;
-    }
-
-    .point {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 23px;
-    }
-
-    .point h3 {
-      font-size: 21px;
-      margin-bottom: 8px;
-    }
-
-    .point p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15.5px;
-    }
-
-    .change-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .change-card {
-      position: relative;
-      overflow: hidden;
-      min-height: 300px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.055));
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 30px;
-      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.25);
-    }
-
-    .change-card::before {
-      content: "";
-      position: absolute;
-      right: -70px;
-      top: -70px;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle, rgba(241, 195, 109, 0.2), transparent 66%);
-    }
-
-    .change-number {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: rgba(241, 195, 109, 0.16);
-      border: 1px solid rgba(241, 195, 109, 0.3);
-      color: var(--gold2);
-      font-weight: 900;
-      margin-bottom: 22px;
-    }
-
-    .change-card h3 {
-      font-size: 24px;
-      margin-bottom: 14px;
-    }
-
-    .change-card p {
-      color: var(--muted);
-      margin: 0;
-      font-size: 16px;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .info-box {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 22px;
-    }
-
-    .info-label {
-      color: var(--muted2);
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
-
-    .info-value {
-      color: #fff6e6;
-      font-size: 18px;
-      font-weight: 900;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 13px;
-    }
-
-    .time-row {
-      display: grid;
-      grid-template-columns: 145px 1fr;
-      gap: 18px;
-      background: rgba(255, 255, 255, 0.065);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 18px;
-      padding: 17px 20px;
-    }
-
-    .time {
-      color: var(--gold2);
-      font-weight: 900;
-    }
-
-    .event-title {
-      font-weight: 900;
-      font-size: 17px;
-      margin-bottom: 3px;
-    }
-
-    .event-desc {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .partner-section {
-      background:
-        radial-gradient(circle at 80% 0%, rgba(199, 55, 47, 0.14), transparent 36%),
-        linear-gradient(180deg, var(--bg2), #071120);
-    }
-
-    .partner-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 28px;
-      align-items: start;
-    }
-
-    .panel {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 30px;
-    }
-
-    .panel-strong {
-      background:
-        linear-gradient(135deg, rgba(241, 195, 109, 0.13), rgba(199, 55, 47, 0.1)),
-        rgba(255, 255, 255, 0.065);
-      border-color: rgba(241, 195, 109, 0.23);
-      box-shadow: var(--shadow);
-    }
-
-    .check-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 13px;
-    }
-
-    .check-list li {
-      position: relative;
-      padding-left: 30px;
-      color: #eee4d4;
-    }
-
-    .check-list li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--gold2);
-      font-weight: 900;
-    }
-
-    .benefit-table {
-      width: 100%;
-      border-collapse: collapse;
-      overflow: hidden;
-      border-radius: 22px;
-      background: var(--card);
-      border: 1px solid var(--line);
-    }
-
-    .benefit-table th,
-    .benefit-table td {
-      padding: 17px 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.11);
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .benefit-table th {
-      width: 180px;
-      color: var(--gold2);
-      background: rgba(255, 255, 255, 0.07);
-      white-space: nowrap;
-    }
-
     .benefit-table tr:last-child th,
-    .benefit-table tr:last-child td {
-      border-bottom: 0;
-    }
+    .benefit-table tr:last-child td{border-bottom:0}
 
-    .cta {
-      padding: 84px 0 96px;
+    .cta{
+      padding:84px 0 96px;
       background:
-        radial-gradient(circle at center, rgba(241, 195, 109, 0.2), transparent 46%),
-        linear-gradient(180deg, #071120, #03070d);
+        radial-gradient(circle at center, rgba(246,214,143,0.3), transparent 40%),
+        linear-gradient(180deg, #fffdf8, #f5f1e8);
+    }
+    .cta-box{
+      text-align:center;
+      background:linear-gradient(135deg, #fffaf0, #fff);
+      border:1px solid var(--line);
+      border-radius:34px;
+      padding:48px 28px;
+      box-shadow:var(--shadow);
+    }
+    .cta-box p{
+      color:var(--muted); max-width:780px; margin:0 auto 28px; font-size:18px;
+    }
+    .contact-line{
+      display:inline-flex; flex-wrap:wrap; justify-content:center; gap:10px 20px;
+      color:#466688; font-weight:900; font-size:21px; margin-bottom:24px;
     }
 
-    .cta-box {
-      text-align: center;
-      background:
-        linear-gradient(135deg, rgba(241, 195, 109, 0.17), rgba(199, 55, 47, 0.14)),
-        rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(241, 195, 109, 0.28);
-      border-radius: 34px;
-      padding: 48px 28px;
-      box-shadow: var(--shadow);
+    footer{
+      border-top:1px solid var(--line);
+      padding:26px 0;
+      color:#7f8b9a;
+      font-size:14px;
+      background:#fffdf8;
+    }
+    .footer-inner{
+      display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;
     }
 
-    .cta-box h2 {
-      max-width: 850px;
-      margin-left: auto;
-      margin-right: auto;
+    @media (max-width:960px){
+      .hero-grid,.mission-box,.partner-grid{grid-template-columns:1fr}
+      .change-cards{grid-template-columns:1fr}
+      .info-grid{grid-template-columns:repeat(2,1fr)}
+      .nav-links{display:none}
     }
-
-    .cta-box p {
-      color: var(--muted);
-      max-width: 780px;
-      margin: 0 auto 28px;
-      font-size: 18px;
-    }
-
-    .contact-line {
-      display: inline-flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px 20px;
-      color: var(--gold2);
-      font-weight: 900;
-      font-size: 21px;
-      margin-bottom: 24px;
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 26px 0;
-      color: var(--muted2);
-      font-size: 14px;
-      background: #03070d;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 960px) {
-      .hero { min-height: auto; }
-
-      .hero-grid,
-      .mission-box,
-      .partner-grid {
-        grid-template-columns: 1fr;
+    @media (max-width:640px){
+      .container{width:min(100% - 28px, var(--max))}
+      .hero{padding:72px 0 56px}
+      .hero-text{font-size:16px}
+      .hero-quote{font-size:18px}
+      section{padding:60px 0}
+      .impact-card,.mission-statement,.panel,.change-card{padding:23px}
+      .info-grid{grid-template-columns:1fr}
+      .time-row{grid-template-columns:1fr; gap:6px}
+      .benefit-table,.benefit-table tbody,.benefit-table tr,.benefit-table th,.benefit-table td{
+        display:block; width:100%;
       }
-
-      .change-cards { grid-template-columns: 1fr; }
-
-      .info-grid { grid-template-columns: repeat(2, 1fr); }
-
-      .nav-links { display: none; }
-    }
-
-    @media (max-width: 640px) {
-      .container {
-        width: min(100% - 28px, var(--max));
-      }
-
-      .hero { padding: 72px 0 58px; }
-
-      .hero-text { font-size: 16px; }
-
-      .hero-quote { font-size: 18px; }
-
-      .impact-card,
-      .mission-statement,
-      .panel,
-      .change-card {
-        padding: 23px;
-      }
-
-      section { padding: 60px 0; }
-
-      .info-grid { grid-template-columns: 1fr; }
-
-      .time-row {
-        grid-template-columns: 1fr;
-        gap: 6px;
-      }
-
-      .benefit-table,
-      .benefit-table tbody,
-      .benefit-table tr,
-      .benefit-table th,
-      .benefit-table td {
-        display: block;
-        width: 100%;
-      }
-
-      .benefit-table th {
-        border-bottom: 0;
-        padding-bottom: 6px;
-      }
-
-      .benefit-table td { padding-top: 0; }
-
-      .btn { width: 100%; }
-
-      .btn-row { width: 100%; }
+      .benefit-table th{border-bottom:0; padding-bottom:6px}
+      .benefit-table td{padding-top:0}
+      .btn{width:100%}
+      .btn-row{width:100%}
     }
   </style>
 </head>
-
 <body>
   <nav class="nav">
     <div class="container nav-inner">
@@ -731,8 +351,6 @@
   </nav>
 
   <header class="hero">
-    <div class="hero-light"></div>
-
     <div class="container hero-grid">
       <div>
         <div class="eyebrow">PARTNERSHIP INVITATION｜協辦邀請</div>
@@ -742,9 +360,7 @@
           <span class="highlight">看見真相</span>，也學會判斷資訊
         </h1>
 
-        <div class="hero-subtitle">
-          《超限戰》公益放映暨媒體識讀映後交流活動
-        </div>
+        <div class="hero-subtitle">《超限戰》公益放映暨媒體識讀映後交流活動</div>
 
         <p class="hero-text">
           這不只是一場電影放映，而是一場面對假訊息、資訊戰與數位時代挑戰的公民思辨行動。
@@ -763,18 +379,15 @@
 
       <aside class="impact-card">
         <h3>協辦這場活動，您支持的是：</h3>
-
         <div class="impact-list">
           <div class="impact-item">
             <strong>讓更多人看見不同聲音</strong>
             <span>幫助民眾接觸不易看見的議題與觀點，打開理解與思考的入口。</span>
           </div>
-
           <div class="impact-item">
             <strong>讓更多人學會辨識資訊</strong>
             <span>從電影延伸到假訊息、資訊戰、媒體識讀與網路安全。</span>
           </div>
-
           <div class="impact-item">
             <strong>讓社會多一場理性對話</strong>
             <span>透過映後交流，建立尊重、思辨與公共討論的空間。</span>
@@ -801,12 +414,10 @@
             <h3>不是單純放映，而是一次公共議題教育</h3>
             <p>透過電影內容，引導觀眾認識資訊戰、假訊息、媒體操控與認知作戰等議題。</p>
           </div>
-
           <div class="point">
             <h3>不是單向宣傳，而是保留討論與思考空間</h3>
             <p>映後由講者帶領交流，讓參與者有機會從不同角度理解與思辨。</p>
           </div>
-
           <div class="point">
             <h3>不是一次性活動，而是後續推廣的開始</h3>
             <p>本活動可作為未來校園、企業、社團巡迴推廣與公益合作的基礎。</p>
@@ -830,31 +441,23 @@
         <article class="change-card">
           <div class="change-number">1</div>
           <h3>讓一部重要作品被更多人看見</h3>
-          <p>
-            許多人不是不關心，而是沒有機會接觸。協辦單位的支持，能讓更多民眾走進現場，真正了解電影所探討的資訊戰、真相與社會安全議題。
-          </p>
+          <p>許多人不是不關心，而是沒有機會接觸。協辦單位的支持，能讓更多民眾走進現場，真正了解電影所探討的資訊戰、真相與社會安全議題。</p>
         </article>
-
         <article class="change-card">
           <div class="change-number">2</div>
           <h3>讓會員與民眾提升媒體判斷力</h3>
-          <p>
-            在資訊快速擴散的時代，假訊息與認知作戰已經影響每個人的生活。這場活動能幫助參與者建立更清楚的資訊判讀能力。
-          </p>
+          <p>在資訊快速擴散的時代，假訊息與認知作戰已經影響每個人的生活。這場活動能幫助參與者建立更清楚的資訊判讀能力。</p>
         </article>
-
         <article class="change-card">
           <div class="change-number">3</div>
           <h3>讓公益不只是捐款，而是推動思辨</h3>
-          <p>
-            協辦不是單純提供資源，而是共同推動一場能啟發觀眾、連結社群、促成理性對話的公益教育行動。
-          </p>
+          <p>協辦不是單純提供資源，而是共同推動一場能啟發觀眾、連結社群、促成理性對話的公益教育行動。</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="info">
+  <section class="info" id="info">
     <div class="container">
       <div class="section-head">
         <div class="section-kicker">EVENT INFO</div>
@@ -865,45 +468,14 @@
       </div>
 
       <div class="info-grid">
-        <div class="info-box">
-          <div class="info-label">活動日期</div>
-          <div class="info-value">2026 年 7 月 12 日（日）</div>
-        </div>
-
-        <div class="info-box">
-          <div class="info-label">活動時間</div>
-          <div class="info-value">14:00－17:00</div>
-        </div>
-
-        <div class="info-box">
-          <div class="info-label">報到時間</div>
-          <div class="info-value">13:30－14:00</div>
-        </div>
-
-        <div class="info-box">
-          <div class="info-label">活動地點</div>
-          <div class="info-value">台南勞工育樂中心</div>
-        </div>
-
-        <div class="info-box">
-          <div class="info-label">主辦單位</div>
-          <div class="info-value">乾淨世界</div>
-        </div>
-
-        <div class="info-box">
-          <div class="info-label">協辦單位</div>
-          <div class="info-value">永翔愛心會、其他單位邀請中</div>
-        </div>
-
-        <div class="info-box">
-          <div class="info-label">活動票價</div>
-          <div class="info-value">每人 NT$150</div>
-        </div>
-
-        <div class="info-box">
-          <div class="info-label">聯絡窗口</div>
-          <div class="info-value">林小姐 0937-615-510</div>
-        </div>
+        <div class="info-box"><div class="info-label">活動日期</div><div class="info-value">2026 年 7 月 12 日（日）</div></div>
+        <div class="info-box"><div class="info-label">活動時間</div><div class="info-value">14:00－17:00</div></div>
+        <div class="info-box"><div class="info-label">報到時間</div><div class="info-value">13:30－14:00</div></div>
+        <div class="info-box"><div class="info-label">活動地點</div><div class="info-value">台南勞工育樂中心</div></div>
+        <div class="info-box"><div class="info-label">主辦單位</div><div class="info-value">乾淨世界</div></div>
+        <div class="info-box"><div class="info-label">協辦單位</div><div class="info-value">永翔愛心會、其他單位邀請中</div></div>
+        <div class="info-box"><div class="info-label">活動票價</div><div class="info-value">每人 NT$150</div></div>
+        <div class="info-box"><div class="info-label">聯絡窗口</div><div class="info-value">林小姐 0937-615-510</div></div>
       </div>
     </div>
   </section>
@@ -913,51 +485,15 @@
       <div class="section-head">
         <div class="section-kicker">EVENT SCHEDULE</div>
         <h2>活動流程</h2>
-        <p class="section-desc">
-          映後交流將由講者帶領觀眾，從電影內容延伸討論資訊戰、假訊息與媒體識讀等議題。
-        </p>
+        <p class="section-desc">映後交流將由講者帶領觀眾，從電影內容延伸討論資訊戰、假訊息與媒體識讀等議題。</p>
       </div>
 
       <div class="timeline">
-        <div class="time-row">
-          <div class="time">13:30－14:00</div>
-          <div>
-            <div class="event-title">來賓報到</div>
-            <div class="event-desc">現場接待、簽到與入座。</div>
-          </div>
-        </div>
-
-        <div class="time-row">
-          <div class="time">14:00－14:10</div>
-          <div>
-            <div class="event-title">主辦單位致詞、介紹貴賓及大合照</div>
-            <div class="event-desc">感謝協辦單位與來賓支持，說明活動宗旨。</div>
-          </div>
-        </div>
-
-        <div class="time-row">
-          <div class="time">14:10－16:30</div>
-          <div>
-            <div class="event-title">電影《超限戰》放映</div>
-            <div class="event-desc">透過電影內容，引導觀眾看見資訊、真相、人性與國家安全相關議題。</div>
-          </div>
-        </div>
-
-        <div class="time-row">
-          <div class="time">16:30－17:00</div>
-          <div>
-            <div class="event-title">映後交流與分享</div>
-            <div class="event-desc">由講者帶領觀眾延伸討論資訊戰、假訊息、網路安全與媒體識讀議題。</div>
-          </div>
-        </div>
-
-        <div class="time-row">
-          <div class="time">17:00</div>
-          <div>
-            <div class="event-title">活動結束</div>
-            <div class="event-desc">感謝來賓參與，後續可提供活動照片與成果紀錄。</div>
-          </div>
-        </div>
+        <div class="time-row"><div class="time">13:30－14:00</div><div><div class="event-title">來賓報到</div><div class="event-desc">現場接待、簽到與入座。</div></div></div>
+        <div class="time-row"><div class="time">14:00－14:10</div><div><div class="event-title">主辦單位致詞、介紹貴賓及大合照</div><div class="event-desc">感謝協辦單位與來賓支持，說明活動宗旨。</div></div></div>
+        <div class="time-row"><div class="time">14:10－16:30</div><div><div class="event-title">電影《超限戰》放映</div><div class="event-desc">透過電影內容，引導觀眾看見資訊、真相、人性與國家安全相關議題。</div></div></div>
+        <div class="time-row"><div class="time">16:30－17:00</div><div><div class="event-title">映後交流與分享</div><div class="event-desc">由講者帶領觀眾延伸討論資訊戰、假訊息、網路安全與媒體識讀議題。</div></div></div>
+        <div class="time-row"><div class="time">17:00</div><div><div class="event-title">活動結束</div><div class="event-desc">感謝來賓參與，後續可提供活動照片與成果紀錄。</div></div></div>
       </div>
     </div>
   </section>
@@ -972,7 +508,7 @@
         </p>
         <br>
         <div class="btn-row">
-          <a class="btn btn-gold" href="tel:0937615510">洽詢協辦方案</a>
+          <a class="btn btn-primary" href="tel:0937615510">洽詢協辦方案</a>
         </div>
       </div>
 
@@ -989,42 +525,21 @@
     </div>
   </section>
 
-  <section id="benefits">
+  <section class="benefits" id="benefits">
     <div class="container">
       <div class="section-head">
         <div class="section-kicker">PARTNER BENEFITS</div>
         <h2>協辦單位可獲得什麼？</h2>
-        <p class="section-desc">
-          協辦回饋不只是名稱露出，更重要的是讓貴單位與公益教育、公共議題與在地社群產生正面連結。
-        </p>
+        <p class="section-desc">協辦回饋不只是名稱露出，更重要的是讓貴單位與公益教育、公共議題與在地社群產生正面連結。</p>
       </div>
 
       <table class="benefit-table">
         <tbody>
-          <tr>
-            <th>公益形象</th>
-            <td>與媒體識讀、資訊安全、公民素養等重要公共議題連結，展現對社會教育的支持。</td>
-          </tr>
-
-          <tr>
-            <th>會員服務</th>
-            <td>可邀請會員、員工、幹部或重要來賓參與，作為一場有深度的教育型活動。</td>
-          </tr>
-
-          <tr>
-            <th>正面曝光</th>
-            <td>可於企畫書、宣傳圖、報名頁面、現場簡報或活動紀錄中列名。</td>
-          </tr>
-
-          <tr>
-            <th>社群交流</th>
-            <td>接觸企業、社團、教育工作者、家長與在地民眾，促進後續合作機會。</td>
-          </tr>
-
-          <tr>
-            <th>成果紀錄</th>
-            <td>活動後可提供照片、成果摘要與感謝狀，作為年度公益參與或社會責任紀錄。</td>
-          </tr>
+          <tr><th>公益形象</th><td>與媒體識讀、資訊安全、公民素養等重要公共議題連結，展現對社會教育的支持。</td></tr>
+          <tr><th>會員服務</th><td>可邀請會員、員工、幹部或重要來賓參與，作為一場有深度的教育型活動。</td></tr>
+          <tr><th>正面曝光</th><td>可於企畫書、宣傳圖、報名頁面、現場簡報或活動紀錄中列名。</td></tr>
+          <tr><th>社群交流</th><td>接觸企業、社團、教育工作者、家長與在地民眾，促進後續合作機會。</td></tr>
+          <tr><th>成果紀錄</th><td>活動後可提供照片、成果摘要與感謝狀，作為年度公益參與或社會責任紀錄。</td></tr>
         </tbody>
       </table>
     </div>
@@ -1034,9 +549,7 @@
     <div class="container">
       <div class="cta-box">
         <div class="section-kicker">JOIN US</div>
-
         <h2>誠摯邀請貴單位，一起讓這場公益行動發生</h2>
-
         <p>
           讓更多民眾有機會透過電影與交流，認識資訊戰、假訊息與媒體識讀的重要性。
           歡迎來電洽詢協辦方式，或索取簡式企畫書與協辦方案附件。
@@ -1058,11 +571,7 @@
   <footer>
     <div class="container footer-inner">
       <div>© 2026 《超限戰》台南公益放映協辦邀請</div>
-      <div>
-        <a href="index.html">活動報名頁</a>
-        ｜
-        <a href="#contact">洽詢協辦</a>
-      </div>
+      <div><a href="index.html">活動報名頁</a> ｜ <a href="#contact">洽詢協辦</a></div>
     </div>
   </footer>
 </body>
