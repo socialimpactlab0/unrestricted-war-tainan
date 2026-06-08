@@ -697,6 +697,13 @@
       transform: translate(-50%, -50%) scale(1.06);
     }
 
+
+    .trailer-thumb {
+      background:
+        linear-gradient(180deg, rgba(255, 253, 248, 0.08), rgba(36, 52, 74, 0.28)),
+        url("hero-poster.jpg") center/cover no-repeat !important;
+    }
+
     .video-body {
       padding: 22px;
     }
@@ -812,7 +819,7 @@
       box-shadow: 0 8px 22px rgba(0,0,0,0.18);
     }
 
-    .mobile-cta { display: none; }
+    .mobile-cta { display: none !important; }
 
     @media (max-width: 960px) {
       .hero-grid,
@@ -1001,6 +1008,7 @@
         color: #5a4312;
       }
     }
+    .mobile-cta { display: none !important; }
   </style>
 </head>
 
@@ -1040,8 +1048,8 @@
         </div>
 
         <div class="btn-row">
-          <a class="btn btn-primary" href="#support">查看協辦方案</a>
-          <a class="btn btn-outline" href="tel:0937615510">電話洽詢協辦</a>
+          <a class="btn btn-primary" href="#support">了解協辦方式</a>
+          <a class="btn btn-outline" href="tel:0937615510">聯絡了解</a>
         </div>
       </div>
 
@@ -1122,10 +1130,7 @@
 
       <div class="video-grid">
         <article class="video-card">
-          <div class="video-thumb" data-video="trailer-video.mp4" aria-label="播放電影預告">
-            <video muted playsinline preload="metadata">
-              <source src="trailer-video.mp4#t=0.1" type="video/mp4">
-            </video>
+          <div class="video-thumb trailer-thumb" data-video="trailer-video.mp4" aria-label="播放電影預告">
             <div class="play-button"><span></span></div>
           </div>
           <div class="video-body">
@@ -1398,14 +1403,7 @@
       </div>
     </div>
   </section>
-
-  <div class="mobile-cta" aria-label="手機快速操作">
-    <a class="plan" href="#support">協辦方案</a>
-    <a class="call" href="tel:0937615510">電話洽詢</a>
-  </div>
-
-
-  <div class="video-modal" id="videoModal" aria-hidden="true">
+<div class="video-modal" id="videoModal" aria-hidden="true">
     <div class="modal-box">
       <button class="modal-close" type="button" aria-label="關閉影片">×</button>
       <video id="modalVideo" controls playsinline></video>
