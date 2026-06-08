@@ -267,7 +267,7 @@
       font-size: 15px;
     }
 
-    section { padding: 74px 0; }
+    section { padding: 74px 0; scroll-margin-top: 88px; }
 
     .section-head {
       max-width: 800px;
@@ -819,7 +819,6 @@
       box-shadow: 0 8px 22px rgba(0,0,0,0.18);
     }
 
-    .mobile-cta { display: none !important; }
 
     @media (max-width: 960px) {
       .hero-grid,
@@ -1008,7 +1007,89 @@
         color: #5a4312;
       }
     }
-    .mobile-cta { display: none !important; }
+
+    /* Video layout refinement */
+    .video-section {
+      padding-top: 88px;
+    }
+
+    .video-section .section-head {
+      margin-bottom: 34px;
+    }
+
+    .video-section h2 {
+      line-height: 1.28;
+      padding-top: 4px;
+    }
+
+    .video-grid {
+      grid-template-columns: minmax(0, 1.08fr) minmax(380px, 0.92fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .feedback-card {
+      grid-template-columns: 42% 58%;
+      gap: 0;
+      min-height: 118px;
+    }
+
+    .feedback-card .video-thumb {
+      min-height: 118px;
+      height: 100%;
+    }
+
+    .feedback-text {
+      min-width: 0;
+      padding: 16px 18px;
+    }
+
+    .feedback-text h3 {
+      font-size: 18px;
+      line-height: 1.35;
+      margin-bottom: 4px;
+      white-space: normal;
+    }
+
+    .feedback-text p {
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 960px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feedback-card {
+        grid-template-columns: 1fr;
+      }
+
+      .feedback-card .video-thumb {
+        min-height: auto;
+        aspect-ratio: 16 / 9;
+      }
+
+      .feedback-text {
+        padding: 16px 18px 18px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .video-section {
+        padding-top: 58px;
+      }
+
+      .video-section .section-head {
+        margin-bottom: 24px;
+      }
+
+      .video-section h2 {
+        font-size: 28px;
+      }
+    }
+
+
   </style>
 </head>
 
@@ -1124,7 +1205,7 @@
         <div class="section-kicker">VIDEO PREVIEW</div>
         <h2>先看見這部作品的力量</h2>
         <p class="section-desc">
-          透過預告與觀眾分享，讓協辦單位更快理解這場活動不只是放映，而是能引發思考與對話的公益行動。
+          透過預告與觀眾分享，讓協辦單位更快理解這場活動能引發思考與對話。
         </p>
       </div>
 
