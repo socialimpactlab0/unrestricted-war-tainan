@@ -5,48 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>協辦邀請｜《超限戰》公益放映暨媒體識讀映後交流活動</title>
-  <meta name="description" content="誠摯邀請企業、協會、社團及公益團體共同協辦《超限戰》公益放映暨媒體識讀映後交流活動，推動資訊安全、假訊息辨識與公民思辨能力。" />
+  <meta name="description" content="邀請企業、協會、社團及公益團體共同協辦《超限戰》公益放映暨媒體識讀映後交流活動，一起推動資訊安全、假訊息辨識與公民思辨能力。" />
 
   <style>
     :root {
-      --bg: #070b12;
-      --bg-soft: #101722;
-      --card: rgba(255, 255, 255, 0.07);
-      --card-strong: rgba(255, 255, 255, 0.12);
-      --text: #f5f2ea;
-      --muted: #c9c0b2;
-      --gold: #d8ad5f;
-      --gold-soft: #f3d28b;
-      --red: #b7352d;
-      --line: rgba(255, 255, 255, 0.14);
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
-      --radius: 22px;
+      --bg: #06111f;
+      --bg2: #0b1829;
+      --bg3: #111f32;
+      --card: rgba(255, 255, 255, 0.075);
+      --card2: rgba(255, 255, 255, 0.115);
+      --text: #f8f1e6;
+      --muted: #d2c5b1;
+      --muted2: #aa9f91;
+      --gold: #f1c36d;
+      --gold2: #ffd98b;
+      --red: #c7372f;
+      --red2: #e24b42;
+      --line: rgba(255, 255, 255, 0.15);
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.46);
+      --radius: 26px;
       --max: 1120px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(183, 53, 45, 0.26), transparent 34%),
-        radial-gradient(circle at top right, rgba(216, 173, 95, 0.22), transparent 30%),
-        linear-gradient(180deg, #05070b 0%, #0a1018 45%, #06080c 100%);
+        radial-gradient(circle at 12% 10%, rgba(241, 195, 109, 0.2), transparent 30%),
+        radial-gradient(circle at 90% 8%, rgba(199, 55, 47, 0.2), transparent 28%),
+        linear-gradient(180deg, #03070d 0%, var(--bg) 42%, #05080e 100%);
       color: var(--text);
       line-height: 1.75;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.5), transparent 75%);
+      z-index: -1;
     }
+
+    a { color: inherit; text-decoration: none; }
 
     .container {
       width: min(var(--max), calc(100% - 36px));
@@ -57,13 +66,13 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(7, 11, 18, 0.78);
-      backdrop-filter: blur(16px);
+      background: rgba(4, 10, 18, 0.82);
+      backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--line);
     }
 
     .nav-inner {
-      height: 70px;
+      min-height: 70px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -73,20 +82,20 @@
     .brand {
       display: flex;
       flex-direction: column;
-      line-height: 1.15;
-      font-weight: 800;
+      line-height: 1.25;
+      font-weight: 900;
       letter-spacing: 0.04em;
     }
 
-    .brand span:first-child {
+    .brand .top {
+      color: var(--gold2);
       font-size: 15px;
-      color: var(--gold-soft);
     }
 
-    .brand span:last-child {
-      font-size: 12px;
+    .brand .bottom {
       color: var(--muted);
-      font-weight: 500;
+      font-size: 12px;
+      font-weight: 600;
     }
 
     .nav-links {
@@ -97,20 +106,22 @@
       color: var(--muted);
     }
 
-    .nav-links a:hover {
-      color: var(--gold-soft);
-    }
+    .nav-links a:hover { color: var(--gold2); }
 
     .nav-cta {
       padding: 9px 16px;
-      border: 1px solid rgba(216, 173, 95, 0.55);
       border-radius: 999px;
-      color: var(--gold-soft);
+      background: rgba(199, 55, 47, 0.9);
+      color: #fff !important;
+      font-weight: 800;
     }
 
     .hero {
       position: relative;
-      padding: 110px 0 78px;
+      min-height: 720px;
+      display: flex;
+      align-items: center;
+      padding: 96px 0 84px;
       overflow: hidden;
     }
 
@@ -119,24 +130,36 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(7, 11, 18, 0.96), rgba(7, 11, 18, 0.78), rgba(7, 11, 18, 0.95)),
+        linear-gradient(90deg, rgba(3, 7, 13, 0.94) 0%, rgba(6, 17, 31, 0.75) 45%, rgba(3, 7, 13, 0.94) 100%),
         url("hero-poster.jpg") center/cover no-repeat;
-      opacity: 0.62;
-      z-index: -2;
+      opacity: 0.68;
+      z-index: -3;
     }
 
     .hero::after {
       content: "";
       position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 0%, rgba(7, 11, 18, 0.96) 90%);
+      inset: auto 0 0 0;
+      height: 220px;
+      background: linear-gradient(180deg, transparent, var(--bg));
+      z-index: -2;
+    }
+
+    .hero-light {
+      position: absolute;
+      right: -120px;
+      top: 110px;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(241, 195, 109, 0.28), transparent 62%);
+      filter: blur(2px);
       z-index: -1;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 42px;
+      grid-template-columns: 1.14fr 0.86fr;
+      gap: 46px;
       align-items: center;
     }
 
@@ -144,38 +167,53 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 12px;
-      border: 1px solid rgba(216, 173, 95, 0.35);
+      padding: 7px 14px;
+      border: 1px solid rgba(241, 195, 109, 0.45);
       border-radius: 999px;
-      color: var(--gold-soft);
-      background: rgba(216, 173, 95, 0.08);
+      color: var(--gold2);
+      background: rgba(241, 195, 109, 0.08);
       font-size: 14px;
-      margin-bottom: 20px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      margin-bottom: 22px;
     }
 
-    h1, h2, h3 {
-      margin: 0;
-      line-height: 1.25;
-    }
+    h1, h2, h3 { margin: 0; line-height: 1.22; }
 
     h1 {
-      font-size: clamp(36px, 5vw, 64px);
+      font-size: clamp(40px, 5.5vw, 72px);
       letter-spacing: 0.02em;
       margin-bottom: 18px;
     }
 
+    .highlight {
+      color: var(--gold2);
+      text-shadow: 0 0 34px rgba(241, 195, 109, 0.22);
+    }
+
     .hero-subtitle {
-      font-size: clamp(18px, 2vw, 23px);
-      color: var(--gold-soft);
-      font-weight: 700;
-      margin-bottom: 16px;
+      font-size: clamp(18px, 2.2vw, 26px);
+      color: #fff2d4;
+      font-weight: 900;
+      margin-bottom: 18px;
     }
 
     .hero-text {
-      color: #e4ded2;
-      font-size: 17px;
-      max-width: 720px;
-      margin-bottom: 30px;
+      max-width: 740px;
+      color: #e8dfd1;
+      font-size: 18px;
+      margin: 0 0 30px;
+    }
+
+    .hero-quote {
+      margin: 28px 0 32px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--gold);
+      background: rgba(255, 255, 255, 0.075);
+      border-radius: 0 18px 18px 0;
+      color: #fff4dc;
+      font-size: 20px;
+      font-weight: 900;
     }
 
     .btn-row {
@@ -189,142 +227,297 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 46px;
-      padding: 12px 20px;
+      min-height: 48px;
+      padding: 13px 21px;
       border-radius: 999px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 0.04em;
       transition: 0.22s ease;
+      cursor: pointer;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
-      color: #171007;
-      box-shadow: 0 16px 34px rgba(216, 173, 95, 0.28);
+      background: linear-gradient(135deg, var(--red2), var(--red));
+      color: #fff;
+      box-shadow: 0 16px 34px rgba(199, 55, 47, 0.32);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 20px 42px rgba(216, 173, 95, 0.36);
+      box-shadow: 0 22px 46px rgba(199, 55, 47, 0.42);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      color: #160f07;
+      box-shadow: 0 16px 34px rgba(241, 195, 109, 0.25);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 46px rgba(241, 195, 109, 0.34);
     }
 
     .btn-outline {
-      border: 1px solid rgba(255, 255, 255, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       color: var(--text);
       background: rgba(255, 255, 255, 0.06);
     }
 
     .btn-outline:hover {
       border-color: var(--gold);
-      color: var(--gold-soft);
+      color: var(--gold2);
       transform: translateY(-2px);
     }
 
-    .hero-card {
-      background: rgba(10, 16, 24, 0.82);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 26px;
+    .impact-card {
+      background:
+        linear-gradient(145deg, rgba(241, 195, 109, 0.12), rgba(199, 55, 47, 0.09)),
+        rgba(8, 19, 34, 0.82);
+      border: 1px solid rgba(241, 195, 109, 0.24);
+      border-radius: 30px;
+      padding: 28px;
       box-shadow: var(--shadow);
     }
 
-    .hero-card h3 {
-      font-size: 22px;
-      color: var(--gold-soft);
-      margin-bottom: 16px;
+    .impact-card h3 {
+      font-size: 24px;
+      color: var(--gold2);
+      margin-bottom: 18px;
     }
 
-    .info-list {
+    .impact-list {
       display: grid;
-      gap: 12px;
+      gap: 16px;
     }
 
-    .info-item {
-      display: grid;
-      grid-template-columns: 92px 1fr;
-      gap: 12px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    .impact-item {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.075);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
     }
 
-    .info-item:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
+    .impact-item strong {
+      display: block;
+      color: #fff8e9;
+      font-size: 18px;
+      margin-bottom: 5px;
     }
 
-    .info-label {
+    .impact-item span {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 15px;
     }
 
-    .info-value {
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    section {
-      padding: 74px 0;
-    }
+    section { padding: 78px 0; }
 
     .section-head {
-      margin-bottom: 30px;
-      max-width: 760px;
+      max-width: 790px;
+      margin-bottom: 32px;
+    }
+
+    .center-head {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .section-kicker {
-      color: var(--gold-soft);
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      color: var(--gold2);
+      font-weight: 900;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       font-size: 13px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     h2 {
-      font-size: clamp(28px, 3vw, 42px);
-      margin-bottom: 12px;
+      font-size: clamp(30px, 3.5vw, 46px);
+      margin-bottom: 14px;
     }
 
     .section-desc {
       color: var(--muted);
       font-size: 17px;
+      margin: 0;
     }
 
-    .cards {
+    .mission {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(241, 195, 109, 0.14), transparent 42%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+    }
+
+    .mission-box {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      grid-template-columns: 0.94fr 1.06fr;
+      gap: 30px;
+      align-items: stretch;
     }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
+    .mission-statement {
+      background:
+        linear-gradient(135deg, rgba(241, 195, 109, 0.14), rgba(199, 55, 47, 0.12)),
+        rgba(255, 255, 255, 0.065);
+      border: 1px solid rgba(241, 195, 109, 0.22);
       border-radius: var(--radius);
-      padding: 24px;
-      min-height: 210px;
+      padding: 34px;
+      box-shadow: var(--shadow);
     }
 
-    .card-number {
-      color: var(--gold-soft);
-      font-size: 14px;
-      font-weight: 900;
+    .mission-statement h3 {
+      font-size: 30px;
+      color: var(--gold2);
       margin-bottom: 16px;
     }
 
-    .card h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
+    .mission-statement p {
+      color: #eee2cf;
+      margin: 0;
+      font-size: 18px;
     }
 
-    .card p {
+    .mission-points {
+      display: grid;
+      gap: 16px;
+    }
+
+    .point {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 23px;
+    }
+
+    .point h3 {
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+
+    .point p {
       margin: 0;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    .change-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .change-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.055));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.25);
+    }
+
+    .change-card::before {
+      content: "";
+      position: absolute;
+      right: -70px;
+      top: -70px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(241, 195, 109, 0.2), transparent 66%);
+    }
+
+    .change-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(241, 195, 109, 0.16);
+      border: 1px solid rgba(241, 195, 109, 0.3);
+      color: var(--gold2);
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .change-card h3 {
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .change-card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .info-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .info-label {
+      color: var(--muted2);
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .info-value {
+      color: #fff6e6;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 13px;
+    }
+
+    .time-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 18px;
+      background: rgba(255, 255, 255, 0.065);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 17px 20px;
+    }
+
+    .time {
+      color: var(--gold2);
+      font-weight: 900;
+    }
+
+    .event-title {
+      font-weight: 900;
+      font-size: 17px;
+      margin-bottom: 3px;
+    }
+
+    .event-desc {
       color: var(--muted);
       font-size: 15px;
     }
 
-    .split {
+    .partner-section {
+      background:
+        radial-gradient(circle at 80% 0%, rgba(199, 55, 47, 0.14), transparent 36%),
+        linear-gradient(180deg, var(--bg2), #071120);
+    }
+
+    .partner-grid {
       display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
+      grid-template-columns: 0.95fr 1.05fr;
       gap: 28px;
       align-items: start;
     }
@@ -333,13 +526,15 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 28px;
+      padding: 30px;
     }
 
     .panel-strong {
       background:
-        linear-gradient(135deg, rgba(216, 173, 95, 0.13), rgba(183, 53, 45, 0.09)),
-        var(--card);
+        linear-gradient(135deg, rgba(241, 195, 109, 0.13), rgba(199, 55, 47, 0.1)),
+        rgba(255, 255, 255, 0.065);
+      border-color: rgba(241, 195, 109, 0.23);
+      box-shadow: var(--shadow);
     }
 
     .check-list {
@@ -347,13 +542,13 @@
       padding: 0;
       list-style: none;
       display: grid;
-      gap: 12px;
+      gap: 13px;
     }
 
     .check-list li {
       position: relative;
-      padding-left: 28px;
-      color: #e8e1d5;
+      padding-left: 30px;
+      color: #eee4d4;
     }
 
     .check-list li::before {
@@ -361,59 +556,30 @@
       position: absolute;
       left: 0;
       top: 0;
-      color: var(--gold-soft);
+      color: var(--gold2);
       font-weight: 900;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 12px;
-    }
-
-    .time-row {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 18px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 16px 18px;
-    }
-
-    .time {
-      color: var(--gold-soft);
-      font-weight: 900;
-    }
-
-    .event-title {
-      font-weight: 800;
-      margin-bottom: 2px;
-    }
-
-    .event-desc {
-      color: var(--muted);
-      font-size: 15px;
     }
 
     .benefit-table {
       width: 100%;
       border-collapse: collapse;
       overflow: hidden;
-      border-radius: 18px;
+      border-radius: 22px;
       background: var(--card);
       border: 1px solid var(--line);
     }
 
     .benefit-table th,
     .benefit-table td {
-      padding: 16px 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 17px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.11);
       text-align: left;
       vertical-align: top;
     }
 
     .benefit-table th {
-      color: var(--gold-soft);
+      width: 180px;
+      color: var(--gold2);
       background: rgba(255, 255, 255, 0.07);
       white-space: nowrap;
     }
@@ -424,50 +590,53 @@
     }
 
     .cta {
-      padding: 80px 0 90px;
+      padding: 84px 0 96px;
       background:
-        radial-gradient(circle at center, rgba(216, 173, 95, 0.18), transparent 48%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+        radial-gradient(circle at center, rgba(241, 195, 109, 0.2), transparent 46%),
+        linear-gradient(180deg, #071120, #03070d);
     }
 
     .cta-box {
       text-align: center;
       background:
-        linear-gradient(135deg, rgba(216, 173, 95, 0.16), rgba(183, 53, 45, 0.13)),
-        rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(216, 173, 95, 0.28);
-      border-radius: 30px;
-      padding: 42px 26px;
+        linear-gradient(135deg, rgba(241, 195, 109, 0.17), rgba(199, 55, 47, 0.14)),
+        rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(241, 195, 109, 0.28);
+      border-radius: 34px;
+      padding: 48px 28px;
       box-shadow: var(--shadow);
     }
 
     .cta-box h2 {
-      margin-bottom: 12px;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .cta-box p {
       color: var(--muted);
-      max-width: 760px;
-      margin: 0 auto 26px;
-      font-size: 17px;
+      max-width: 780px;
+      margin: 0 auto 28px;
+      font-size: 18px;
     }
 
     .contact-line {
       display: inline-flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 10px 18px;
-      color: var(--gold-soft);
+      gap: 10px 20px;
+      color: var(--gold2);
       font-weight: 900;
-      font-size: 20px;
-      margin-bottom: 22px;
+      font-size: 21px;
+      margin-bottom: 24px;
     }
 
     footer {
       border-top: 1px solid var(--line);
       padding: 26px 0;
-      color: var(--muted);
+      color: var(--muted2);
       font-size: 14px;
+      background: #03070d;
     }
 
     .footer-inner {
@@ -477,23 +646,20 @@
       flex-wrap: wrap;
     }
 
-    @media (max-width: 900px) {
-      .hero {
-        padding-top: 84px;
-      }
+    @media (max-width: 960px) {
+      .hero { min-height: auto; }
 
       .hero-grid,
-      .split {
+      .mission-box,
+      .partner-grid {
         grid-template-columns: 1fr;
       }
 
-      .cards {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .change-cards { grid-template-columns: 1fr; }
 
-      .nav-links {
-        display: none;
-      }
+      .info-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .nav-links { display: none; }
     }
 
     @media (max-width: 640px) {
@@ -501,23 +667,22 @@
         width: min(100% - 28px, var(--max));
       }
 
-      .hero {
-        padding: 76px 0 54px;
-      }
+      .hero { padding: 72px 0 58px; }
 
-      .hero-card,
+      .hero-text { font-size: 16px; }
+
+      .hero-quote { font-size: 18px; }
+
+      .impact-card,
+      .mission-statement,
       .panel,
-      .card {
-        padding: 22px;
+      .change-card {
+        padding: 23px;
       }
 
-      .cards {
-        grid-template-columns: 1fr;
-      }
+      section { padding: 60px 0; }
 
-      .info-item {
-        grid-template-columns: 82px 1fr;
-      }
+      .info-grid { grid-template-columns: 1fr; }
 
       .time-row {
         grid-template-columns: 1fr;
@@ -538,9 +703,11 @@
         padding-bottom: 6px;
       }
 
-      .benefit-table td {
-        padding-top: 0;
-      }
+      .benefit-table td { padding-top: 0; }
+
+      .btn { width: 100%; }
+
+      .btn-row { width: 100%; }
     }
   </style>
 </head>
@@ -549,142 +716,194 @@
   <nav class="nav">
     <div class="container nav-inner">
       <a class="brand" href="index.html">
-        <span>《超限戰》台南公益放映</span>
-        <span>協辦邀請專頁</span>
+        <span class="top">《超限戰》台南公益放映</span>
+        <span class="bottom">協辦邀請專頁</span>
       </a>
 
       <div class="nav-links">
-        <a href="#about">活動價值</a>
+        <a href="#mission">活動意義</a>
+        <a href="#impact">協辦影響</a>
+        <a href="#info">活動資訊</a>
         <a href="#partner">協辦方式</a>
-        <a href="#schedule">活動流程</a>
         <a href="#contact" class="nav-cta">洽詢協辦</a>
       </div>
     </div>
   </nav>
 
   <header class="hero">
+    <div class="hero-light"></div>
+
     <div class="container hero-grid">
       <div>
         <div class="eyebrow">PARTNERSHIP INVITATION｜協辦邀請</div>
 
-        <h1>邀請貴單位共同協辦</h1>
+        <h1>
+          讓更多人<br>
+          <span class="highlight">看見真相</span>，也學會判斷資訊
+        </h1>
 
         <div class="hero-subtitle">
           《超限戰》公益放映暨媒體識讀映後交流活動
         </div>
 
         <p class="hero-text">
-          透過電影放映與講者帶領的映後交流，推廣資訊安全、假訊息辨識、媒體識讀與公民思辨能力。
-          誠摯邀請企業、協會、社團及公益團體共同參與，讓更多民眾有機會接觸重要公共議題。
+          這不只是一場電影放映，而是一場面對假訊息、資訊戰與數位時代挑戰的公民思辨行動。
+          誠摯邀請貴單位共同協辦，讓更多人有機會看見、思考，並學會判斷。
         </p>
 
+        <div class="hero-quote">
+          協辦，不只是支持一場電影，而是讓更多人有機會看見、思考，並學會判斷。
+        </div>
+
         <div class="btn-row">
-          <a class="btn btn-primary" href="tel:0937615510">洽詢協辦：林小姐 0937-615-510</a>
+          <a class="btn btn-primary" href="tel:0937615510">我想了解協辦方式</a>
           <a class="btn btn-outline" href="index.html">查看活動報名頁</a>
         </div>
       </div>
 
-      <aside class="hero-card">
-        <h3>活動概要</h3>
+      <aside class="impact-card">
+        <h3>協辦這場活動，您支持的是：</h3>
 
-        <div class="info-list">
-          <div class="info-item">
-            <div class="info-label">活動日期</div>
-            <div class="info-value">2026 年 7 月 12 日（日）</div>
+        <div class="impact-list">
+          <div class="impact-item">
+            <strong>讓更多人看見不同聲音</strong>
+            <span>幫助民眾接觸不易看見的議題與觀點，打開理解與思考的入口。</span>
           </div>
 
-          <div class="info-item">
-            <div class="info-label">活動時間</div>
-            <div class="info-value">14:00－17:00</div>
+          <div class="impact-item">
+            <strong>讓更多人學會辨識資訊</strong>
+            <span>從電影延伸到假訊息、資訊戰、媒體識讀與網路安全。</span>
           </div>
 
-          <div class="info-item">
-            <div class="info-label">報到時間</div>
-            <div class="info-value">13:30－14:00</div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-label">活動地點</div>
-            <div class="info-value">台南勞工育樂中心</div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-label">主辦單位</div>
-            <div class="info-value">乾淨世界</div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-label">協辦單位</div>
-            <div class="info-value">永翔愛心會、其他單位邀請中</div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-label">活動票價</div>
-            <div class="info-value">每人 NT$150</div>
+          <div class="impact-item">
+            <strong>讓社會多一場理性對話</strong>
+            <span>透過映後交流，建立尊重、思辨與公共討論的空間。</span>
           </div>
         </div>
       </aside>
     </div>
   </header>
 
-  <section id="about">
+  <section class="mission" id="mission">
     <div class="container">
-      <div class="section-head">
-        <div class="section-kicker">WHY PARTNER</div>
-        <h2>為什麼值得協辦？</h2>
+      <div class="mission-box">
+        <div class="mission-statement">
+          <div class="section-kicker">WHY IT MATTERS</div>
+          <h3>這場活動為什麼重要？</h3>
+          <p>
+            在 AI、短影音與社群媒體快速擴散的時代，資訊不只是被接收，也正在影響每個人的判斷、選擇與社會共識。
+            我們希望透過電影與映後交流，讓更多人重新思考：我們看見的是全部嗎？我們如何分辨資訊？我們是否仍保有獨立判斷的能力？
+          </p>
+        </div>
+
+        <div class="mission-points">
+          <div class="point">
+            <h3>不是單純放映，而是一次公共議題教育</h3>
+            <p>透過電影內容，引導觀眾認識資訊戰、假訊息、媒體操控與認知作戰等議題。</p>
+          </div>
+
+          <div class="point">
+            <h3>不是單向宣傳，而是保留討論與思考空間</h3>
+            <p>映後由講者帶領交流，讓參與者有機會從不同角度理解與思辨。</p>
+          </div>
+
+          <div class="point">
+            <h3>不是一次性活動，而是後續推廣的開始</h3>
+            <p>本活動可作為未來校園、企業、社團巡迴推廣與公益合作的基礎。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <div class="container">
+      <div class="section-head center-head">
+        <div class="section-kicker">YOUR IMPACT</div>
+        <h2>您的協辦，會帶來三個具體改變</h2>
         <p class="section-desc">
-          這不只是一次電影放映，而是一場結合公益、教育、社會議題與映後交流的活動。
-          透過協辦參與，貴單位能共同推動媒體識讀與資訊安全教育，也能讓會員、員工或重要來賓參與一場有深度的公共議題交流。
+          對協辦單位而言，這不是單純掛名；而是一起促成一場有教育性、有公共價值、有後續延伸可能的公益行動。
         </p>
       </div>
 
-      <div class="cards">
-        <article class="card">
-          <div class="card-number">01</div>
-          <h3>連結公共議題</h3>
-          <p>AI、短影音、假訊息、資訊戰與媒體識讀，都是現代社會需要面對的重要課題。</p>
+      <div class="change-cards">
+        <article class="change-card">
+          <div class="change-number">1</div>
+          <h3>讓一部重要作品被更多人看見</h3>
+          <p>
+            許多人不是不關心，而是沒有機會接觸。協辦單位的支持，能讓更多民眾走進現場，真正了解電影所探討的資訊戰、真相與社會安全議題。
+          </p>
         </article>
 
-        <article class="card">
-          <div class="card-number">02</div>
-          <h3>提供深度活動</h3>
-          <p>協辦單位可邀請會員、幹部、員工或青年朋友參與，作為一場具教育意義的交流活動。</p>
+        <article class="change-card">
+          <div class="change-number">2</div>
+          <h3>讓會員與民眾提升媒體判斷力</h3>
+          <p>
+            在資訊快速擴散的時代，假訊息與認知作戰已經影響每個人的生活。這場活動能幫助參與者建立更清楚的資訊判讀能力。
+          </p>
         </article>
 
-        <article class="card">
-          <div class="card-number">03</div>
-          <h3>建立公益形象</h3>
-          <p>透過活動列名與現場露出，展現貴單位對社會教育、公民素養與公益推廣的支持。</p>
-        </article>
-
-        <article class="card">
-          <div class="card-number">04</div>
-          <h3>促進社群交流</h3>
-          <p>活動邀請企業經營者、社團成員、教育工作者、家長與青年朋友，促進跨領域連結。</p>
+        <article class="change-card">
+          <div class="change-number">3</div>
+          <h3>讓公益不只是捐款，而是推動思辨</h3>
+          <p>
+            協辦不是單純提供資源，而是共同推動一場能啟發觀眾、連結社群、促成理性對話的公益教育行動。
+          </p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="partner">
-    <div class="container split">
-      <div class="panel panel-strong">
-        <div class="section-kicker">PARTNER METHOD</div>
-        <h2>協辦方式</h2>
+  <section id="info">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">EVENT INFO</div>
+        <h2>活動資訊</h2>
         <p class="section-desc">
-          協辦方式可依各單位資源與意願彈性討論，不一定只有經費支持，也可以從轉發、邀請、推薦或現場協助開始。
+          本活動結合電影放映與講者帶領的映後交流，邀請企業、社團、教育工作者、家長、青年朋友及關心資訊安全與媒體識讀之民眾參與。
         </p>
       </div>
 
-      <div class="panel">
-        <ul class="check-list">
-          <li>協助轉發活動資訊，讓更多民眾知道本次公益放映。</li>
-          <li>邀請會員、友會、幹部、員工或重要來賓共同參與。</li>
-          <li>推薦適合參與之企業、社團、教育工作者或青年朋友。</li>
-          <li>協助活動現場接待、報到、引導或秩序維護。</li>
-          <li>支持活動場地、放映、宣傳、講者與執行相關費用。</li>
-          <li>共同列名協辦單位，參與媒體識讀與資訊安全公益推廣。</li>
-        </ul>
+      <div class="info-grid">
+        <div class="info-box">
+          <div class="info-label">活動日期</div>
+          <div class="info-value">2026 年 7 月 12 日（日）</div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-label">活動時間</div>
+          <div class="info-value">14:00－17:00</div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-label">報到時間</div>
+          <div class="info-value">13:30－14:00</div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-label">活動地點</div>
+          <div class="info-value">台南勞工育樂中心</div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-label">主辦單位</div>
+          <div class="info-value">乾淨世界</div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-label">協辦單位</div>
+          <div class="info-value">永翔愛心會、其他單位邀請中</div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-label">活動票價</div>
+          <div class="info-value">每人 NT$150</div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-label">聯絡窗口</div>
+          <div class="info-value">林小姐 0937-615-510</div>
+        </div>
       </div>
     </div>
   </section>
@@ -743,13 +962,40 @@
     </div>
   </section>
 
+  <section class="partner-section" id="partner">
+    <div class="container partner-grid">
+      <div class="panel panel-strong">
+        <div class="section-kicker">HOW TO PARTNER</div>
+        <h2>協辦方式</h2>
+        <p class="section-desc">
+          協辦方式可依各單位資源與意願彈性討論。可以從轉發、邀請、推薦、現場協助開始，也可以透過經費支持，讓活動執行與推廣更加完整。
+        </p>
+        <br>
+        <div class="btn-row">
+          <a class="btn btn-gold" href="tel:0937615510">洽詢協辦方案</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <ul class="check-list">
+          <li>協助轉發活動資訊，讓更多民眾知道本次公益放映。</li>
+          <li>邀請會員、友會、幹部、員工或重要來賓共同參與。</li>
+          <li>推薦適合參與之企業、社團、教育工作者或青年朋友。</li>
+          <li>協助活動現場接待、報到、引導或秩序維護。</li>
+          <li>支持活動場地、放映、宣傳、講者與執行相關費用。</li>
+          <li>共同列名協辦單位，參與媒體識讀與資訊安全公益推廣。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section id="benefits">
     <div class="container">
       <div class="section-head">
-        <div class="section-kicker">BENEFITS</div>
+        <div class="section-kicker">PARTNER BENEFITS</div>
         <h2>協辦單位可獲得什麼？</h2>
         <p class="section-desc">
-          主頁不直接公開完整金額方案，避免讓邀請一開始像募款。若貴單位有興趣，可洽詢林小姐索取簡式企畫書與協辦方案附件。
+          協辦回饋不只是名稱露出，更重要的是讓貴單位與公益教育、公共議題與在地社群產生正面連結。
         </p>
       </div>
 
@@ -787,7 +1033,9 @@
   <section class="cta" id="contact">
     <div class="container">
       <div class="cta-box">
-        <h2>誠摯邀請貴單位共同參與協辦</h2>
+        <div class="section-kicker">JOIN US</div>
+
+        <h2>誠摯邀請貴單位，一起讓這場公益行動發生</h2>
 
         <p>
           讓更多民眾有機會透過電影與交流，認識資訊戰、假訊息與媒體識讀的重要性。
