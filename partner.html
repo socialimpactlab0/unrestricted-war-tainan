@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>協辦邀請｜《超限戰》公益放映暨媒體識讀映後交流活動</title>
+  <meta name="description" content="誠摯邀請企業、協會、社團及公益團體共同協辦《超限戰》公益放映暨媒體識讀映後交流活動，推動資訊安全、假訊息辨識與公民思辨能力。" />
+
+  <style>
+    :root {
+      --bg: #070b12;
+      --bg-soft: #101722;
+      --card: rgba(255, 255, 255, 0.07);
+      --card-strong: rgba(255, 255, 255, 0.12);
+      --text: #f5f2ea;
+      --muted: #c9c0b2;
+      --gold: #d8ad5f;
+      --gold-soft: #f3d28b;
+      --red: #b7352d;
+      --line: rgba(255, 255, 255, 0.14);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(183, 53, 45, 0.26), transparent 34%),
+        radial-gradient(circle at top right, rgba(216, 173, 95, 0.22), transparent 30%),
+        linear-gradient(180deg, #05070b 0%, #0a1018 45%, #06080c 100%);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7, 11, 18, 0.78);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .brand span:first-child {
+      font-size: 15px;
+      color: var(--gold-soft);
+    }
+
+    .brand span:last-child {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-soft);
+    }
+
+    .nav-cta {
+      padding: 9px 16px;
+      border: 1px solid rgba(216, 173, 95, 0.55);
+      border-radius: 999px;
+      color: var(--gold-soft);
+    }
+
+    .hero {
+      position: relative;
+      padding: 110px 0 78px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(7, 11, 18, 0.96), rgba(7, 11, 18, 0.78), rgba(7, 11, 18, 0.95)),
+        url("hero-poster.jpg") center/cover no-repeat;
+      opacity: 0.62;
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(7, 11, 18, 0.96) 90%);
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border: 1px solid rgba(216, 173, 95, 0.35);
+      border-radius: 999px;
+      color: var(--gold-soft);
+      background: rgba(216, 173, 95, 0.08);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.25;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(18px, 2vw, 23px);
+      color: var(--gold-soft);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero-text {
+      color: #e4ded2;
+      font-size: 17px;
+      max-width: 720px;
+      margin-bottom: 30px;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      transition: 0.22s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      color: #171007;
+      box-shadow: 0 16px 34px rgba(216, 173, 95, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px rgba(216, 173, 95, 0.36);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold-soft);
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      background: rgba(10, 16, 24, 0.82);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      font-size: 22px;
+      color: var(--gold-soft);
+      margin-bottom: 16px;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .info-item {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .info-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .info-label {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .info-value {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    section {
+      padding: 74px 0;
+    }
+
+    .section-head {
+      margin-bottom: 30px;
+      max-width: 760px;
+    }
+
+    .section-kicker {
+      color: var(--gold-soft);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 3vw, 42px);
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      min-height: 210px;
+    }
+
+    .card-number {
+      color: var(--gold-soft);
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .panel-strong {
+      background:
+        linear-gradient(135deg, rgba(216, 173, 95, 0.13), rgba(183, 53, 45, 0.09)),
+        var(--card);
+    }
+
+    .check-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 28px;
+      color: #e8e1d5;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--gold-soft);
+      font-weight: 900;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .time-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 18px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 16px 18px;
+    }
+
+    .time {
+      color: var(--gold-soft);
+      font-weight: 900;
+    }
+
+    .event-title {
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+
+    .event-desc {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .benefit-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+
+    .benefit-table th,
+    .benefit-table td {
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .benefit-table th {
+      color: var(--gold-soft);
+      background: rgba(255, 255, 255, 0.07);
+      white-space: nowrap;
+    }
+
+    .benefit-table tr:last-child th,
+    .benefit-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .cta {
+      padding: 80px 0 90px;
+      background:
+        radial-gradient(circle at center, rgba(216, 173, 95, 0.18), transparent 48%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+    }
+
+    .cta-box {
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(216, 173, 95, 0.16), rgba(183, 53, 45, 0.13)),
+        rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(216, 173, 95, 0.28);
+      border-radius: 30px;
+      padding: 42px 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h2 {
+      margin-bottom: 12px;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto 26px;
+      font-size: 17px;
+    }
+
+    .contact-line {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 18px;
+      color: var(--gold-soft);
+      font-weight: 900;
+      font-size: 20px;
+      margin-bottom: 22px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding-top: 84px;
+      }
+
+      .hero-grid,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .hero {
+        padding: 76px 0 54px;
+      }
+
+      .hero-card,
+      .panel,
+      .card {
+        padding: 22px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .info-item {
+        grid-template-columns: 82px 1fr;
+      }
+
+      .time-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .benefit-table,
+      .benefit-table tbody,
+      .benefit-table tr,
+      .benefit-table th,
+      .benefit-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .benefit-table th {
+        border-bottom: 0;
+        padding-bottom: 6px;
+      }
+
+      .benefit-table td {
+        padding-top: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">
+        <span>《超限戰》台南公益放映</span>
+        <span>協辦邀請專頁</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">活動價值</a>
+        <a href="#partner">協辦方式</a>
+        <a href="#schedule">活動流程</a>
+        <a href="#contact" class="nav-cta">洽詢協辦</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">PARTNERSHIP INVITATION｜協辦邀請</div>
+
+        <h1>邀請貴單位共同協辦</h1>
+
+        <div class="hero-subtitle">
+          《超限戰》公益放映暨媒體識讀映後交流活動
+        </div>
+
+        <p class="hero-text">
+          透過電影放映與講者帶領的映後交流，推廣資訊安全、假訊息辨識、媒體識讀與公民思辨能力。
+          誠摯邀請企業、協會、社團及公益團體共同參與，讓更多民眾有機會接觸重要公共議題。
+        </p>
+
+        <div class="btn-row">
+          <a class="btn btn-primary" href="tel:0937615510">洽詢協辦：林小姐 0937-615-510</a>
+          <a class="btn btn-outline" href="index.html">查看活動報名頁</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>活動概要</h3>
+
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-label">活動日期</div>
+            <div class="info-value">2026 年 7 月 12 日（日）</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">活動時間</div>
+            <div class="info-value">14:00－17:00</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">報到時間</div>
+            <div class="info-value">13:30－14:00</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">活動地點</div>
+            <div class="info-value">台南勞工育樂中心</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">主辦單位</div>
+            <div class="info-value">乾淨世界</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">協辦單位</div>
+            <div class="info-value">永翔愛心會、其他單位邀請中</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">活動票價</div>
+            <div class="info-value">每人 NT$150</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">WHY PARTNER</div>
+        <h2>為什麼值得協辦？</h2>
+        <p class="section-desc">
+          這不只是一次電影放映，而是一場結合公益、教育、社會議題與映後交流的活動。
+          透過協辦參與，貴單位能共同推動媒體識讀與資訊安全教育，也能讓會員、員工或重要來賓參與一場有深度的公共議題交流。
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-number">01</div>
+          <h3>連結公共議題</h3>
+          <p>AI、短影音、假訊息、資訊戰與媒體識讀，都是現代社會需要面對的重要課題。</p>
+        </article>
+
+        <article class="card">
+          <div class="card-number">02</div>
+          <h3>提供深度活動</h3>
+          <p>協辦單位可邀請會員、幹部、員工或青年朋友參與，作為一場具教育意義的交流活動。</p>
+        </article>
+
+        <article class="card">
+          <div class="card-number">03</div>
+          <h3>建立公益形象</h3>
+          <p>透過活動列名與現場露出，展現貴單位對社會教育、公民素養與公益推廣的支持。</p>
+        </article>
+
+        <article class="card">
+          <div class="card-number">04</div>
+          <h3>促進社群交流</h3>
+          <p>活動邀請企業經營者、社團成員、教育工作者、家長與青年朋友，促進跨領域連結。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="partner">
+    <div class="container split">
+      <div class="panel panel-strong">
+        <div class="section-kicker">PARTNER METHOD</div>
+        <h2>協辦方式</h2>
+        <p class="section-desc">
+          協辦方式可依各單位資源與意願彈性討論，不一定只有經費支持，也可以從轉發、邀請、推薦或現場協助開始。
+        </p>
+      </div>
+
+      <div class="panel">
+        <ul class="check-list">
+          <li>協助轉發活動資訊，讓更多民眾知道本次公益放映。</li>
+          <li>邀請會員、友會、幹部、員工或重要來賓共同參與。</li>
+          <li>推薦適合參與之企業、社團、教育工作者或青年朋友。</li>
+          <li>協助活動現場接待、報到、引導或秩序維護。</li>
+          <li>支持活動場地、放映、宣傳、講者與執行相關費用。</li>
+          <li>共同列名協辦單位，參與媒體識讀與資訊安全公益推廣。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">EVENT SCHEDULE</div>
+        <h2>活動流程</h2>
+        <p class="section-desc">
+          映後交流將由講者帶領觀眾，從電影內容延伸討論資訊戰、假訊息與媒體識讀等議題。
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="time-row">
+          <div class="time">13:30－14:00</div>
+          <div>
+            <div class="event-title">來賓報到</div>
+            <div class="event-desc">現場接待、簽到與入座。</div>
+          </div>
+        </div>
+
+        <div class="time-row">
+          <div class="time">14:00－14:10</div>
+          <div>
+            <div class="event-title">主辦單位致詞、介紹貴賓及大合照</div>
+            <div class="event-desc">感謝協辦單位與來賓支持，說明活動宗旨。</div>
+          </div>
+        </div>
+
+        <div class="time-row">
+          <div class="time">14:10－16:30</div>
+          <div>
+            <div class="event-title">電影《超限戰》放映</div>
+            <div class="event-desc">透過電影內容，引導觀眾看見資訊、真相、人性與國家安全相關議題。</div>
+          </div>
+        </div>
+
+        <div class="time-row">
+          <div class="time">16:30－17:00</div>
+          <div>
+            <div class="event-title">映後交流與分享</div>
+            <div class="event-desc">由講者帶領觀眾延伸討論資訊戰、假訊息、網路安全與媒體識讀議題。</div>
+          </div>
+        </div>
+
+        <div class="time-row">
+          <div class="time">17:00</div>
+          <div>
+            <div class="event-title">活動結束</div>
+            <div class="event-desc">感謝來賓參與，後續可提供活動照片與成果紀錄。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="benefits">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">BENEFITS</div>
+        <h2>協辦單位可獲得什麼？</h2>
+        <p class="section-desc">
+          主頁不直接公開完整金額方案，避免讓邀請一開始像募款。若貴單位有興趣，可洽詢林小姐索取簡式企畫書與協辦方案附件。
+        </p>
+      </div>
+
+      <table class="benefit-table">
+        <tbody>
+          <tr>
+            <th>公益形象</th>
+            <td>與媒體識讀、資訊安全、公民素養等重要公共議題連結，展現對社會教育的支持。</td>
+          </tr>
+
+          <tr>
+            <th>會員服務</th>
+            <td>可邀請會員、員工、幹部或重要來賓參與，作為一場有深度的教育型活動。</td>
+          </tr>
+
+          <tr>
+            <th>正面曝光</th>
+            <td>可於企畫書、宣傳圖、報名頁面、現場簡報或活動紀錄中列名。</td>
+          </tr>
+
+          <tr>
+            <th>社群交流</th>
+            <td>接觸企業、社團、教育工作者、家長與在地民眾，促進後續合作機會。</td>
+          </tr>
+
+          <tr>
+            <th>成果紀錄</th>
+            <td>活動後可提供照片、成果摘要與感謝狀，作為年度公益參與或社會責任紀錄。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="container">
+      <div class="cta-box">
+        <h2>誠摯邀請貴單位共同參與協辦</h2>
+
+        <p>
+          讓更多民眾有機會透過電影與交流，認識資訊戰、假訊息與媒體識讀的重要性。
+          歡迎來電洽詢協辦方式，或索取簡式企畫書與協辦方案附件。
+        </p>
+
+        <div class="contact-line">
+          <span>聯絡人：林小姐</span>
+          <span>電話：0937-615-510</span>
+        </div>
+
+        <div class="btn-row" style="justify-content:center;">
+          <a class="btn btn-primary" href="tel:0937615510">立即電話洽詢</a>
+          <a class="btn btn-outline" href="index.html">回到活動報名頁</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 《超限戰》台南公益放映協辦邀請</div>
+      <div>
+        <a href="index.html">活動報名頁</a>
+        ｜
+        <a href="#contact">洽詢協辦</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
