@@ -15,7 +15,6 @@
       --text: #24344a;
       --muted: #617086;
       --blue: #315d86;
-      --blue-soft: #eaf3fb;
       --gold: #d7a43e;
       --gold-soft: #f8da92;
       --gold-pale: #fff3cf;
@@ -25,13 +24,8 @@
       --max: 1120px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -44,10 +38,7 @@
         linear-gradient(180deg, #fffefb 0%, var(--bg) 55%, #f3eadb 100%);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .container {
       width: min(var(--max), calc(100% - 36px));
@@ -97,9 +88,7 @@
       color: var(--muted);
     }
 
-    .nav-links a:hover {
-      color: var(--blue);
-    }
+    .nav-links a:hover { color: var(--blue); }
 
     .nav-cta {
       padding: 9px 16px;
@@ -152,10 +141,7 @@
       margin-bottom: 20px;
     }
 
-    h1, h2, h3 {
-      margin: 0;
-      line-height: 1.22;
-    }
+    h1, h2, h3 { margin: 0; line-height: 1.22; }
 
     h1 {
       font-size: clamp(38px, 5vw, 68px);
@@ -221,9 +207,7 @@
     }
 
     .btn-primary:hover,
-    .btn-outline:hover {
-      transform: translateY(-2px);
-    }
+    .btn-outline:hover { transform: translateY(-2px); }
 
     .btn-outline {
       background: #fff;
@@ -246,10 +230,7 @@
       margin-bottom: 18px;
     }
 
-    .impact-list {
-      display: grid;
-      gap: 15px;
-    }
+    .impact-list { display: grid; gap: 15px; }
 
     .impact-item {
       display: grid;
@@ -286,9 +267,7 @@
       font-size: 15px;
     }
 
-    section {
-      padding: 74px 0;
-    }
+    section { padding: 74px 0; }
 
     .section-head {
       max-width: 800px;
@@ -322,9 +301,7 @@
       margin: 0;
     }
 
-    .mission {
-      background: linear-gradient(180deg, #fffdf8, #f7f0e2);
-    }
+    .mission { background: linear-gradient(180deg, #fffdf8, #f7f0e2); }
 
     .mission-box {
       display: grid;
@@ -352,10 +329,7 @@
       color: #4f5f73;
     }
 
-    .mission-points {
-      display: grid;
-      gap: 16px;
-    }
+    .mission-points { display: grid; gap: 16px; }
 
     .point,
     .info-box,
@@ -366,9 +340,7 @@
       box-shadow: 0 8px 24px rgba(36, 52, 74, 0.04);
     }
 
-    .point {
-      padding: 23px;
-    }
+    .point { padding: 23px; }
 
     .point h3 {
       font-size: 21px;
@@ -382,14 +354,17 @@
       font-size: 15.5px;
     }
 
-    .change-cards {
+    .change-cards,
+    .support-cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
-    .change-card {
-      min-height: 292px;
+    .change-cards { grid-template-columns: repeat(3, 1fr); }
+    .support-cards { grid-template-columns: repeat(3, 1fr); }
+
+    .change-card,
+    .support-card {
       background: linear-gradient(180deg, #ffffff, #fbfaf6);
       border: 1px solid var(--line);
       border-radius: 28px;
@@ -399,7 +374,11 @@
       overflow: hidden;
     }
 
-    .change-card::before {
+    .change-card { min-height: 292px; }
+    .support-card { min-height: 250px; }
+
+    .change-card::before,
+    .support-card::before {
       content: "";
       position: absolute;
       right: -60px;
@@ -422,21 +401,54 @@
       margin-bottom: 22px;
     }
 
-    .change-card h3 {
+    .change-card h3,
+    .support-card h3 {
       font-size: 24px;
       margin-bottom: 14px;
       color: #446283;
     }
 
-    .change-card p {
+    .change-card p,
+    .support-card p {
       margin: 0;
       color: var(--muted);
       font-size: 16px;
     }
 
-    .info {
-      background: linear-gradient(180deg, #f8f3e8, #fffdf8);
+    .support-price {
+      position: relative;
+      z-index: 1;
+      font-size: 34px;
+      font-weight: 900;
+      color: #987127;
+      margin-bottom: 12px;
+      line-height: 1.1;
     }
+
+    .support-tag {
+      display: inline-flex;
+      position: relative;
+      z-index: 1;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--gold-pale);
+      color: #7d5c1d;
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .support-note {
+      margin-top: 20px;
+      padding: 18px 20px;
+      background: #fffaf1;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      color: #526376;
+      font-weight: 700;
+    }
+
+    .info { background: linear-gradient(180deg, #f8f3e8, #fffdf8); }
 
     .info-grid {
       display: grid;
@@ -444,9 +456,7 @@
       gap: 16px;
     }
 
-    .info-box {
-      padding: 22px;
-    }
+    .info-box { padding: 22px; }
 
     .info-label {
       color: #8c98a8;
@@ -460,10 +470,7 @@
       font-weight: 900;
     }
 
-    .timeline {
-      display: grid;
-      gap: 13px;
-    }
+    .timeline { display: grid; gap: 13px; }
 
     .time-row {
       display: grid;
@@ -493,9 +500,7 @@
       font-size: 15px;
     }
 
-    .partner-section {
-      background: linear-gradient(180deg, #fffdf8, #f5eddf);
-    }
+    .partner-section { background: linear-gradient(180deg, #fffdf8, #f5eddf); }
 
     .partner-grid {
       display: grid;
@@ -510,9 +515,7 @@
       box-shadow: var(--shadow);
     }
 
-    .panel-strong {
-      background: linear-gradient(135deg, #fffaf0, #ffffff);
-    }
+    .panel-strong { background: linear-gradient(135deg, #fffaf0, #ffffff); }
 
     .check-list {
       margin: 0;
@@ -537,9 +540,7 @@
       font-weight: 900;
     }
 
-    .benefits {
-      background: linear-gradient(180deg, #f8f3e8, #fffdf8);
-    }
+    .benefits { background: linear-gradient(180deg, #f8f3e8, #fffdf8); }
 
     .benefit-table {
       width: 100%;
@@ -567,9 +568,7 @@
     }
 
     .benefit-table tr:last-child th,
-    .benefit-table tr:last-child td {
-      border-bottom: 0;
-    }
+    .benefit-table tr:last-child td { border-bottom: 0; }
 
     .cta {
       padding: 84px 0 96px;
@@ -620,6 +619,8 @@
       flex-wrap: wrap;
     }
 
+    .mobile-cta { display: none; }
+
     @media (max-width: 960px) {
       .hero-grid,
       .mission-box,
@@ -627,55 +628,93 @@
         grid-template-columns: 1fr;
       }
 
-      .change-cards {
-        grid-template-columns: 1fr;
-      }
+      .change-cards,
+      .support-cards { grid-template-columns: 1fr; }
 
-      .info-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .info-grid { grid-template-columns: repeat(2, 1fr); }
 
-      .nav-links {
-        display: none;
-      }
+      .nav-links { display: none; }
     }
 
     @media (max-width: 640px) {
-      .container {
-        width: min(100% - 28px, var(--max));
-      }
+      body { padding-bottom: 78px; }
+      .container { width: min(100% - 28px, var(--max)); }
+
+      .nav-inner { min-height: 62px; }
+      .brand .top { font-size: 14px; }
+      .brand .bottom { font-size: 11px; }
 
       .hero {
-        padding: 72px 0 56px;
+        padding: 52px 0 46px;
+        background-position: center top;
       }
+
+      h1 {
+        font-size: 36px;
+        line-height: 1.18;
+      }
+
+      h2 { font-size: 28px; }
+
+      .hero-subtitle { font-size: 18px; }
 
       .hero-text {
         font-size: 16px;
+        margin-bottom: 18px;
       }
 
       .hero-quote {
-        font-size: 18px;
+        font-size: 16px;
+        padding: 14px 16px;
+        margin-bottom: 22px;
       }
 
-      section {
-        padding: 60px 0;
-      }
+      section { padding: 52px 0; }
 
       .hero-panel,
       .mission-statement,
       .panel,
-      .change-card {
+      .change-card,
+      .support-card {
         padding: 23px;
       }
 
-      .info-grid {
-        grid-template-columns: 1fr;
+      .hero-panel h3,
+      .mission-statement h3 {
+        font-size: 24px;
       }
+
+      .impact-item {
+        grid-template-columns: 36px 1fr;
+        gap: 12px;
+        padding: 14px;
+      }
+
+      .impact-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 17px;
+      }
+
+      .impact-item strong { font-size: 16px; }
+      .impact-item span { font-size: 14px; }
+
+      .info-grid { grid-template-columns: 1fr; }
 
       .time-row {
         grid-template-columns: 1fr;
         gap: 6px;
       }
+
+      .support-price { font-size: 30px; }
+
+      .support-card h3,
+      .change-card h3 { font-size: 21px; }
+
+      .support-card,
+      .change-card { min-height: auto; }
+
+      .support-note { font-size: 15px; }
 
       .benefit-table,
       .benefit-table tbody,
@@ -691,13 +730,51 @@
         padding-bottom: 6px;
       }
 
-      .benefit-table td {
-        padding-top: 0;
+      .benefit-table td { padding-top: 0; }
+
+      .contact-line {
+        font-size: 18px;
+        display: grid;
       }
 
       .btn,
-      .btn-row {
-        width: 100%;
+      .btn-row { width: 100%; }
+
+      .mobile-cta {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        z-index: 99;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 10px;
+        background: rgba(255, 253, 248, 0.96);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: 0 12px 36px rgba(36, 52, 74, 0.18);
+        backdrop-filter: blur(12px);
+      }
+
+      .mobile-cta a {
+        min-height: 46px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 14px;
+      }
+
+      .mobile-cta .plan {
+        background: var(--blue);
+        color: #fff;
+      }
+
+      .mobile-cta .call {
+        background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+        color: #5a4312;
       }
     }
   </style>
@@ -714,8 +791,8 @@
       <div class="nav-links">
         <a href="#mission">活動意義</a>
         <a href="#impact">協辦影響</a>
+        <a href="#support">協辦方案</a>
         <a href="#info">活動資訊</a>
-        <a href="#partner">協辦方式</a>
         <a href="#contact" class="nav-cta">洽詢協辦</a>
       </div>
     </div>
@@ -726,18 +803,12 @@
       <div>
         <div class="eyebrow">PARTNERSHIP INVITATION｜協辦邀請</div>
 
-        <h1>
-          一起點亮<br>
-          <span class="highlight">思辨的力量</span>
-        </h1>
+        <h1>一起點亮<br><span class="highlight">思辨的力量</span></h1>
 
-        <div class="hero-subtitle">
-          讓更多人看見真相，也學會判斷資訊
-        </div>
+        <div class="hero-subtitle">讓更多人看見真相，也學會判斷資訊</div>
 
         <p class="hero-text">
-          《超限戰》公益放映暨媒體識讀映後交流活動，不只是一場電影放映，
-          更是一場面對假訊息、資訊戰與數位時代挑戰的公民思辨行動。
+          《超限戰》公益放映結合映後交流，邀請更多人一起認識假訊息、資訊戰與媒體識讀，培養獨立判斷的能力。
         </p>
 
         <div class="hero-quote">
@@ -745,8 +816,8 @@
         </div>
 
         <div class="btn-row">
-          <a class="btn btn-primary" href="tel:0937615510">我想了解協辦方式</a>
-          <a class="btn btn-outline" href="index.html">查看活動報名頁</a>
+          <a class="btn btn-primary" href="#support">查看協辦方案</a>
+          <a class="btn btn-outline" href="tel:0937615510">電話洽詢協辦</a>
         </div>
       </div>
 
@@ -846,6 +917,46 @@
     </div>
   </section>
 
+  <section class="partner-section" id="support">
+    <div class="container">
+      <div class="section-head center-head">
+        <div class="section-kicker">SUPPORT PLAN</div>
+        <h2>協辦支持方案</h2>
+        <p class="section-desc">
+          為共同推廣媒體識讀、資訊安全與公民素養，本活動提供以下協辦支持方案。
+          實際協辦方式可依各單位意願與資源彈性討論。
+        </p>
+      </div>
+
+      <div class="support-cards">
+        <article class="support-card">
+          <div class="support-tag">公益協辦單位</div>
+          <div class="support-price">NT$10,000</div>
+          <h3>支持基礎推廣</h3>
+          <p>支持活動場地、放映、行政與基礎宣傳費用，協助活動順利推動。</p>
+        </article>
+
+        <article class="support-card">
+          <div class="support-tag">主要協辦單位</div>
+          <div class="support-price">NT$20,000</div>
+          <h3>支持活動執行</h3>
+          <p>支持活動推廣、講者安排、現場執行與團體邀請，擴大活動影響力。</p>
+        </article>
+
+        <article class="support-card">
+          <div class="support-tag">榮譽協辦單位</div>
+          <div class="support-price">NT$30,000 以上</div>
+          <h3>支持長期推廣</h3>
+          <p>支持活動擴大辦理，並作為後續校園、企業、社團巡迴推廣合作基礎。</p>
+        </article>
+      </div>
+
+      <div class="support-note">
+        除經費支持外，也歡迎協辦單位協助活動訊息轉發、會員邀請、貴賓推薦、現場接待或後續推廣合作。
+      </div>
+    </div>
+  </section>
+
   <section class="info" id="info">
     <div class="container">
       <div class="section-head">
@@ -910,7 +1021,7 @@
     <div class="container partner-grid">
       <div class="panel panel-strong">
         <div class="section-kicker">HOW TO PARTNER</div>
-        <h2>協辦方式</h2>
+        <h2>其他協辦方式</h2>
         <p class="section-desc">
           協辦方式可依各單位資源與意願彈性討論。可以從轉發、邀請、推薦、現場協助開始，也可以透過經費支持，讓活動執行與推廣更加完整。
         </p>
@@ -994,6 +1105,11 @@
       </div>
     </div>
   </section>
+
+  <div class="mobile-cta" aria-label="手機快速操作">
+    <a class="plan" href="#support">協辦方案</a>
+    <a class="call" href="tel:0937615510">電話洽詢</a>
+  </div>
 
   <footer>
     <div class="container footer-inner">
