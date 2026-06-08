@@ -1205,6 +1205,107 @@
     }
 
 
+
+    /* Desktop video section redesign: trailer first, feedback below */
+    @media (min-width: 961px) {
+      .video-section {
+        padding-top: 92px;
+      }
+
+      .video-section .section-head {
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 32px;
+        text-align: center;
+      }
+
+      .video-grid {
+        display: block !important;
+      }
+
+      .video-card {
+        width: min(900px, 100%);
+        margin: 0 auto 28px;
+        border-radius: 30px;
+      }
+
+      .video-card .video-thumb {
+        aspect-ratio: 16 / 8.4;
+      }
+
+      .video-card .video-body {
+        padding: 24px 28px 26px;
+      }
+
+      .video-card .video-body h3 {
+        font-size: 24px;
+      }
+
+      .feedback-list {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        align-items: stretch;
+      }
+
+      .feedback-card {
+        display: block !important;
+        min-height: auto;
+        border-radius: 24px;
+        overflow: hidden;
+      }
+
+      .feedback-card .video-thumb {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        aspect-ratio: 16 / 9;
+      }
+
+      .feedback-text {
+        padding: 18px 20px 22px !important;
+      }
+
+      .feedback-text h3 {
+        font-size: 18px !important;
+        line-height: 1.35;
+        margin-bottom: 6px;
+      }
+
+      .feedback-text p {
+        font-size: 14.5px !important;
+        line-height: 1.65;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .video-grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+      }
+
+      .feedback-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .feedback-card {
+        display: block !important;
+      }
+
+      .feedback-card .video-thumb {
+        aspect-ratio: 16 / 9;
+        min-height: auto;
+      }
+
+      .feedback-text {
+        padding: 16px 18px 20px !important;
+      }
+    }
+
+
   </style>
 </head>
 
@@ -1334,7 +1435,7 @@
             <div class="play-button"><span></span></div>
           </div>
           <div class="video-body">
-            <h3>電影預告｜看見作品力量</h3>
+            <h3>電影預告｜先看見作品的力量</h3>
             <p>透過預告片，快速了解作品所探討的資訊、真相與社會安全議題。</p>
           </div>
         </article>
@@ -1348,8 +1449,8 @@
               <div class="play-button"><span></span></div>
             </div>
             <div class="feedback-text">
-              <h3>觀眾分享｜看見後的思考</h3>
-              <p>真實觀後感，讓人看見活動帶來的觸動。</p>
+              <h3>看見後的思考</h3>
+              <p>真實觀後感，呈現活動帶來的觸動。</p>
             </div>
           </article>
 
@@ -1361,8 +1462,8 @@
               <div class="play-button"><span></span></div>
             </div>
             <div class="feedback-text">
-              <h3>觀眾分享｜不只是電影</h3>
-              <p>觀眾回饋，呈現活動延伸出的公共討論價值。</p>
+              <h3>不只是電影</h3>
+              <p>觀眾回饋，呈現活動延伸出的討論價值。</p>
             </div>
           </article>
 
@@ -1374,8 +1475,8 @@
               <div class="play-button"><span></span></div>
             </div>
             <div class="feedback-text">
-              <h3>觀眾分享｜讓更多人願意思考</h3>
-              <p>支持活動，就是支持更多人看見與思考。</p>
+              <h3>讓更多人願意思考</h3>
+              <p>支持活動，就是支持更多人願意看見與思考。</p>
             </div>
           </article>
         </div>
