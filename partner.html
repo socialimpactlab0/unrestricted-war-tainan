@@ -619,6 +619,199 @@
       flex-wrap: wrap;
     }
 
+
+    .video-section {
+      background: linear-gradient(180deg, #fffdf8, #f8f3e8);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .video-card {
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .video-thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background:
+        linear-gradient(135deg, rgba(49, 93, 134, 0.18), rgba(248, 218, 146, 0.34)),
+        #f5efe2;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .video-thumb video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: saturate(1.05) contrast(1.02);
+    }
+
+    .video-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(36,52,74,0.02), rgba(36,52,74,0.28));
+      pointer-events: none;
+    }
+
+    .play-button {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--blue);
+      box-shadow: 0 16px 36px rgba(36, 52, 74, 0.18);
+      transition: 0.2s ease;
+    }
+
+    .play-button span {
+      display: block;
+      margin-left: 4px;
+      width: 0;
+      height: 0;
+      border-top: 13px solid transparent;
+      border-bottom: 13px solid transparent;
+      border-left: 20px solid currentColor;
+    }
+
+    .video-thumb:hover .play-button {
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+
+    .video-body {
+      padding: 22px;
+    }
+
+    .video-body h3 {
+      color: #446283;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .video-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    .feedback-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .feedback-card {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 18px;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 8px 24px rgba(36, 52, 74, 0.05);
+      overflow: hidden;
+    }
+
+    .feedback-card .video-thumb {
+      border-radius: 0;
+      height: 100%;
+      min-height: 118px;
+    }
+
+    .feedback-card .play-button {
+      width: 50px;
+      height: 50px;
+    }
+
+    .feedback-card .play-button span {
+      border-top-width: 9px;
+      border-bottom-width: 9px;
+      border-left-width: 15px;
+    }
+
+    .feedback-text {
+      padding: 18px 18px 18px 0;
+    }
+
+    .feedback-text h3 {
+      color: #446283;
+      font-size: 19px;
+      margin-bottom: 5px;
+    }
+
+    .feedback-text p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+    .video-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(20, 28, 40, 0.72);
+      backdrop-filter: blur(8px);
+    }
+
+    .video-modal.is-open {
+      display: flex;
+    }
+
+    .modal-box {
+      width: min(960px, 100%);
+      background: #111827;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.34);
+      position: relative;
+    }
+
+    .modal-box video {
+      width: 100%;
+      display: block;
+      background: #000;
+      max-height: 80vh;
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      z-index: 3;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      color: #24344a;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+    }
+
     .mobile-cta { display: none; }
 
     @media (max-width: 960px) {
@@ -739,6 +932,37 @@
 
       .btn,
       .btn-row { width: 100%; }
+
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feedback-card {
+        grid-template-columns: 1fr;
+      }
+
+      .feedback-card .video-thumb {
+        min-height: auto;
+      }
+
+      .feedback-text {
+        padding: 0 18px 18px;
+      }
+
+      .play-button {
+        width: 58px;
+        height: 58px;
+      }
+
+      .video-body {
+        padding: 18px;
+      }
+
+      .modal-close {
+        right: 8px;
+        top: 8px;
+      }
 
       .mobile-cta {
         position: fixed;
@@ -880,6 +1104,75 @@
             <h3>不是一次性活動，而是後續推廣的開始</h3>
             <p>本活動可作為未來校園、企業、社團巡迴推廣與公益合作的基礎。</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="video-section" id="video-proof">
+    <div class="container">
+      <div class="section-head center-head">
+        <div class="section-kicker">VIDEO PREVIEW</div>
+        <h2>先看見這部作品的力量</h2>
+        <p class="section-desc">
+          透過預告與觀眾分享，讓協辦單位更快理解這場活動不只是放映，而是能引發思考與對話的公益行動。
+        </p>
+      </div>
+
+      <div class="video-grid">
+        <article class="video-card">
+          <div class="video-thumb" data-video="trailer-video.mp4" aria-label="播放電影預告">
+            <video muted playsinline preload="metadata">
+              <source src="trailer-video.mp4#t=0.1" type="video/mp4">
+            </video>
+            <div class="play-button"><span></span></div>
+          </div>
+          <div class="video-body">
+            <h3>電影預告｜快速理解活動核心</h3>
+            <p>先透過預告片了解《超限戰》所探討的資訊、真相、人性與社會安全議題。</p>
+          </div>
+        </article>
+
+        <div class="feedback-list">
+          <article class="feedback-card">
+            <div class="video-thumb" data-video="feedback-1.mp4" aria-label="播放觀眾反饋一">
+              <video muted playsinline preload="metadata">
+                <source src="feedback-1.mp4#t=0.1" type="video/mp4">
+              </video>
+              <div class="play-button"><span></span></div>
+            </div>
+            <div class="feedback-text">
+              <h3>觀眾分享｜看見後的思考</h3>
+              <p>用真實觀後感，讓協辦單位看見影片所帶來的觸動。</p>
+            </div>
+          </article>
+
+          <article class="feedback-card">
+            <div class="video-thumb" data-video="feedback-2.mp4" aria-label="播放觀眾反饋二">
+              <video muted playsinline preload="metadata">
+                <source src="feedback-2.mp4#t=0.1" type="video/mp4">
+              </video>
+              <div class="play-button"><span></span></div>
+            </div>
+            <div class="feedback-text">
+              <h3>觀眾分享｜不只是電影</h3>
+              <p>透過觀眾回饋，呈現這場活動可延伸出的公共討論價值。</p>
+            </div>
+          </article>
+
+          <article class="feedback-card">
+            <div class="video-thumb" data-video="feedback-3.mp4" aria-label="播放觀眾反饋三">
+              <video muted playsinline preload="metadata">
+                <source src="feedback-3.mp4#t=0.1" type="video/mp4">
+              </video>
+              <div class="play-button"><span></span></div>
+            </div>
+            <div class="feedback-text">
+              <h3>觀眾分享｜讓更多人願意思考</h3>
+              <p>讓協辦單位感受到，支持活動就是支持更多人看見與思考。</p>
+            </div>
+          </article>
         </div>
       </div>
     </div>
@@ -1110,6 +1403,48 @@
     <a class="plan" href="#support">協辦方案</a>
     <a class="call" href="tel:0937615510">電話洽詢</a>
   </div>
+
+
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" type="button" aria-label="關閉影片">×</button>
+      <video id="modalVideo" controls playsinline></video>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const closeBtn = modal.querySelector('.modal-close');
+
+    document.querySelectorAll('.video-thumb[data-video]').forEach((thumb) => {
+      thumb.addEventListener('click', () => {
+        const src = thumb.getAttribute('data-video');
+        modalVideo.src = src;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        modalVideo.play().catch(() => {});
+      });
+    });
+
+    function closeVideoModal() {
+      modalVideo.pause();
+      modalVideo.removeAttribute('src');
+      modalVideo.load();
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    closeBtn.addEventListener('click', closeVideoModal);
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeVideoModal();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) closeVideoModal();
+    });
+  </script>
 
   <footer>
     <div class="container footer-inner">
