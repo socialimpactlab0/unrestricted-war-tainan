@@ -1,681 +1,704 @@
-from pathlib import Path
-
-html = r'''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>協辦邀請｜《超限戰》公益放映暨媒體識讀映後交流活動</title>
-  <meta name="description" content="邀請企業、協會、社團及公益團體共同協辦《超限戰》公益放映暨媒體識讀映後交流活動，一起推動資訊安全、假訊息辨識與公民思辨能力。" />
+  <meta name="description" content="邀請企業、協會、社團及公益團體共同協辦《超限戰》公益放映暨媒體識讀映後交流活動。" />
 
   <style>
-    :root{
-      --bg:#fbf7ee;
-      --bg-soft:#fffdf8;
-      --white:#ffffff;
-      --cream:#fff7e7;
-      --text:#24344a;
-      --muted:#627184;
-      --muted2:#8a96a5;
-      --gold:#d7a43e;
-      --gold-soft:#f8da92;
-      --gold-pale:#fff1c9;
-      --blue:#5f8fbd;
-      --blue-deep:#315d86;
-      --blue-soft:#eaf3fb;
-      --green:#6c9c82;
-      --line:#eadfcb;
-      --shadow:0 18px 48px rgba(36,52,74,0.08);
-      --shadow-strong:0 26px 68px rgba(36,52,74,0.12);
-      --radius:24px;
-      --max:1120px;
+    :root {
+      --bg: #fbf7ee;
+      --paper: #fffdf8;
+      --white: #ffffff;
+      --text: #24344a;
+      --muted: #617086;
+      --blue: #315d86;
+      --blue-soft: #eaf3fb;
+      --gold: #d7a43e;
+      --gold-soft: #f8da92;
+      --gold-pale: #fff3cf;
+      --line: #eadfcb;
+      --shadow: 0 18px 45px rgba(36, 52, 74, 0.09);
+      --radius: 24px;
+      --max: 1120px;
     }
 
-    *{box-sizing:border-box}
+    * {
+      box-sizing: border-box;
+    }
 
-    html{scroll-behavior:smooth}
+    html {
+      scroll-behavior: smooth;
+    }
 
-    body{
-      margin:0;
-      font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
-      color:var(--text);
-      line-height:1.75;
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.75;
       background:
-        radial-gradient(circle at 18% 0%, rgba(248,218,146,0.46), transparent 30%),
-        radial-gradient(circle at 92% 6%, rgba(95,143,189,0.18), transparent 26%),
-        linear-gradient(180deg, #fffefb 0%, #fbf7ee 56%, #f4ead8 100%);
+        radial-gradient(circle at 18% 0%, rgba(248, 218, 146, 0.5), transparent 30%),
+        radial-gradient(circle at 90% 8%, rgba(49, 93, 134, 0.14), transparent 26%),
+        linear-gradient(180deg, #fffefb 0%, var(--bg) 55%, #f3eadb 100%);
     }
 
-    a{color:inherit;text-decoration:none}
-
-    .container{
-      width:min(var(--max), calc(100% - 36px));
-      margin:0 auto;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:rgba(255,253,248,0.94);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--line);
+    .container {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
     }
 
-    .nav-inner{
-      min-height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 253, 248, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
     }
 
-    .brand{
-      display:flex;
-      flex-direction:column;
-      line-height:1.2;
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
     }
 
-    .brand .top{
-      font-weight:900;
-      color:var(--blue-deep);
-      font-size:15px;
-      letter-spacing:.04em;
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
     }
 
-    .brand .bottom{
-      font-size:12px;
-      color:var(--muted);
+    .brand .top {
+      font-weight: 900;
+      color: var(--blue);
+      font-size: 15px;
+      letter-spacing: 0.04em;
     }
 
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      font-size:14px;
-      color:var(--muted);
+    .brand .bottom {
+      font-size: 12px;
+      color: var(--muted);
     }
 
-    .nav-links a:hover{color:var(--blue-deep)}
-
-    .nav-cta{
-      padding:9px 16px;
-      border-radius:999px;
-      background:linear-gradient(135deg, var(--gold-soft), var(--gold));
-      color:#5a4312 !important;
-      font-weight:900;
-      box-shadow:0 10px 22px rgba(217,164,65,0.24);
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--muted);
     }
 
-    .hero{
-      position:relative;
-      padding:92px 0 76px;
-      overflow:hidden;
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-cta {
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      color: #5a4312 !important;
+      font-weight: 900;
+      box-shadow: 0 10px 22px rgba(215, 164, 62, 0.22);
+    }
+
+    .hero {
+      position: relative;
+      padding: 92px 0 76px;
+      overflow: hidden;
       background:
-        linear-gradient(115deg, rgba(255,255,255,0.96) 0%, rgba(255,253,248,0.91) 48%, rgba(255,247,231,0.88) 100%),
+        linear-gradient(115deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 253, 248, 0.92) 52%, rgba(255, 247, 231, 0.88) 100%),
         url("hero-poster.jpg") center/cover no-repeat;
-      background-blend-mode:screen;
+      background-blend-mode: screen;
     }
 
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:-120px -80px auto auto;
-      width:520px;
-      height:520px;
-      background:radial-gradient(circle, rgba(248,218,146,0.64), transparent 64%);
-      pointer-events:none;
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: -130px;
+      top: -140px;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(248, 218, 146, 0.7), transparent 65%);
+      pointer-events: none;
     }
 
-    .hero::after{
-      content:"";
-      position:absolute;
-      left:-180px;
-      bottom:-240px;
-      width:520px;
-      height:520px;
-      background:radial-gradient(circle, rgba(95,143,189,0.16), transparent 64%);
-      pointer-events:none;
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 42px;
+      align-items: center;
     }
 
-    .hero-grid{
-      position:relative;
-      display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:42px;
-      align-items:center;
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: #fff7e8;
+      color: #8f6a1e;
+      border: 1px solid #f1dfb5;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
     }
 
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:7px 14px;
-      border-radius:999px;
-      background:#fff7e8;
-      color:#8f6a1e;
-      border:1px solid #f1dfb5;
-      font-size:14px;
-      font-weight:900;
-      letter-spacing:.08em;
-      margin-bottom:20px;
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.22;
     }
 
-    h1,h2,h3{
-      margin:0;
-      line-height:1.22;
+    h1 {
+      font-size: clamp(38px, 5vw, 68px);
+      margin-bottom: 16px;
+      color: var(--blue);
+      letter-spacing: 0.01em;
     }
 
-    h1{
-      font-size:clamp(38px,5vw,68px);
-      margin-bottom:16px;
-      color:var(--blue-deep);
-      letter-spacing:.01em;
+    .highlight {
+      color: var(--gold);
+      text-shadow: 0 8px 22px rgba(215, 164, 62, 0.18);
     }
 
-    .highlight{
-      color:var(--gold);
-      text-shadow:0 8px 22px rgba(217,164,65,0.18);
+    .hero-subtitle {
+      font-size: clamp(18px, 2.1vw, 25px);
+      color: #48698f;
+      font-weight: 900;
+      margin-bottom: 18px;
     }
 
-    .hero-subtitle{
-      font-size:clamp(18px,2.1vw,25px);
-      color:#48698f;
-      font-weight:900;
-      margin-bottom:18px;
+    .hero-text {
+      color: #4c5d73;
+      font-size: 18px;
+      max-width: 720px;
+      margin: 0 0 26px;
     }
 
-    .hero-text{
-      color:#4c5d73;
-      font-size:18px;
-      max-width:720px;
-      margin:0 0 26px;
+    .hero-quote {
+      margin: 0 0 28px;
+      padding: 18px 20px;
+      border-left: 5px solid var(--gold);
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 0 18px 18px 0;
+      color: #48607f;
+      font-size: 19px;
+      font-weight: 900;
+      box-shadow: var(--shadow);
     }
 
-    .hero-quote{
-      margin:0 0 28px;
-      padding:18px 20px;
-      border-left:5px solid var(--gold);
-      background:rgba(255,255,255,0.92);
-      border-radius:0 18px 18px 0;
-      color:#48607f;
-      font-size:19px;
-      font-weight:900;
-      box-shadow:var(--shadow);
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
     }
 
-    .btn-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      align-items:center;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 21px;
+      border-radius: 999px;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      transition: 0.2s ease;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-      padding:13px 21px;
-      border-radius:999px;
-      font-weight:900;
-      letter-spacing:.03em;
-      transition:.2s ease;
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      color: #5a4312;
+      box-shadow: 0 14px 30px rgba(215, 164, 62, 0.26);
     }
 
-    .btn-primary{
-      background:linear-gradient(135deg, var(--gold-soft), var(--gold));
-      color:#5a4312;
-      box-shadow:0 14px 30px rgba(217,164,65,0.26);
+    .btn-primary:hover,
+    .btn-outline:hover {
+      transform: translateY(-2px);
     }
 
-    .btn-primary:hover{transform:translateY(-2px)}
-
-    .btn-outline{
-      background:#fff;
-      color:var(--blue-deep);
-      border:1px solid #d8e2ef;
-      box-shadow:0 10px 24px rgba(53,91,133,0.08);
+    .btn-outline {
+      background: #fff;
+      color: var(--blue);
+      border: 1px solid #d8e2ef;
+      box-shadow: 0 10px 24px rgba(49, 93, 134, 0.08);
     }
 
-    .btn-outline:hover{
-      transform:translateY(-2px);
-      border-color:#b8cde3;
+    .hero-panel {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: var(--shadow);
     }
 
-    .hero-panel{
-      background:rgba(255,255,255,0.92);
-      border:1px solid var(--line);
-      border-radius:30px;
-      padding:28px;
-      box-shadow:var(--shadow-strong);
+    .hero-panel h3 {
+      font-size: 24px;
+      color: var(--blue);
+      margin-bottom: 18px;
     }
 
-    .hero-panel h3{
-      font-size:24px;
-      color:var(--blue-deep);
-      margin-bottom:18px;
+    .impact-list {
+      display: grid;
+      gap: 15px;
     }
 
-    .impact-list{
-      display:grid;
-      gap:15px;
+    .impact-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 16px;
+      background: linear-gradient(180deg, #ffffff, #fffaf1);
+      border: 1px solid #eee4d2;
+      border-radius: 18px;
     }
 
-    .impact-item{
-      display:grid;
-      grid-template-columns:42px 1fr;
-      gap:14px;
-      align-items:start;
-      padding:16px;
-      background:linear-gradient(180deg, #ffffff, #fffaf1);
-      border:1px solid #eee4d2;
-      border-radius:18px;
+    .impact-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--gold-pale);
+      color: #916a1e;
+      font-weight: 900;
+      font-size: 20px;
     }
 
-    .impact-icon{
-      width:42px;
-      height:42px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:var(--gold-pale);
-      color:#916a1e;
-      font-weight:900;
-      font-size:20px;
+    .impact-item strong {
+      display: block;
+      font-size: 18px;
+      color: #425f82;
+      margin-bottom: 3px;
     }
 
-    .impact-item strong{
-      display:block;
-      font-size:18px;
-      color:#425f82;
-      margin-bottom:3px;
+    .impact-item span {
+      color: var(--muted);
+      font-size: 15px;
     }
 
-    .impact-item span{
-      color:var(--muted);
-      font-size:15px;
+    section {
+      padding: 74px 0;
     }
 
-    section{padding:74px 0}
-
-    .section-head{
-      max-width:800px;
-      margin-bottom:32px;
+    .section-head {
+      max-width: 800px;
+      margin-bottom: 32px;
     }
 
-    .center-head{
-      text-align:center;
-      margin-left:auto;
-      margin-right:auto;
+    .center-head {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .section-kicker{
-      color:#987127;
-      font-size:13px;
-      font-weight:900;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      margin-bottom:10px;
+    .section-kicker {
+      color: #987127;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
-    h2{
-      font-size:clamp(30px,3.2vw,44px);
-      margin-bottom:12px;
-      color:var(--blue-deep);
+    h2 {
+      font-size: clamp(30px, 3.2vw, 44px);
+      margin-bottom: 12px;
+      color: var(--blue);
     }
 
-    .section-desc{
-      font-size:17px;
-      color:var(--muted);
-      margin:0;
+    .section-desc {
+      font-size: 17px;
+      color: var(--muted);
+      margin: 0;
     }
 
-    .mission{
-      background:linear-gradient(180deg, #fffdf8, #f7f0e2);
+    .mission {
+      background: linear-gradient(180deg, #fffdf8, #f7f0e2);
     }
 
-    .mission-box{
-      display:grid;
-      grid-template-columns:.94fr 1.06fr;
-      gap:30px;
+    .mission-box {
+      display: grid;
+      grid-template-columns: 0.94fr 1.06fr;
+      gap: 30px;
     }
 
-    .mission-statement{
-      background:linear-gradient(135deg, #fffaf0, #ffffff);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:34px;
-      box-shadow:var(--shadow);
+    .mission-statement {
+      background: linear-gradient(135deg, #fffaf0, #ffffff);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 34px;
+      box-shadow: var(--shadow);
     }
 
-    .mission-statement h3{
-      font-size:30px;
-      color:var(--blue-deep);
-      margin-bottom:16px;
+    .mission-statement h3 {
+      font-size: 30px;
+      color: var(--blue);
+      margin-bottom: 16px;
     }
 
-    .mission-statement p{
-      margin:0;
-      font-size:18px;
-      color:#4f5f73;
+    .mission-statement p {
+      margin: 0;
+      font-size: 18px;
+      color: #4f5f73;
     }
 
-    .mission-points{
-      display:grid;
-      gap:16px;
+    .mission-points {
+      display: grid;
+      gap: 16px;
     }
 
-    .point{
-      background:#fff;
-      border:1px solid #ebf0f5;
-      border-radius:22px;
-      padding:23px;
-      box-shadow:0 8px 24px rgba(36,52,74,0.04);
+    .point,
+    .info-box,
+    .panel {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 8px 24px rgba(36, 52, 74, 0.04);
     }
 
-    .point h3{
-      font-size:21px;
-      margin-bottom:8px;
-      color:#456486;
+    .point {
+      padding: 23px;
     }
 
-    .point p{
-      margin:0;
-      color:var(--muted);
-      font-size:15.5px;
+    .point h3 {
+      font-size: 21px;
+      margin-bottom: 8px;
+      color: #456486;
     }
 
-    .change-cards{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
+    .point p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15.5px;
     }
 
-    .change-card{
-      min-height:292px;
-      background:linear-gradient(180deg, #ffffff, #fbfaf6);
-      border:1px solid var(--line);
-      border-radius:28px;
-      padding:30px;
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
+    .change-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
 
-    .change-card::before{
-      content:"";
-      position:absolute;
-      right:-60px;
-      top:-60px;
-      width:170px;
-      height:170px;
-      background:radial-gradient(circle, rgba(248,218,146,0.38), transparent 65%);
+    .change-card {
+      min-height: 292px;
+      background: linear-gradient(180deg, #ffffff, #fbfaf6);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
     }
 
-    .change-number{
-      width:42px;
-      height:42px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      background:#fff4d9;
-      color:#946d21;
-      font-weight:900;
-      border:1px solid #f1dfb5;
-      margin-bottom:22px;
+    .change-card::before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 170px;
+      height: 170px;
+      background: radial-gradient(circle, rgba(248, 218, 146, 0.38), transparent 65%);
     }
 
-    .change-card h3{
-      font-size:24px;
-      margin-bottom:14px;
-      color:#446283;
+    .change-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #fff4d9;
+      color: #946d21;
+      font-weight: 900;
+      border: 1px solid #f1dfb5;
+      margin-bottom: 22px;
     }
 
-    .change-card p{
-      margin:0;
-      color:var(--muted);
-      font-size:16px;
+    .change-card h3 {
+      font-size: 24px;
+      margin-bottom: 14px;
+      color: #446283;
     }
 
-    .info{
-      background:linear-gradient(180deg, #f8f3e8, #fffdf8);
+    .change-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
     }
 
-    .info-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:16px;
+    .info {
+      background: linear-gradient(180deg, #f8f3e8, #fffdf8);
     }
 
-    .info-box{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:22px;
-      box-shadow:0 8px 24px rgba(36,52,74,0.04);
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
 
-    .info-label{
-      color:#8c98a8;
-      font-size:14px;
-      margin-bottom:6px;
+    .info-box {
+      padding: 22px;
     }
 
-    .info-value{
-      color:#3f5f83;
-      font-size:18px;
-      font-weight:900;
+    .info-label {
+      color: #8c98a8;
+      font-size: 14px;
+      margin-bottom: 6px;
     }
 
-    .timeline{
-      display:grid;
-      gap:13px;
+    .info-value {
+      color: #3f5f83;
+      font-size: 18px;
+      font-weight: 900;
     }
 
-    .time-row{
-      display:grid;
-      grid-template-columns:145px 1fr;
-      gap:18px;
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:17px 20px;
-      box-shadow:0 8px 24px rgba(36,52,74,0.04);
+    .timeline {
+      display: grid;
+      gap: 13px;
     }
 
-    .time{
-      color:#987127;
-      font-weight:900;
+    .time-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 17px 20px;
+      box-shadow: 0 8px 24px rgba(36, 52, 74, 0.04);
     }
 
-    .event-title{
-      font-weight:900;
-      font-size:17px;
-      color:#466688;
-      margin-bottom:3px;
+    .time {
+      color: #987127;
+      font-weight: 900;
     }
 
-    .event-desc{
-      color:var(--muted);
-      font-size:15px;
+    .event-title {
+      font-weight: 900;
+      font-size: 17px;
+      color: #466688;
+      margin-bottom: 3px;
     }
 
-    .partner-section{
-      background:linear-gradient(180deg, #fffdf8, #f5eddf);
+    .event-desc {
+      color: var(--muted);
+      font-size: 15px;
     }
 
-    .partner-grid{
-      display:grid;
-      grid-template-columns:.95fr 1.05fr;
-      gap:28px;
-      align-items:start;
+    .partner-section {
+      background: linear-gradient(180deg, #fffdf8, #f5eddf);
     }
 
-    .panel{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:30px;
-      box-shadow:var(--shadow);
+    .partner-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 28px;
+      align-items: start;
     }
 
-    .panel-strong{
-      background:linear-gradient(135deg, #fffaf0, #ffffff);
+    .panel {
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
-    .check-list{
-      margin:0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:13px;
+    .panel-strong {
+      background: linear-gradient(135deg, #fffaf0, #ffffff);
     }
 
-    .check-list li{
-      position:relative;
-      padding-left:30px;
-      color:#526376;
+    .check-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 13px;
     }
 
-    .check-list li::before{
-      content:"✓";
-      position:absolute;
-      left:0;
-      top:0;
-      color:#987127;
-      font-weight:900;
+    .check-list li {
+      position: relative;
+      padding-left: 30px;
+      color: #526376;
     }
 
-    .benefits{
-      background:linear-gradient(180deg, #f8f3e8, #fffdf8);
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #987127;
+      font-weight: 900;
     }
 
-    .benefit-table{
-      width:100%;
-      border-collapse:collapse;
-      overflow:hidden;
-      border-radius:22px;
-      background:#fff;
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
+    .benefits {
+      background: linear-gradient(180deg, #f8f3e8, #fffdf8);
+    }
+
+    .benefit-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
     }
 
     .benefit-table th,
-    .benefit-table td{
-      padding:17px 20px;
-      border-bottom:1px solid #eee6d8;
-      text-align:left;
-      vertical-align:top;
+    .benefit-table td {
+      padding: 17px 20px;
+      border-bottom: 1px solid #eee6d8;
+      text-align: left;
+      vertical-align: top;
     }
 
-    .benefit-table th{
-      width:220px;
-      color:#456486;
-      background:#fbf7ee;
-      white-space:nowrap;
+    .benefit-table th {
+      width: 220px;
+      color: #456486;
+      background: #fbf7ee;
+      white-space: nowrap;
     }
 
     .benefit-table tr:last-child th,
-    .benefit-table tr:last-child td{
-      border-bottom:0;
+    .benefit-table tr:last-child td {
+      border-bottom: 0;
     }
 
-    .cta{
-      padding:84px 0 96px;
+    .cta {
+      padding: 84px 0 96px;
       background:
-        radial-gradient(circle at center, rgba(248,218,146,0.36), transparent 40%),
+        radial-gradient(circle at center, rgba(248, 218, 146, 0.36), transparent 40%),
         linear-gradient(180deg, #fffdf8, #f4ead8);
     }
 
-    .cta-box{
-      text-align:center;
-      background:linear-gradient(135deg, #fffaf0, #ffffff);
-      border:1px solid var(--line);
-      border-radius:34px;
-      padding:48px 28px;
-      box-shadow:var(--shadow-strong);
+    .cta-box {
+      text-align: center;
+      background: linear-gradient(135deg, #fffaf0, #ffffff);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 48px 28px;
+      box-shadow: var(--shadow);
     }
 
-    .cta-box p{
-      color:var(--muted);
-      max-width:780px;
-      margin:0 auto 28px;
-      font-size:18px;
+    .cta-box p {
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0 auto 28px;
+      font-size: 18px;
     }
 
-    .contact-line{
-      display:inline-flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      gap:10px 20px;
-      color:#466688;
-      font-weight:900;
-      font-size:21px;
-      margin-bottom:24px;
+    .contact-line {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 20px;
+      color: #466688;
+      font-weight: 900;
+      font-size: 21px;
+      margin-bottom: 24px;
     }
 
-    footer{
-      border-top:1px solid var(--line);
-      padding:26px 0;
-      color:#7f8b9a;
-      font-size:14px;
-      background:#fffdf8;
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      color: #7f8b9a;
+      font-size: 14px;
+      background: #fffdf8;
     }
 
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
-    @media (max-width:960px){
+    @media (max-width: 960px) {
       .hero-grid,
       .mission-box,
-      .partner-grid{
-        grid-template-columns:1fr;
+      .partner-grid {
+        grid-template-columns: 1fr;
       }
 
-      .change-cards{grid-template-columns:1fr}
-      .info-grid{grid-template-columns:repeat(2,1fr)}
-      .nav-links{display:none}
+      .change-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
     }
 
-    @media (max-width:640px){
-      .container{width:min(100% - 28px, var(--max))}
-      .hero{padding:72px 0 56px}
-      .hero-text{font-size:16px}
-      .hero-quote{font-size:18px}
-      section{padding:60px 0}
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .hero {
+        padding: 72px 0 56px;
+      }
+
+      .hero-text {
+        font-size: 16px;
+      }
+
+      .hero-quote {
+        font-size: 18px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
       .hero-panel,
       .mission-statement,
       .panel,
-      .change-card{
-        padding:23px;
+      .change-card {
+        padding: 23px;
       }
-      .info-grid{grid-template-columns:1fr}
-      .time-row{grid-template-columns:1fr; gap:6px}
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .time-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
 
       .benefit-table,
       .benefit-table tbody,
       .benefit-table tr,
       .benefit-table th,
-      .benefit-table td{
-        display:block;
-        width:100%;
+      .benefit-table td {
+        display: block;
+        width: 100%;
       }
 
-      .benefit-table th{
-        border-bottom:0;
-        padding-bottom:6px;
+      .benefit-table th {
+        border-bottom: 0;
+        padding-bottom: 6px;
       }
 
-      .benefit-table td{padding-top:0}
+      .benefit-table td {
+        padding-top: 0;
+      }
 
-      .btn{width:100%}
-      .btn-row{width:100%}
+      .btn,
+      .btn-row {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -693,4 +716,290 @@ html = r'''<!DOCTYPE html>
         <a href="#impact">協辦影響</a>
         <a href="#info">活動資訊</a>
         <a href="#partner">協辦方式</a>
-        <a href="#contact" class="nav-cta">
+        <a href="#contact" class="nav-cta">洽詢協辦</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">PARTNERSHIP INVITATION｜協辦邀請</div>
+
+        <h1>
+          一起點亮<br>
+          <span class="highlight">思辨的力量</span>
+        </h1>
+
+        <div class="hero-subtitle">
+          讓更多人看見真相，也學會判斷資訊
+        </div>
+
+        <p class="hero-text">
+          《超限戰》公益放映暨媒體識讀映後交流活動，不只是一場電影放映，
+          更是一場面對假訊息、資訊戰與數位時代挑戰的公民思辨行動。
+        </p>
+
+        <div class="hero-quote">
+          協辦，不只是支持一場電影，而是一起讓更多人有機會看見、思考，並學會判斷。
+        </div>
+
+        <div class="btn-row">
+          <a class="btn btn-primary" href="tel:0937615510">我想了解協辦方式</a>
+          <a class="btn btn-outline" href="index.html">查看活動報名頁</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <h3>協辦這場活動，您支持的是：</h3>
+
+        <div class="impact-list">
+          <div class="impact-item">
+            <div class="impact-icon">光</div>
+            <div>
+              <strong>讓更多人看見不同聲音</strong>
+              <span>幫助民眾接觸不易看見的議題與觀點，打開理解與思考的入口。</span>
+            </div>
+          </div>
+
+          <div class="impact-item">
+            <div class="impact-icon">辨</div>
+            <div>
+              <strong>讓更多人學會辨識資訊</strong>
+              <span>從電影延伸到假訊息、資訊戰、媒體識讀與網路安全。</span>
+            </div>
+          </div>
+
+          <div class="impact-item">
+            <div class="impact-icon">心</div>
+            <div>
+              <strong>讓社會多一場理性對話</strong>
+              <span>透過映後交流，建立尊重、思辨與公共討論的空間。</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <section class="mission" id="mission">
+    <div class="container">
+      <div class="mission-box">
+        <div class="mission-statement">
+          <div class="section-kicker">WHY IT MATTERS</div>
+          <h3>這場活動為什麼重要？</h3>
+          <p>
+            在 AI、短影音與社群媒體快速擴散的時代，資訊不只是被接收，也正在影響每個人的判斷、選擇與社會共識。
+            我們希望透過電影與映後交流，讓更多人重新思考：我們看見的是全部嗎？我們如何分辨資訊？我們是否仍保有獨立判斷的能力？
+          </p>
+        </div>
+
+        <div class="mission-points">
+          <div class="point">
+            <h3>不是單純放映，而是一次公共議題教育</h3>
+            <p>透過電影內容，引導觀眾認識資訊戰、假訊息、媒體操控與認知作戰等議題。</p>
+          </div>
+
+          <div class="point">
+            <h3>不是單向宣傳，而是保留討論與思考空間</h3>
+            <p>映後由講者帶領交流，讓參與者有機會從不同角度理解與思辨。</p>
+          </div>
+
+          <div class="point">
+            <h3>不是一次性活動，而是後續推廣的開始</h3>
+            <p>本活動可作為未來校園、企業、社團巡迴推廣與公益合作的基礎。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <div class="container">
+      <div class="section-head center-head">
+        <div class="section-kicker">YOUR IMPACT</div>
+        <h2>您的協辦，會帶來三個具體改變</h2>
+        <p class="section-desc">
+          對協辦單位而言，這不是單純掛名；而是一起促成一場有教育性、有公共價值、有後續延伸可能的公益行動。
+        </p>
+      </div>
+
+      <div class="change-cards">
+        <article class="change-card">
+          <div class="change-number">1</div>
+          <h3>讓一部重要作品被更多人看見</h3>
+          <p>許多人不是不關心，而是沒有機會接觸。協辦單位的支持，能讓更多民眾走進現場，真正了解電影所探討的資訊戰、真相與社會安全議題。</p>
+        </article>
+
+        <article class="change-card">
+          <div class="change-number">2</div>
+          <h3>讓會員與民眾提升媒體判斷力</h3>
+          <p>在資訊快速擴散的時代，假訊息與認知作戰已經影響每個人的生活。這場活動能幫助參與者建立更清楚的資訊判讀能力。</p>
+        </article>
+
+        <article class="change-card">
+          <div class="change-number">3</div>
+          <h3>讓公益不只是捐款，而是推動思辨</h3>
+          <p>協辦不是單純提供資源，而是共同推動一場能啟發觀眾、連結社群、促成理性對話的公益教育行動。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="info" id="info">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">EVENT INFO</div>
+        <h2>活動資訊</h2>
+        <p class="section-desc">
+          本活動結合電影放映與講者帶領的映後交流，邀請企業、社團、教育工作者、家長、青年朋友及關心資訊安全與媒體識讀之民眾參與。
+        </p>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-box"><div class="info-label">活動日期</div><div class="info-value">2026 年 7 月 12 日（日）</div></div>
+        <div class="info-box"><div class="info-label">活動時間</div><div class="info-value">14:00－17:00</div></div>
+        <div class="info-box"><div class="info-label">報到時間</div><div class="info-value">13:30－14:00</div></div>
+        <div class="info-box"><div class="info-label">活動地點</div><div class="info-value">台南勞工育樂中心</div></div>
+        <div class="info-box"><div class="info-label">主辦單位</div><div class="info-value">乾淨世界</div></div>
+        <div class="info-box"><div class="info-label">協辦單位</div><div class="info-value">永翔愛心會、其他單位邀請中</div></div>
+        <div class="info-box"><div class="info-label">活動票價</div><div class="info-value">每人 NT$150</div></div>
+        <div class="info-box"><div class="info-label">聯絡窗口</div><div class="info-value">林小姐 0937-615-510</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">EVENT SCHEDULE</div>
+        <h2>活動流程</h2>
+        <p class="section-desc">映後交流將由講者帶領觀眾，從電影內容延伸討論資訊戰、假訊息與媒體識讀等議題。</p>
+      </div>
+
+      <div class="timeline">
+        <div class="time-row">
+          <div class="time">13:30－14:00</div>
+          <div><div class="event-title">來賓報到</div><div class="event-desc">現場接待、簽到與入座。</div></div>
+        </div>
+
+        <div class="time-row">
+          <div class="time">14:00－14:10</div>
+          <div><div class="event-title">主辦單位致詞、介紹貴賓及大合照</div><div class="event-desc">感謝協辦單位與來賓支持，說明活動宗旨。</div></div>
+        </div>
+
+        <div class="time-row">
+          <div class="time">14:10－16:30</div>
+          <div><div class="event-title">電影《超限戰》放映</div><div class="event-desc">透過電影內容，引導觀眾看見資訊、真相、人性與國家安全相關議題。</div></div>
+        </div>
+
+        <div class="time-row">
+          <div class="time">16:30－17:00</div>
+          <div><div class="event-title">映後交流與分享</div><div class="event-desc">由講者帶領觀眾延伸討論資訊戰、假訊息、網路安全與媒體識讀議題。</div></div>
+        </div>
+
+        <div class="time-row">
+          <div class="time">17:00</div>
+          <div><div class="event-title">活動結束</div><div class="event-desc">感謝來賓參與，後續可提供活動照片與成果紀錄。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partner-section" id="partner">
+    <div class="container partner-grid">
+      <div class="panel panel-strong">
+        <div class="section-kicker">HOW TO PARTNER</div>
+        <h2>協辦方式</h2>
+        <p class="section-desc">
+          協辦方式可依各單位資源與意願彈性討論。可以從轉發、邀請、推薦、現場協助開始，也可以透過經費支持，讓活動執行與推廣更加完整。
+        </p>
+        <br>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="tel:0937615510">洽詢協辦方案</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <ul class="check-list">
+          <li>協助轉發活動資訊，讓更多民眾知道本次公益放映。</li>
+          <li>邀請會員、友會、幹部、員工或重要來賓共同參與。</li>
+          <li>推薦適合參與之企業、社團、教育工作者或青年朋友。</li>
+          <li>協助活動現場接待、報到、引導或秩序維護。</li>
+          <li>支持活動場地、放映、宣傳、講者與執行相關費用。</li>
+          <li>共同列名協辦單位，參與媒體識讀與資訊安全公益推廣。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">PARTNER BENEFITS</div>
+        <h2>協辦單位可獲得什麼？</h2>
+        <p class="section-desc">協辦回饋不只是名稱露出，更重要的是讓貴單位與公益教育、公共議題與在地社群產生正面連結。</p>
+      </div>
+
+      <table class="benefit-table">
+        <tbody>
+          <tr>
+            <th>讓貴單位被看見</th>
+            <td>讓參與者知道貴單位正在支持媒體識讀、資訊安全與公民素養等重要公共議題。</td>
+          </tr>
+
+          <tr>
+            <th>提供會員深度活動</th>
+            <td>可邀請會員、員工、幹部或重要來賓參與，作為一場有深度、有啟發的教育型活動。</td>
+          </tr>
+
+          <tr>
+            <th>增加正面曝光</th>
+            <td>可於企畫書、宣傳圖、報名頁面、現場簡報或活動紀錄中列名。</td>
+          </tr>
+
+          <tr>
+            <th>建立社群連結</th>
+            <td>與企業、社團、教育工作者、家長與在地民眾建立連結，促進後續合作機會。</td>
+          </tr>
+
+          <tr>
+            <th>留下公益紀錄</th>
+            <td>活動後可提供照片、成果摘要與感謝狀，作為年度公益參與或社會責任紀錄。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="container">
+      <div class="cta-box">
+        <div class="section-kicker">JOIN US</div>
+        <h2>誠摯邀請貴單位，一起讓這場公益行動發生</h2>
+        <p>
+          讓更多民眾有機會透過電影與交流，認識資訊戰、假訊息與媒體識讀的重要性。
+          歡迎來電洽詢協辦方式，或索取簡式企畫書與協辦方案附件。
+        </p>
+
+        <div class="contact-line">
+          <span>聯絡人：林小姐</span>
+          <span>電話：0937-615-510</span>
+        </div>
+
+        <div class="btn-row" style="justify-content:center;">
+          <a class="btn btn-primary" href="tel:0937615510">立即電話洽詢</a>
+          <a class="btn btn-outline" href="index.html">回到活動報名頁</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 《超限戰》台南公益放映協辦邀請</div>
+      <div><a href="index.html">活動報名頁</a> ｜ <a href="#contact">洽詢協辦</a></div>
+    </div>
+  </footer>
+</body>
+</html>
