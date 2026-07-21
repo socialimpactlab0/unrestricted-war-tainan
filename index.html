@@ -6,6 +6,31 @@
   <title>《超限戰》中文版｜台南放映資訊</title>
   <meta name="description" content="《超限戰》中文版台南放映資訊。地點：勞工育樂中心，地址：台南市南區南門路261號，放映時間：下午 1:30–4:30（1:00 入場），票價每張 150 元，請點擊報名或洽陳小姐 0930-885-835。" />
 
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {
+      if(f.fbq)return;
+      n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;
+      n.push=n;
+      n.loaded=!0;
+      n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e);
+      t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '786478200392875');
+    fbq('track', 'PageView');
+  </script>
+  <!-- End Meta Pixel Code -->
+
   <style>
     :root {
       --white: #f4efe7;
@@ -1128,6 +1153,14 @@
 </head>
 
 <body>
+  <!-- Meta Pixel Code (noscript) -->
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=786478200392875&ev=PageView&noscript=1"
+      alt="" />
+  </noscript>
+  <!-- End Meta Pixel Code (noscript) -->
+
   <header class="top">
     <div class="container nav">
       <a class="nav-logo" href="#home" aria-label="回到首頁">
@@ -1528,6 +1561,35 @@
     const bookingMessage = document.getElementById("bookingMessage");
     const submitBtn = document.getElementById("submitBtn");
 
+    let hasTrackedRegistrationStart = false;
+
+    function trackMetaCustomEvent(eventName, parameters) {
+      if (typeof window.fbq !== "function") return;
+      window.fbq("trackCustom", eventName, parameters || {});
+    }
+
+    document.addEventListener("click", function(event) {
+      if (!(event.target instanceof Element)) return;
+
+      const bookingLink = event.target.closest('a[href="#booking"]');
+      if (!bookingLink) return;
+
+      trackMetaCustomEvent("ClickBooking", {
+        content_name: "超限戰0815台南公益特映",
+        content_category: "movie_screening"
+      });
+    });
+
+    bookingForm.addEventListener("input", function() {
+      if (hasTrackedRegistrationStart) return;
+      hasTrackedRegistrationStart = true;
+
+      trackMetaCustomEvent("StartRegistration", {
+        content_name: "超限戰0815台南公益特映",
+        content_category: "movie_screening"
+      });
+    });
+
     function updateTotal() {
       const qty = Number(ticketQty.value || 1);
       const total = qty * 150;
@@ -1597,7 +1659,19 @@
         }
 
         showMessage("success", "已收到您的訂票資料，訂票編號：" + result.bookingId + "。我們將於活動前與您確認。");
+
+        if (typeof window.fbq === "function") {
+          window.fbq("track", "CompleteRegistration", {
+            content_name: "超限戰0815台南公益特映",
+            content_category: "movie_screening",
+            status: "completed",
+            value: payload.totalAmount,
+            currency: "TWD",
+            num_items: payload.ticketQty
+          });
+        }
         bookingForm.reset();
+        hasTrackedRegistrationStart = false;
         updateTotal();
       } catch (error) {
         showMessage("error", "送出失敗，請稍後再試，或洽陳小姐 0930-885-835。");
