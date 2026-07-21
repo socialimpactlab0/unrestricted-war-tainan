@@ -1455,14 +1455,14 @@
               </div>
 
               <div class="form-field">
-                <label for="contact">LINE 或 Email <span class="required">*</span></label>
-                <input id="contact" name="contact" type="text" required />
+                <label for="contact">LINE 或 Email（選填）</label>
+                <input id="contact" name="contact" type="text" placeholder="方便傳送活動提醒，也可留白" />
               </div>
 
               <div class="form-field">
-                <label for="source">訊息來源 <span class="required">*</span></label>
-                <select id="source" name="source" required>
-                  <option value="">請選擇</option>
+                <label for="source">訊息來源（選填）</label>
+                <select id="source" name="source">
+                  <option value="">請選擇（可略過）</option>
                   <option value="朋友邀請">朋友邀請</option>
                   <option value="LINE">LINE</option>
                   <option value="Facebook">Facebook</option>
@@ -1553,6 +1553,92 @@
   <script>
     const GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyfYpIGoijpz92IGPoZHXSrqplfahm8iYJq673lrBoQp8wycXaST6nzc_JgtGhxVvfd/exec";
 
+    const TRAFFIC_GAS_URL = "https://script.google.com/macros/s/AKfycbwjZTgjLzQS-CMqzaLhGlcXFJe1dyfPYD9jpFKLrt5OEnjR4PFHi8WmjdCxoV4XUvLt/exec";
+    const TRAFFIC_SESSION_KEY = "tuw_traffic_session_id";
+
+    function getTrafficSessionId() {
+      try {
+        let sessionId = sessionStorage.getItem(TRAFFIC_SESSION_KEY);
+
+        if (!sessionId) {
+          sessionId = (window.crypto && typeof window.crypto.randomUUID === "function")
+            ? window.crypto.randomUUID()
+            : Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12);
+
+          sessionStorage.setItem(TRAFFIC_SESSION_KEY, sessionId);
+        }
+
+        return sessionId;
+      } catch (error) {
+        return Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12);
+      }
+    }
+
+    function getTrafficDeviceType() {
+      return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
+        ? "mobile"
+        : "desktop";
+    }
+
+    function getTrafficParameters() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let source = urlParams.get("utm_source") || urlParams.get("src") || "";
+
+      if (!source && document.referrer) {
+        try {
+          source = new URL(document.referrer).hostname;
+        } catch (error) {
+          source = "referral";
+        }
+      }
+
+      return {
+        source: source || "direct",
+        medium: urlParams.get("utm_medium") || "",
+        campaign: urlParams.get("utm_campaign") || "",
+        content: urlParams.get("utm_content") || ""
+      };
+    }
+
+    function logTrafficEvent(eventName) {
+      if (!TRAFFIC_GAS_URL || !eventName) return;
+
+      const traffic = getTrafficParameters();
+      const data = new URLSearchParams({
+        event: eventName,
+        source: traffic.source,
+        medium: traffic.medium,
+        campaign: traffic.campaign,
+        content: traffic.content,
+        page: window.location.href,
+        referrer: document.referrer || "",
+        device: getTrafficDeviceType(),
+        sessionId: getTrafficSessionId(),
+        clientTime: new Date().toISOString()
+      });
+
+      try {
+        if (navigator.sendBeacon) {
+          const sent = navigator.sendBeacon(TRAFFIC_GAS_URL, data);
+          if (sent) return;
+        }
+      } catch (error) {}
+
+      fetch(TRAFFIC_GAS_URL, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: data.toString()
+      }).catch(function() {});
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      logTrafficEvent("page_view");
+    });
+
     const ticketQty = document.getElementById("ticketQty");
     const ticketCountText = document.getElementById("ticketCountText");
     const totalAmount = document.getElementById("totalAmount");
@@ -1578,6 +1664,7 @@
         content_name: "超限戰0815台南公益特映",
         content_category: "movie_screening"
       });
+      logTrafficEvent("click_booking");
     });
 
     bookingForm.addEventListener("input", function() {
@@ -1588,6 +1675,7 @@
         content_name: "超限戰0815台南公益特映",
         content_category: "movie_screening"
       });
+      logTrafficEvent("form_start");
     });
 
     function updateTotal() {
@@ -1622,14 +1710,14 @@
         unitPrice: 150,
         totalAmount: Number(formData.get("totalAmount")),
         contact: formData.get("contact").trim(),
-        source: formData.get("source"),
+        source: (formData.get("source") || getTrafficParameters().source || "direct").trim(),
         note: formData.get("note").trim(),
         pageUrl: window.location.href,
         userAgent: navigator.userAgent
       };
 
-      if (!payload.name || !payload.phone || !payload.contact || !payload.source) {
-        showMessage("error", "請確認姓名、電話、LINE 或 Email、訊息來源都已填寫。");
+      if (!payload.name || !payload.phone) {
+        showMessage("error", "請確認訂票人姓名及聯絡電話都已填寫。");
         return;
       }
 
@@ -1670,6 +1758,7 @@
             num_items: payload.ticketQty
           });
         }
+        logTrafficEvent("registration_success");
         bookingForm.reset();
         hasTrackedRegistrationStart = false;
         updateTotal();
