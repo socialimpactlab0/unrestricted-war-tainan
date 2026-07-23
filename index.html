@@ -1306,7 +1306,10 @@
 
       .conversion-band { padding: 38px 0; }
       .conversion-band-inner { gap: 20px; }
-      .conversion-band h2 { font-size: 31px; }
+      .conversion-band h2 {
+        font-size: clamp(27px, 8vw, 32px);
+        line-height: 1.28;
+      }
       .conversion-band p { font-size: 15px; }
       .conversion-band .btn { width: 100%; }
 
@@ -1345,46 +1348,77 @@
 
       .mobile-booking-bar {
         position: fixed;
-        z-index: 950;
-        left: 0;
-        right: 0;
+        z-index: 9999;
+        left: var(--mobile-bar-left, 0px);
+        right: auto;
         bottom: 0;
+        width: var(--mobile-bar-width, 100%);
         display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        gap: 12px;
-        padding: 10px 14px;
-        border-top: 1px solid rgba(210,173,112,.42);
-        background: rgba(5,4,3,.96);
-        box-shadow: 0 -10px 30px rgba(0,0,0,.38);
-        backdrop-filter: blur(10px);
+        grid-template-columns: minmax(0, 1fr) 54px;
+        align-items: stretch;
+        gap: 9px;
+        padding:
+          9px
+          max(12px, env(safe-area-inset-right))
+          calc(9px + env(safe-area-inset-bottom))
+          max(12px, env(safe-area-inset-left));
+        border-top: 1px solid rgba(210,173,112,.38);
+        background: rgba(5,4,3,.97);
+        box-shadow: 0 -10px 28px rgba(0,0,0,.46);
+        backdrop-filter: blur(12px);
+        transform: translateY(var(--mobile-bar-shift, 0px));
+        will-change: transform, left, width;
       }
 
-      .mobile-booking-copy {
+      .mobile-booking-main {
         min-width: 0;
+        min-height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 8px 12px;
+        border: 1px solid #d2ad70;
+        background: linear-gradient(135deg, #dfbd80, #b9823f);
+        color: #090705;
+        text-decoration: none;
+        text-align: center;
+        font-weight: 800;
+        line-height: 1.25;
+        box-shadow: 0 7px 18px rgba(184,126,54,.22);
       }
 
-      .mobile-booking-copy strong {
+      .mobile-booking-main strong {
         display: block;
-        color: var(--white);
-        font-size: 14px;
-        line-height: 1.3;
+        font-size: 16px;
+        letter-spacing: .04em;
       }
 
-      .mobile-booking-copy span {
+      .mobile-booking-main span {
         display: block;
-        margin-top: 2px;
-        color: rgba(244,239,231,.62);
+        margin-top: 3px;
         font-size: 11px;
-        line-height: 1.35;
+        font-weight: 700;
+        letter-spacing: .02em;
+        opacity: .78;
       }
 
-      .mobile-booking-bar .btn {
-        width: auto;
-        min-height: 44px;
-        padding: 9px 15px;
-        font-size: 12px;
-        letter-spacing: .05em;
+      .mobile-booking-phone {
+        min-height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(210,173,112,.55);
+        background: rgba(255,255,255,.035);
+        color: var(--white);
+        text-decoration: none;
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .mobile-booking-main:active,
+      .mobile-booking-phone:active {
+        transform: scale(.98);
       }
 
       section { padding: 58px 0; }
@@ -1895,11 +1929,13 @@
   </footer>
 
   <div class="mobile-booking-bar" aria-label="手機快速訂票">
-    <div class="mobile-booking-copy">
-      <strong>8/15 台南公益特映</strong>
-      <span>每人150元｜現場繳交</span>
-    </div>
-    <a class="btn white" href="#booking">預約座位</a>
+    <a class="mobile-booking-main" href="#booking">
+      <strong>立即預約座位</strong>
+      <span>8/15 台南公益特映｜每人150元・現場繳交</span>
+    </a>
+    <a class="mobile-booking-phone" href="tel:0930885835" aria-label="電話洽詢陳小姐">
+      ☎
+    </a>
   </div>
 
   <div id="videoModal" class="video-modal" aria-hidden="true">
@@ -2177,6 +2213,39 @@
         closeVideoModal();
       }
     });
+
+    function updateMobileBookingBarViewport() {
+      const viewport = window.visualViewport;
+      if (!viewport || window.innerWidth > 620) {
+        document.documentElement.style.removeProperty("--mobile-bar-left");
+        document.documentElement.style.removeProperty("--mobile-bar-width");
+        document.documentElement.style.removeProperty("--mobile-bar-shift");
+        return;
+      }
+
+      const shift = viewport.offsetTop + viewport.height - window.innerHeight;
+
+      document.documentElement.style.setProperty(
+        "--mobile-bar-left",
+        viewport.offsetLeft + "px"
+      );
+      document.documentElement.style.setProperty(
+        "--mobile-bar-width",
+        viewport.width + "px"
+      );
+      document.documentElement.style.setProperty(
+        "--mobile-bar-shift",
+        shift + "px"
+      );
+    }
+
+    updateMobileBookingBarViewport();
+    window.addEventListener("resize", updateMobileBookingBarViewport);
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", updateMobileBookingBarViewport);
+      window.visualViewport.addEventListener("scroll", updateMobileBookingBarViewport);
+    }
   </script>
 </body>
 </html>
