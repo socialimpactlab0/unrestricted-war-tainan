@@ -336,6 +336,92 @@
       display: none;
     }
 
+    .faq-wrap {
+      margin: 42px 0 34px;
+      padding: 34px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(210,173,112,.08), rgba(255,255,255,.015));
+    }
+
+    .faq-head {
+      margin-bottom: 22px;
+    }
+
+    .faq-head h3 {
+      margin: 7px 0 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(30px, 4vw, 46px);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .faq-head p {
+      margin: 0;
+      color: rgba(244,239,231,.66);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-item {
+      border: 1px solid rgba(210,173,112,.22);
+      background: rgba(5,4,3,.42);
+    }
+
+    .faq-item summary {
+      position: relative;
+      display: block;
+      padding: 18px 52px 18px 20px;
+      color: var(--white);
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.55;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-answer {
+      padding: 0 20px 19px;
+      color: rgba(244,239,231,.72);
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .faq-answer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .faq-answer a:hover {
+      text-decoration: underline;
+    }
+
+
     .scroll {
       position: absolute;
       bottom: 28px;
@@ -1224,6 +1310,39 @@
       .conversion-band p { font-size: 15px; }
       .conversion-band .btn { width: 100%; }
 
+      .faq-wrap {
+        margin: 30px 0 26px;
+        padding: 24px 17px;
+      }
+
+      .faq-head {
+        margin-bottom: 17px;
+      }
+
+      .faq-head h3 {
+        font-size: 31px;
+      }
+
+      .faq-head p {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .faq-item summary {
+        padding: 16px 44px 16px 16px;
+        font-size: 16px;
+      }
+
+      .faq-item summary::after {
+        right: 16px;
+      }
+
+      .faq-answer {
+        padding: 0 16px 17px;
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
       .mobile-booking-bar {
         position: fixed;
         z-index: 950;
@@ -1570,6 +1689,45 @@
             </div>
           </div>
         </article>
+
+        <section class="faq-wrap" aria-labelledby="faqTitle">
+          <div class="faq-head">
+            <div class="kicker">Before You Reserve</div>
+            <h3 id="faqTitle">訂票前常見問題</h3>
+            <p>線上預約不需付款，填寫姓名、電話及票數即可保留座位。</p>
+          </div>
+
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary>如何付款？</summary>
+              <div class="faq-answer">
+                線上預約不需付款，票款於活動現場繳交，每張新台幣150元。
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>送出表單後，就算完成座位預約嗎？</summary>
+              <div class="faq-answer">
+                是。畫面顯示「座位預約完成」並取得訂票編號後，即代表已完成座位預約。
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>活動當天如何入場？</summary>
+              <div class="faq-answer">
+                活動當日下午1:00開放入場，請向現場工作人員告知訂票姓名或出示訂票編號。
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>臨時無法出席，該怎麼辦？</summary>
+              <div class="faq-answer">
+                請回覆活動提醒簡訊，或聯絡陳小姐
+                <a href="tel:0930885835">0930-885-835</a>，方便將座位留給其他觀眾。
+              </div>
+            </details>
+          </div>
+        </section>
 
         <section id="booking" class="booking-card" aria-label="訂票表單">
           <div class="booking-head">
