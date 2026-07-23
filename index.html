@@ -261,6 +261,81 @@
 
     .hero .btn { margin-top: 28px; }
 
+
+    .hero-event {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 12px;
+      max-width: 920px;
+      margin-top: 24px;
+    }
+
+    .hero-event-item {
+      padding: 9px 14px;
+      border: 1px solid rgba(210,173,112,.38);
+      background: rgba(5,4,3,.56);
+      color: rgba(244,239,231,.94);
+      font-size: 14px;
+      line-height: 1.5;
+      letter-spacing: .05em;
+      backdrop-filter: blur(5px);
+    }
+
+    .hero-event-item.accent {
+      background: linear-gradient(135deg, rgba(210,173,112,.96), rgba(157,113,58,.96));
+      border-color: #d2ad70;
+      color: #050403;
+      font-weight: 800;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .hero-actions .btn {
+      margin-top: 0;
+      min-width: 210px;
+    }
+
+    .conversion-band {
+      padding: 44px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(192,151,91,.13), rgba(5,4,3,.96) 36%, rgba(5,4,3,.96) 64%, rgba(192,151,91,.13));
+    }
+
+    .conversion-band-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .conversion-band h2 {
+      margin: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .conversion-band p {
+      margin: 0;
+      color: rgba(244,239,231,.72);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .mobile-booking-bar {
+      display: none;
+    }
+
     .scroll {
       position: absolute;
       bottom: 28px;
@@ -1065,6 +1140,10 @@
       .highlight { border-right: 0; border-bottom: 1px solid var(--line); }
       .highlight:last-child { border-bottom: 0; }
       .theatre-info { padding: 40px 28px; }
+      .conversion-band-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
       section { padding: 74px 0; }
     }
 
@@ -1095,14 +1174,99 @@
       }
 
       .hero::after { height: 20vh; }
-      .hero-box { width: 100%; max-width: 360px; transform: translateY(6px); }
-      .hero-logo-text { font-size: clamp(34px, 11vw, 48px); line-height: 1.02; letter-spacing: .025em; margin-bottom: 16px; }
-      .hero-logo-text span { font-size: clamp(24px, 7.5vw, 34px); line-height: 1.25; letter-spacing: .14em; margin-top: 12px; }
-      .hero-title-cn { font-size: clamp(26px, 7.5vw, 34px); line-height: 1.35; letter-spacing: .08em; margin-bottom: 14px; }
-      .hero-sub { display: none; }
-      .watch-line { font-size: 14px; line-height: 1.75; letter-spacing: .08em; margin-top: 18px; color: rgba(244,239,231,.88); }
-      .hero .btn { margin-top: 22px; width: 100%; max-width: 300px; min-height: 48px; padding: 12px 18px; font-size: 13px; letter-spacing: .11em; }
+      body { padding-bottom: 78px; }
+      .hero { min-height: 96svh; padding-bottom: 42px; }
+      .hero-box { width: 100%; max-width: 380px; transform: translateY(2px); }
+      .hero-logo-text { font-size: clamp(30px, 9.5vw, 43px); line-height: 1.02; letter-spacing: .02em; margin-bottom: 13px; }
+      .hero-logo-text span { font-size: clamp(21px, 6.6vw, 29px); line-height: 1.2; letter-spacing: .12em; margin-top: 9px; }
+      .hero-title-cn { font-size: clamp(23px, 6.6vw, 30px); line-height: 1.34; letter-spacing: .045em; margin-bottom: 12px; }
+      .hero-sub {
+        display: block;
+        max-width: 340px;
+        font-size: 15px;
+        line-height: 1.7;
+        letter-spacing: .02em;
+      }
+      .hero-event {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        gap: 7px;
+        margin-top: 16px;
+      }
+      .hero-event-item {
+        padding: 8px 7px;
+        font-size: 12px;
+        line-height: 1.45;
+        letter-spacing: .02em;
+      }
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        gap: 8px;
+        margin-top: 15px;
+      }
+      .hero-actions .btn {
+        width: 100%;
+        min-width: 0;
+        min-height: 46px;
+        padding: 10px 8px;
+        font-size: 12px;
+        line-height: 1.35;
+        letter-spacing: .06em;
+      }
       .scroll { display: none; }
+
+      .conversion-band { padding: 38px 0; }
+      .conversion-band-inner { gap: 20px; }
+      .conversion-band h2 { font-size: 31px; }
+      .conversion-band p { font-size: 15px; }
+      .conversion-band .btn { width: 100%; }
+
+      .mobile-booking-bar {
+        position: fixed;
+        z-index: 950;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 14px;
+        border-top: 1px solid rgba(210,173,112,.42);
+        background: rgba(5,4,3,.96);
+        box-shadow: 0 -10px 30px rgba(0,0,0,.38);
+        backdrop-filter: blur(10px);
+      }
+
+      .mobile-booking-copy {
+        min-width: 0;
+      }
+
+      .mobile-booking-copy strong {
+        display: block;
+        color: var(--white);
+        font-size: 14px;
+        line-height: 1.3;
+      }
+
+      .mobile-booking-copy span {
+        display: block;
+        margin-top: 2px;
+        color: rgba(244,239,231,.62);
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .mobile-booking-bar .btn {
+        width: auto;
+        min-height: 44px;
+        padding: 9px 15px;
+        font-size: 12px;
+        letter-spacing: .05em;
+      }
 
       section { padding: 58px 0; }
       .title { font-size: clamp(34px, 11vw, 48px); line-height: 1.08; }
@@ -1196,18 +1360,25 @@
         </h1>
 
         <h2 class="hero-title-cn">
-          一場沒有硝煙的戰爭，<br />
-          其實早已走進我們的生活。
+          一部從疫情出發，<br />
+          像諜報片一樣緊張的懸疑電影
         </h2>
 
         <p class="hero-sub">
-          從疫情、資訊封鎖到人性的選擇，<br />
-          《超限戰》帶你重新看見那段我們都經歷過，<br />
-          卻可能還沒真正理解的真相。
+          這不是一場政論課，而是一段關於真相、選擇與勇氣的故事。
         </p>
 
-        <div class="watch-line">台南公益放映｜座位有限，建議提前預約</div>
-        <a class="btn white" href="#booking">立即訂票</a>
+        <div class="hero-event" aria-label="台南公益特映資訊">
+          <div class="hero-event-item">2026年8月15日（六）</div>
+          <div class="hero-event-item">13:30開演｜13:00入場</div>
+          <div class="hero-event-item">台南勞工育樂中心</div>
+          <div class="hero-event-item accent">公益票價 NT$150</div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn white" href="#booking">立即預約座位</a>
+          <a class="btn" href="#trailer">先看電影預告</a>
+        </div>
       </div>
 
       <div class="scroll">Explore</div>
@@ -1217,7 +1388,7 @@
       <button class="video-button" type="button" onclick="openVideoModal('trailer-video.mp4', '《超限戰》中文預告片', 'hero-poster.jpg')" aria-label="播放《超限戰》中文預告片">
         <div class="play">▶</div>
         <h2>Trailer</h2>
-        <p>點擊觀看《超限戰》中文預告片</p>
+        <p>先用幾分鐘，感受一部像諜報片般緊張的懸疑電影</p>
       </button>
     </section>
 
@@ -1245,6 +1416,17 @@
             <div class="feedback-mini-play">▶</div>
           </button>
         </div>
+      </div>
+    </section>
+
+    <section class="conversion-band" aria-label="台南特映預約">
+      <div class="container conversion-band-inner">
+        <div>
+          <div class="kicker">TAINAN SPECIAL SCREENING</div>
+          <h2>看完預告，先把座位留起來</h2>
+          <p>8月15日（六）13:30｜台南勞工育樂中心｜公益票價每人150元</p>
+        </div>
+        <a class="btn white" href="#booking">預約座位</a>
       </div>
     </section>
 
@@ -1302,20 +1484,20 @@
         <div class="highlight-grid">
           <article class="highlight">
             <div class="num">01</div>
-            <h3>改編自真實事件</h3>
-            <p>故事靈感源自中共軍方同名戰略文件，將近代全球疫情陰影轉化為紀實劇情片的張力。</p>
+            <h3>像諜報片一樣緊張</h3>
+            <p>從實驗室、追查與危機開始，結合懸疑、驚悚與人性抉擇，讓故事保持電影節奏，而不是一場說教。</p>
           </article>
 
           <article class="highlight">
             <div class="num">02</div>
-            <h3>疫情背景的紀實劇情片</h3>
-            <p>從實驗室、政治壓力、資訊封鎖到家庭選擇，呈現一場無聲卻致命的全球危機。</p>
+            <h3>一段我們都曾經歷過的故事</h3>
+            <p>疫情期間的恐懼、資訊混亂與家庭選擇，透過劇情重新呈現，也帶來不同的理解角度。</p>
           </article>
 
           <article class="highlight">
             <div class="num">03</div>
-            <h3>諜報片般的製作質感</h3>
-            <p>結合驚悚、動作與人性抉擇，讓觀眾在電影感中看見真相、勇氣與代價。</p>
+            <h3>適合和家人朋友一起看</h3>
+            <p>它不只留下懸念，也會讓人想繼續討論真相、勇氣，以及人在關鍵時刻做出的選擇。</p>
           </article>
         </div>
       </div>
@@ -1330,7 +1512,7 @@
         <div class="copy">
           <div class="kicker">About</div>
           <h2 class="movie-title-small">The Unrestricted War</h2>
-          <p class="meta">Thriller-Drama &nbsp; | &nbsp; 2h 20 min &nbsp; | &nbsp; 2025 &nbsp; | &nbsp; HD</p>
+          <p class="meta">Canada &nbsp; | &nbsp; 2025 &nbsp; | &nbsp; 119 min &nbsp; | &nbsp; Thriller-Drama</p>
 
           <p>
             《超限戰》靈感源自中共軍方同名戰略文件，根據真實事件改編。
@@ -1358,8 +1540,8 @@
       <div class="container">
         <div class="watch-head">
           <div class="kicker">Select Your Theatre</div>
-          <h2 class="title">TAINAN｜勞工育樂中心</h2>
-          <p>台南放映資訊，請點擊報名或洽陳小姐 0930-885-835。</p>
+          <h2 class="title">2026.08.15｜TAINAN</h2>
+          <p>星期六下午，一起在台南看一部有劇情、有懸念，也值得討論的電影。</p>
         </div>
 
         <article class="theatre">
@@ -1371,18 +1553,20 @@
             <div class="theatre-address">台南市南區南門路261號</div>
 
             <div class="info-list">
+              <div><b>日期</b><span>2026年8月15日（六）</span></div>
               <div><b>地點</b><span>勞工育樂中心</span></div>
               <div><b>地址</b><span>台南市南區南門路261號</span></div>
               <div><b>時間</b><span>下午 1:30–4:30（1:00 入場）</span></div>
               <div><b>票價</b><span>每張 NT$150，每人最多 2 張</span></div>
+              <div><b>付款</b><span>票款於活動現場繳交</span></div>
               <div><b>聯絡</b><span>陳小姐　0930-885-835</span></div>
             </div>
 
-            <p class="ticket-note">台南放映資訊，請點擊報名或洽陳小姐 0930-885-835。</p>
+            <p class="ticket-note">線上送出即完成座位預約，不需線上付款；票款於活動現場繳交。</p>
 
             <div class="actions">
-              <a class="btn white" href="#booking">GET TICKETS</a>
-              <a class="btn" href="tel:0930885835">CALL NOW</a>
+              <a class="btn white" href="#booking">立即預約座位</a>
+              <a class="btn" href="tel:0930885835">電話洽詢</a>
             </div>
           </div>
         </article>
@@ -1393,8 +1577,8 @@
               <div class="kicker">Reserve Your Seat</div>
               <h3>預約座位</h3>
               <p>
-                如果您也曾想知道，疫情背後還有哪些沒有被說清楚的事，歡迎來現場一起觀看。<br />
-                票價每張 NT$150。請填寫以下資料完成訂票，我們將於活動前與您確認。
+                邀請你和家人、朋友一起來看一部有劇情、有懸念，也值得討論的電影。<br />
+                送出表單即完成座位預約，不需線上付款；票款於活動現場繳交。
               </p>
 
               <div class="event-info-box" aria-label="活動資訊">
@@ -1411,8 +1595,16 @@
                   <div class="event-info-value">臺南市教育產業工會</div>
                 </div>
                 <div class="event-info-row">
+                  <div class="event-info-label">📅 放映日期</div>
+                  <div class="event-info-value">2026年8月15日（六）</div>
+                </div>
+                <div class="event-info-row">
                   <div class="event-info-label">🕒 放映時間</div>
                   <div class="event-info-value">下午 1:30–4:30（下午 1:00 開放入場）</div>
+                </div>
+                <div class="event-info-row">
+                  <div class="event-info-label">💳 付款方式</div>
+                  <div class="event-info-value">票款於活動現場繳交</div>
                 </div>
               </div>
             </div>
@@ -1425,6 +1617,10 @@
               <div class="price-row">
                 <span>票數</span>
                 <strong><span id="ticketCountText">1</span> 張</strong>
+              </div>
+              <div class="price-row">
+                <span>付款方式</span>
+                <strong>現場繳交</strong>
               </div>
               <div class="price-row">
                 <span>總金額</span>
@@ -1493,7 +1689,7 @@
 
             <div class="submit-row">
               <button id="submitBtn" class="btn white" type="submit">確認預約座位 →</button>
-              <span class="field-help">送出後若需修改，請洽陳小姐 0930-885-835。</span>
+              <span class="field-help">送出即完成座位預約；若需修改或取消，請洽陳小姐 0930-885-835。</span>
             </div>
           </form>
         </section>
@@ -1539,6 +1735,14 @@
       <div>首頁　放映資訊　訂票資訊　預告片　觀眾回饋　電影簡介</div>
     </div>
   </footer>
+
+  <div class="mobile-booking-bar" aria-label="手機快速訂票">
+    <div class="mobile-booking-copy">
+      <strong>8/15 台南公益特映</strong>
+      <span>每人150元｜現場繳交</span>
+    </div>
+    <a class="btn white" href="#booking">預約座位</a>
+  </div>
 
   <div id="videoModal" class="video-modal" aria-hidden="true">
     <div class="video-modal-bg" onclick="closeVideoModal()"></div>
@@ -1746,7 +1950,7 @@
           throw new Error(result.message || "送出失敗");
         }
 
-        showMessage("success", "已收到您的訂票資料，訂票編號：" + result.bookingId + "。我們將於活動前與您確認。");
+        showMessage("success", "座位預約完成，訂票編號：" + result.bookingId + "。活動前將以電話或簡訊提醒，票款於現場繳交。");
 
         if (typeof window.fbq === "function") {
           window.fbq("track", "CompleteRegistration", {
