@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>《超限戰》中文版｜台南放映資訊</title>
-  <meta name="description" content="《超限戰》中文版台南放映資訊。地點：勞工育樂中心，地址：台南市南區南門路261號，放映時間：下午 1:30–4:30（1:00 入場），票價每張 150 元，請點擊報名或洽陳小姐 0930-885-835。" />
+  <title>《超限戰》8/15台南公益特別放映｜曾於台灣院線上映</title>
+  <meta name="description" content="《超限戰》曾於台灣院線上映，8月15日於台南勞工育樂中心公益特別放映。13:30開演、13:00入場，公益票價每人150元，線上預約、現場繳交。" />
 
   <!-- Meta Pixel Code -->
   <script>
@@ -215,6 +215,23 @@
       align-items: center;
     }
 
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 20px;
+      padding: 8px 16px;
+      border: 1px solid rgba(210,173,112,.65);
+      background: rgba(5,4,3,.68);
+      color: #e2bd7f;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      backdrop-filter: blur(7px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+
     .hero-logo-text {
       margin: 0 0 24px;
       font-family: Georgia, "Times New Roman", serif;
@@ -300,6 +317,47 @@
     .hero-actions .btn {
       margin-top: 0;
       min-width: 210px;
+    }
+
+    .trust-strip {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid rgba(210,173,112,.24);
+      border-bottom: 1px solid rgba(210,173,112,.24);
+      background:
+        linear-gradient(90deg, rgba(192,151,91,.16), rgba(5,4,3,.98) 24%, rgba(5,4,3,.98) 76%, rgba(192,151,91,.16));
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: stretch;
+    }
+
+    .trust-item {
+      min-height: 96px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 20px 14px;
+      text-align: center;
+      border-right: 1px solid rgba(210,173,112,.18);
+    }
+
+    .trust-item:last-child { border-right: 0; }
+
+    .trust-item strong {
+      color: #e2bd7f;
+      font-size: 15px;
+      letter-spacing: .06em;
+    }
+
+    .trust-item span {
+      color: rgba(244,239,231,.68);
+      font-size: 13px;
+      line-height: 1.45;
     }
 
     .conversion-band {
@@ -1263,6 +1321,13 @@
       body { padding-bottom: 78px; }
       .hero { min-height: 96svh; padding-bottom: 42px; }
       .hero-box { width: 100%; max-width: 380px; transform: translateY(2px); }
+      .hero-badge { margin-bottom: 14px; padding: 7px 11px; font-size: 11px; letter-spacing: .08em; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+      .trust-item { min-height: 82px; padding: 16px 10px; }
+      .trust-item:nth-child(2) { border-right: 0; }
+      .trust-item:nth-child(-n+2) { border-bottom: 1px solid rgba(210,173,112,.18); }
+      .trust-item strong { font-size: 13px; }
+      .trust-item span { font-size: 12px; }
       .hero-logo-text { font-size: clamp(30px, 9.5vw, 43px); line-height: 1.02; letter-spacing: .02em; margin-bottom: 13px; }
       .hero-logo-text span { font-size: clamp(21px, 6.6vw, 29px); line-height: 1.2; letter-spacing: .12em; margin-top: 9px; }
       .hero-title-cn { font-size: clamp(23px, 6.6vw, 30px); line-height: 1.34; letter-spacing: .045em; margin-bottom: 12px; }
@@ -1507,19 +1572,21 @@
       </video>
 
       <div class="hero-box">
+        <div class="hero-badge">2026年5月曾於台灣院線上映</div>
+
         <h1 class="hero-logo-text">
           The Unrestricted War
           <span>超限戰</span>
         </h1>
 
         <h2 class="hero-title-cn">
-          我們都經歷過疫情，<br />
-          但看見的，真的是全部嗎？
+          說出真相，<br />
+          還是保住家人？
         </h2>
 
         <p class="hero-sub">
-          《超限戰》從一名科學家被迫重返實驗室開始，
-          帶你走進資訊封鎖、危機追查與家庭抉擇。看完，再自己判斷。
+          曾於台灣院線上映的國際懸疑劇情片。
+          一名科學家發現不能公開的秘密，被迫在真相與家人之間作出選擇。
         </p>
 
         <div class="hero-event" aria-label="台南公益特映資訊">
@@ -1538,11 +1605,32 @@
       <div class="scroll">Explore</div>
     </section>
 
+    <section class="trust-strip" aria-label="電影與放映資訊">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <strong>曾於台灣院線上映</strong>
+          <span>正式電影作品</span>
+        </div>
+        <div class="trust-item">
+          <strong>加拿大製作</strong>
+          <span>國際懸疑劇情片</span>
+        </div>
+        <div class="trust-item">
+          <strong>完整電影放映</strong>
+          <span>有演員、人物與完整情節</span>
+        </div>
+        <div class="trust-item">
+          <strong>8/15 台南特別放映</strong>
+          <span>公益票價每人150元</span>
+        </div>
+      </div>
+    </section>
+
     <section id="trailer" class="trailer">
       <button class="video-button" type="button" onclick="openVideoModal('trailer-video.mp4', '《超限戰》中文預告片', 'hero-poster.jpg')" aria-label="播放《超限戰》中文預告片">
         <div class="play">▶</div>
         <h2>Trailer</h2>
-        <p>先看預告，了解這場危機如何從實驗室開始</p>
+        <p>先看預告，確認這是一部有演員、有劇情、有懸念的完整電影</p>
       </button>
     </section>
 
@@ -1577,8 +1665,8 @@
       <div class="container conversion-band-inner">
         <div>
           <div class="kicker">TAINAN SPECIAL SCREENING</div>
-          <h2>你記得那段日子，但可能從未從這個角度看過</h2>
-          <p>8月15日（六）13:30｜台南勞工育樂中心｜公益票價每人150元・現場繳交</p>
+          <h2>錯過院線，8/15在台南再看一次</h2>
+          <p>曾於台灣院線上映｜8月15日（六）13:30｜台南勞工育樂中心｜每人150元・現場繳交</p>
         </div>
         <a class="btn white" href="#booking">預約座位</a>
       </div>
@@ -1666,7 +1754,7 @@
         <div class="copy">
           <div class="kicker">About</div>
           <h2 class="movie-title-small">The Unrestricted War</h2>
-          <p class="meta">Canada &nbsp; | &nbsp; 2025 &nbsp; | &nbsp; 119 min &nbsp; | &nbsp; Thriller-Drama</p>
+          <p class="meta">Canada &nbsp; | &nbsp; 2025 &nbsp; | &nbsp; Thriller-Drama &nbsp; | &nbsp; 中文字幕</p>
 
           <p>
             《超限戰》靈感源自中共軍方同名戰略文件，根據真實事件改編。
@@ -1695,7 +1783,7 @@
         <div class="watch-head">
           <div class="kicker">Select Your Theatre</div>
           <h2 class="title">2026.08.15｜TAINAN</h2>
-          <p>星期六下午，一起在台南看一部有劇情、有懸念，也值得討論的電影。</p>
+          <p>曾於台灣院線上映的完整懸疑劇情片，8月15日在台南公益特別放映。</p>
         </div>
 
         <article class="theatre">
@@ -1734,6 +1822,27 @@
 
           <div class="faq-list">
             <details class="faq-item" open>
+              <summary>這是正式電影嗎？</summary>
+              <div class="faq-answer">
+                是。《超限戰》曾於2026年5月在台灣院線上映，本場為8月15日台南公益特別放映。
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>會不會是紀錄片或講座？</summary>
+              <div class="faq-answer">
+                本片是有演員、人物與完整情節的國際懸疑劇情片，活動以完整電影放映為主。
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>為什麼要事先預約？</summary>
+              <div class="faq-answer">
+                本場於台南勞工育樂中心舉行，採預約保留座位；線上送出後不需付款，活動當天再於現場繳交票款。
+              </div>
+            </details>
+
+            <details class="faq-item">
               <summary>如何付款？</summary>
               <div class="faq-answer">
                 線上預約不需付款，票款於活動現場繳交，每張新台幣150元。
@@ -1770,8 +1879,8 @@
               <div class="kicker">Reserve Your Seat</div>
               <h3>預約座位</h3>
               <p>
-                邀請你和家人、朋友一起來看一部有劇情、有懸念，也值得討論的電影。<br />
-                送出表單即完成座位預約，不需線上付款；票款於活動現場繳交。
+                《超限戰》曾於台灣院線上映，8月15日於台南公益特別放映。<br />
+                邀請你和家人、朋友一起觀影；一次可預約1至2個座位。送出表單即完成預約，票款於現場繳交。
               </p>
 
               <div class="event-info-box" aria-label="活動資訊">
@@ -1932,7 +2041,7 @@
   <div class="mobile-booking-bar" aria-label="手機快速訂票">
     <a class="mobile-booking-main" href="#booking">
       <strong>預約台南特映座位</strong>
-      <span>8/15 台南公益特映｜每人150元・現場繳交</span>
+      <span>曾於台灣院線上映｜8/15 台南特別放映</span>
     </a>
     <a class="mobile-booking-phone" href="tel:0930885835" aria-label="電話洽詢陳小姐">
       ☎
