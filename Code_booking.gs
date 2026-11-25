@@ -7,10 +7,10 @@
  * 3. 貼上本檔內容
  * 4. 修改 CONFIG.spreadsheetId 為您的 Google Sheet ID
  * 5. 執行 setup()（不清除既有資料）
- * 6. 部署 → 新增部署作業 → 網頁應用程式
+ * 6. 部署 → 管理部署作業 → 編輯原部署 → 新版本（保留原網址）
  *    - 執行身分：我
  *    - 存取權：任何人
- * 7. 複製 Web App URL，貼到 index.html 的 GAS_WEBAPP_URL
+ * 7. 工作人員人工發送簡訊／電話確認，並於1212訂票資料更新確認狀態。
  */
 
 const CONFIG = {
@@ -22,7 +22,8 @@ const CONFIG = {
   venue: '遠奏曲',
   address: '臺南市安平區國平南路98號',
   contactPerson: '陳小姐',
-  contactPhone: '0930-885-835'
+  contactPhone: '0930-885-835',
+  confirmationDeadline: '2026-12-10 20:00（台灣時間）'
 };
 
 const HEADERS = [
@@ -47,7 +48,7 @@ const HEADERS = [
 ];
 
 /**
- * 第一次使用請先執行 setup()
+ * 更新程式後請執行 setup()，保留所有既有資料及原狀態。
  * 會自動建立訂票資料分頁與欄位。
  */
 function setup() {
@@ -83,7 +84,7 @@ function setup() {
 
   // 狀態欄預設格式
   const statusRule = SpreadsheetApp.newDataValidation()
-    .requireValueInList(['新訂票', '已確認', '取消', '未聯絡上'], true)
+    .requireValueInList(['待確認', '已發簡訊', '已確認出席', '未回覆取消', '主動取消', '新訂票', '已確認', '取消', '未聯絡上'], true)
     .setAllowInvalid(false)
     .build();
 
@@ -104,7 +105,9 @@ function setup() {
 function doGet(e) {
   return jsonOutput({
     ok: true,
-    message: '《超限戰》訂票 API 正常運作',
+    message: '《超限戰》兩階段報名 API 正常運作',
+    registrationMode: 'pending_confirmation',
+    confirmationDeadline: CONFIG.confirmationDeadline,
     eventName: CONFIG.eventName,
     venue: CONFIG.venue,
     unitPrice: CONFIG.unitPrice
@@ -140,21 +143,23 @@ function doPost(e) {
       cleaned.contact,
       cleaned.source,
       cleaned.note,
-      '新訂票',
+      '待確認',
       '不需付款',
       CONFIG.eventName,
       CONFIG.venue,
       CONFIG.address,
       cleaned.pageUrl,
       cleaned.userAgent,
-      ''
+      '已勾選兩階段報名確認須知；待主辦單位確認出席'
     ];
 
     sheet.appendRow(row);
 
     return jsonOutput({
       ok: true,
-      message: '訂票成功',
+      message: '預約登記已完成，待確認出席',
+      registrationStatus: '待確認',
+      confirmationDeadline: CONFIG.confirmationDeadline,
       bookingId: bookingId,
       ticketQty: cleaned.ticketQty,
       totalAmount: cleaned.totalAmount
@@ -199,7 +204,8 @@ function validateAndNormalize(data) {
   const unitPrice = CONFIG.unitPrice;
   const totalAmount = ticketQty * unitPrice;
 
-  if (!name) throw new Error('請填寫訂票人姓名');
+  if (data.confirmPolicy !== true) throw new Error('請先閱讀並勾選報名確認須知');
+  if (!name) throw new Error('請填寫報名人姓名');
   if (!phone) throw new Error('請填寫聯絡電話');
   if (!source) throw new Error('請選擇訊息來源');
 
