@@ -23,7 +23,7 @@ const CONFIG = {
   address: '臺南市安平區國平南路98號',
   contactPerson: '陳小姐',
   contactPhone: '0930-885-835',
-  confirmationDeadline: '2026-12-10 20:00（台灣時間）'
+  confirmationDeadline: '2026-12-11 20:00（台灣時間）'
 };
 
 const HEADERS = [
