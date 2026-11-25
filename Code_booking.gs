@@ -14,7 +14,7 @@
  */
 
 const CONFIG = {
-  spreadsheetId: '請貼上您的 Google Sheet ID',
+  spreadsheetId: '1z56kMfN3Lw_abEltXbvPJ8vCwhRWJLrCgtMsZ7i5StU',
   sheetName: '1212訂票資料',
   unitPrice: 0,
   maxTicketsPerOrder: 2,
