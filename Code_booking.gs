@@ -2,11 +2,11 @@
  * 《超限戰》台南訂票系統 - Google Apps Script
  *
  * 使用方式：
- * 1. 建立一個新的 Google Sheet
+ * 1. 使用現有 Google Sheet（保留歷史資料），建立 1212訂票資料 分頁
  * 2. 擴充功能 → Apps Script
  * 3. 貼上本檔內容
  * 4. 修改 CONFIG.spreadsheetId 為您的 Google Sheet ID
- * 5. 執行 setup()
+ * 5. 執行 setup()（不清除既有資料）
  * 6. 部署 → 新增部署作業 → 網頁應用程式
  *    - 執行身分：我
  *    - 存取權：任何人
@@ -15,12 +15,12 @@
 
 const CONFIG = {
   spreadsheetId: '請貼上您的 Google Sheet ID',
-  sheetName: '訂票資料',
-  unitPrice: 150,
+  sheetName: '1212訂票資料',
+  unitPrice: 0,
   maxTicketsPerOrder: 2,
-  eventName: '《超限戰》台南放映',
-  venue: '勞工育樂中心',
-  address: '台南市南區南門路261號',
+  eventName: '《超限戰》2026/12/12台南公益放映及座談',
+  venue: '遠奏曲',
+  address: '臺南市安平區國平南路98號',
   contactPerson: '陳小姐',
   contactPhone: '0930-885-835'
 };
@@ -58,8 +58,9 @@ function setup() {
     sheet = ss.insertSheet(CONFIG.sheetName);
   }
 
-  sheet.clear();
-  sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
+  if (sheet.getLastRow() === 0) {
+    sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
+  }
 
   const headerRange = sheet.getRange(1, 1, 1, HEADERS.length);
   headerRange
@@ -140,7 +141,7 @@ function doPost(e) {
       cleaned.source,
       cleaned.note,
       '新訂票',
-      '未付款',
+      '不需付款',
       CONFIG.eventName,
       CONFIG.venue,
       CONFIG.address,
@@ -200,7 +201,6 @@ function validateAndNormalize(data) {
 
   if (!name) throw new Error('請填寫訂票人姓名');
   if (!phone) throw new Error('請填寫聯絡電話');
-  if (!contact) throw new Error('請填寫 LINE 或 Email');
   if (!source) throw new Error('請選擇訊息來源');
 
   if (!Number.isInteger(ticketQty) || ticketQty < 1 || ticketQty > CONFIG.maxTicketsPerOrder) {
