@@ -1066,6 +1066,21 @@
       line-height: 1.6;
     }
 
+    .booking-confirmation-notice {
+      margin: 0 0 22px;
+      padding: 18px 20px;
+      border: 1px solid rgba(232, 190, 111, .55);
+      border-left: 4px solid #e8be6f;
+      border-radius: 10px;
+      background: rgba(232, 190, 111, .08);
+      line-height: 1.75;
+      overflow-wrap: anywhere;
+    }
+    .booking-confirmation-notice h4 { color: #e8be6f; margin: 0 0 8px; font-size: 18px; }
+    .booking-confirmation-notice p { margin: 6px 0; font-size: 15px; }
+    .booking-confirmation-notice strong, .booking-confirmation-notice a { color: #e8be6f; }
+    .booking-confirmation-notice a { text-decoration: underline; }
+
     .agree-row {
       display: flex;
       gap: 10px;
@@ -1804,7 +1819,7 @@
               <div><b>聯絡</b><span>陳小姐　0930-885-835</span></div>
             </div>
 
-            <p class="ticket-note">免費參加，名額有限；請先完成線上座位預約。</p>
+            <p class="ticket-note">免費參加，名額有限。請先完成線上登記，並依活動前簡訊或電話通知確認出席，才算正式報名成功。</p>
 
             <div class="actions">
               <a class="btn white" href="#booking">立即預約座位</a>
@@ -1817,7 +1832,7 @@
           <div class="faq-head">
             <div class="kicker">Before You Reserve</div>
             <h3 id="faqTitle">報名前常見問題</h3>
-            <p>免費參加，填寫姓名、電話及預約座位數即可保留座位。</p>
+            <p>免費參加，採兩階段報名確認制：線上登記後，須經簡訊回覆或電話確認出席，才正式保留座位。</p>
           </div>
 
           <div class="faq-list">
@@ -1838,28 +1853,28 @@
             <details class="faq-item">
               <summary>為什麼要事先預約？</summary>
               <div class="faq-answer">
-                本場於台南遠奏曲舉行，免費參加，因名額有限，採事先預約保留座位。
+                本場於台南遠奏曲舉行，免費參加，因名額有限，需先線上登記，再經簡訊回覆或電話確認出席，才正式保留座位。
               </div>
             </details>
 
             <details class="faq-item">
               <summary>參加活動需要費用嗎？</summary>
               <div class="faq-answer">
-                本場活動免費參加，不需線上或現場付款，請先完成座位預約。
+                本場活動免費參加，不需線上或現場付款；請先完成線上登記及出席確認。
               </div>
             </details>
 
             <details class="faq-item">
-              <summary>送出表單後，就算完成座位預約嗎？</summary>
+              <summary>送出表單後，就算正式報名成功嗎？</summary>
               <div class="faq-answer">
-                是。畫面顯示「座位預約完成」並取得預約編號後，即代表已完成座位預約。
+                不是。取得預約編號僅代表登記完成。活動前主辦單位將以簡訊或電話聯繫，請於12月10日晚上8點前回覆確認出席；逾期未確認或無法取得聯繫，主辦單位得取消預約並釋出座位。若於確認期限後登記，請先電話洽詢並取得主辦單位確認。
               </div>
             </details>
 
             <details class="faq-item">
               <summary>活動當天如何入場？</summary>
               <div class="faq-answer">
-                活動當日下午1:30開放入場，請向現場工作人員告知報名姓名或出示預約編號。
+                活動當日下午1:30開放入場。已確認出席的觀眾，請向現場工作人員告知報名姓名或出示預約編號。
               </div>
             </details>
 
@@ -1880,7 +1895,7 @@
               <h3>預約座位</h3>
               <p>
                 《超限戰》曾於台灣院線上映，12月12日於台南公益特別放映。<br />
-                邀請你和家人、朋友一起觀影；一次可預約1至2個座位。免費參加、名額有限，送出表單並取得預約編號即完成預約。
+                邀請你和家人、朋友一起觀影；一次可登記1至2個座位。免費參加、名額有限，須經出席確認才算正式報名成功。
               </p>
 
               <div class="event-info-box" aria-label="活動資訊">
@@ -1926,11 +1941,18 @@
               </div>
               <div class="price-row">
                 <span>報名方式</span>
-                <strong>名額有限・請先預約</strong>
+                <strong>登記後須確認出席</strong>
               </div>
             </div>
           </div>
 
+          <aside class="booking-confirmation-notice" aria-label="報名確認須知">
+            <h4>報名確認須知｜兩階段確認制</h4>
+            <p>本活動免費參加，因座位有限，送出表單僅完成預約登記，尚未正式保留座位。</p>
+            <p>活動前將以簡訊或電話聯繫，請於 <strong>12月10日（四）晚上8點前</strong> 回覆確認出席，經主辦單位確認後，才算正式報名成功。</p>
+            <p>逾期未確認或無法取得聯繫，主辦單位得取消預約，將座位提供給其他有意參加的觀眾。若於確認期限後登記，請先洽陳小姐 <a href="tel:0930885835">0930-885-835</a> 確認座位。</p>
+            <p>感謝您的理解與配合，讓每一個座位都能被珍惜。</p>
+          </aside>
           <form id="bookingForm" class="booking-form">
             <div class="form-grid">
               <div class="form-field">
@@ -1941,7 +1963,7 @@
               <div class="form-field">
                 <label for="phone">聯絡電話 <span class="required">*</span></label>
                 <input id="phone" name="phone" type="tel" autocomplete="tel" required />
-                <div class="field-help">活動前將以電話或簡訊提醒；若行程有變，請回覆告知。</div>
+                <div class="field-help">活動前將以簡訊或電話確認出席，請務必填寫可聯繫的電話。</div>
               </div>
 
               <div class="form-field">
@@ -1978,6 +2000,12 @@
 
               <div class="form-field full">
                 <label class="agree-row">
+                  <input id="confirmPolicy" name="confirmPolicy" type="checkbox" value="yes" required />
+                  <span>我已了解須經簡訊回覆或電話確認出席，才算正式報名成功；逾期未確認，主辦單位得取消預約並釋出座位。</span>
+                </label>
+              </div>
+              <div class="form-field full">
+                <label class="agree-row">
                   <input id="agree" name="agree" type="checkbox" required />
                   <span>我同意主辦單位為報名與活動聯絡目的使用上述資料。</span>
                 </label>
@@ -1990,8 +2018,8 @@
             <div id="bookingMessage" class="booking-message"></div>
 
             <div class="submit-row">
-              <button id="submitBtn" class="btn white" type="submit">確認預約座位 →</button>
-              <span class="field-help">送出即完成座位預約；若需修改或取消，請洽陳小姐 0930-885-835。</span>
+              <button id="submitBtn" class="btn white" type="submit">送出預約登記 →</button>
+              <span class="field-help">送出僅完成登記，請留意後續簡訊或電話確認；如需修改或取消，請洽陳小姐 0930-885-835。</span>
             </div>
           </form>
         </section>
@@ -2219,8 +2247,14 @@
         source: (formData.get("source") || getTrafficParameters().source || "direct").trim(),
         note: formData.get("note").trim(),
         pageUrl: window.location.href,
-        userAgent: navigator.userAgent
+        userAgent: navigator.userAgent,
+        confirmPolicy: formData.get("confirmPolicy") === "yes"
       };
+
+      if (!payload.confirmPolicy) {
+        showMessage("error", "請先勾選報名確認須知。");
+        return;
+      }
 
       if (!payload.name || !payload.phone) {
         showMessage("error", "請確認報名人姓名及聯絡電話都已填寫。");
@@ -2252,13 +2286,14 @@
           throw new Error(result.message || "送出失敗");
         }
 
-        showMessage("success", "座位預約完成，預約編號：" + result.bookingId + "。本場免費參加，活動前將以電話或簡訊提醒。");
+        showMessage("success", "預約登記已完成｜待確認出席。預約編號：" + result.bookingId + "。這不是正式報名成功通知。請留意活動前簡訊或電話，並於12月10日晚上8點前確認出席；逾期登記者請先洽陳小姐 0930-885-835 確認。");
 
         if (typeof window.fbq === "function") {
           window.fbq("track", "CompleteRegistration", {
             content_name: "超限戰1212台南公益特映",
             content_category: "movie_screening",
             status: "completed",
+            registration_stage: "pending_confirmation",
             value: payload.totalAmount,
             currency: "TWD",
             num_items: payload.ticketQty
@@ -2272,7 +2307,7 @@
         showMessage("error", "送出失敗，請稍後再試，或洽陳小姐 0930-885-835。");
       } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = "確認預約座位 →";
+        submitBtn.textContent = "送出預約登記 →";
       }
     });
 
